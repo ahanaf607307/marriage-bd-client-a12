@@ -8,7 +8,17 @@ module.exports = {
     flowbite.content(),
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'banner': "url('/src/assets/banner/bannerCompleate.png')",
+        'footer-texture': "url('/img/footer-texture.png')",
+      },
+      fontFamily: {
+        'logoFont': [' "Rubik Vinyl", serif;'],
+        'bannerFont': [' "Kanit", serif'],
+        
+      },
+    }
   },
   plugins: [
    
