@@ -2,19 +2,20 @@ import { Button, HR, Table } from "flowbite-react";
 import React from "react";
 import { GrFavorite } from "react-icons/gr";
 import { MdContactPhone } from "react-icons/md";
+import detailsImage from "../../assets/bioData/1.jpeg";
+import AllBioDataCard from "../../Shared/AllBioDataCard";
 import BannarAll from "../../Shared/BannarAll";
 import Title from "../../Shared/Title";
-import detailsImage from "../../assets/bioData/1.jpeg";
-import BioDataCard from "./BioDataCard";
+
 
 function BioDataDetails() {
   return (
     <div className="font-bannerFont ">
       <BannarAll bannerHeading={`BioData Details`} />
       <div className="my-10 border-2 py-10 max-w-7xl mx-auto bg-pink-200 rounded-xl">
-        <section className="flex flex-col justify-center items-center my-2  max-w-sm py-2 mx-auto bg-pink-400 rounded-bl-full rounded-tr-3xl">
+        <section className="flex flex-col justify-center items-center my-2  max-w-sm py-5 mx-auto bg-pink-400 rounded-tr-full  rounded-bl-full rounded-br-full shadow-2xl shadow-pink-600">
           <img
-            className="w-56 h-56 rounded-bl-[60%]  "
+            className="w-56 h-56 rounded-xl "
             src={detailsImage}
             alt=""
           />
@@ -153,12 +154,12 @@ function BioDataDetails() {
         </div>
       </div>
          {/* similar biodata */}
-         <div className="my-16">
+         <div className="my-16 px-5">
             <Title heading={`Similar Biodata`}/>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-<BioDataCard/>
-<BioDataCard/>
-<BioDataCard/>
+<AllBioDataCard/>
+<AllBioDataCard/>
+<AllBioDataCard/>
       </div>
          </div>
          

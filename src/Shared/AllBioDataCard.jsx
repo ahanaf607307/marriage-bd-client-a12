@@ -2,9 +2,9 @@
 import { Button } from 'flowbite-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import bioDataImg from '../../assets/bioData/1.jpeg';
+import bioDataImg from '../assets/bioData/1.jpeg';
 
-function BioDataCard() {
+function AllBioDataCard() {
   return (
     <div className='border font-bannerFont rounded-xl bg-white'>
         <div className='bg-pink-400 flex flex-col justify-center items-center py-10 rounded-tl-full  relative '>
@@ -26,4 +26,4 @@ function BioDataCard() {
   )
 }
 
-export default BioDataCard
+export default AllBioDataCard
