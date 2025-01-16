@@ -121,10 +121,10 @@ function BioDataDetail({ bio }) {
   //     email,
   //     biodataId} = bio
   return (
-    <div className="font-bannerFont ">
+    <div className="font-bannerFont  px-2">
       <div className="my-10 border-2 py-10  bg-pink-200 rounded-xl">
-        <section className="flex flex-col justify-center items-center my-2  max-w-sm py-5 mx-auto bg-pink-400 rounded-tr-full  rounded-bl-full rounded-br-full shadow-2xl shadow-pink-600 mb-10">
-          <img className="w-56 h-56 rounded-xl " src={bio?.imageLink} alt="" />
+        <section className="flex flex-col justify-center items-center my-2     md:max-w-sm py-5 mx-auto bg-pink-400 rounded-tr-full  rounded-bl-full rounded-br-full shadow-2xl shadow-pink-600 mb-10">
+          <img className="w-44 md:w-56 h-44 md:h-56 rounded-xl " src={bio?.imageLink} alt="" />
         </section>
         {/* image section ends */}
         <div className="grid grid-cols-1 lg:grid-cols-2 justify-center  gap-5 ">
@@ -184,6 +184,7 @@ function BioDataDetail({ bio }) {
 
           {/* right */}
           <div className="bg-pink-300 rounded-lg py-5 px-2">
+          <div className="overflow-x-auto">
             <Table hoverable>
               <Table.Body className="divide-y">
                 <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
@@ -221,6 +222,7 @@ function BioDataDetail({ bio }) {
                 </Table.Row>
               </Table.Body>
             </Table>
+            </div>
             {isDisabled ? (
               <Button className=" my-4 mx-auto bg-pink-500" disabled>
                 - Makeing your biodata Premium - "Please Wait Sometime's . This Process is under review... "</Button>

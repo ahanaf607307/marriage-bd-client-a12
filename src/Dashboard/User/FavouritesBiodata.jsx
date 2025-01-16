@@ -4,13 +4,13 @@ import React from "react";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
-import useAxiosPublic from "../../Hook/useAxiosPublic";
+
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import BannarAll from "../../Shared/BannarAll";
 
 function FavouritesBiodata() {
   const axiosSecure = useAxiosSecure();
-  const axiosPublic = useAxiosPublic();
+
   const { user } = useAuth();
   const { data: favorite = [], refetch } = useQuery({
     queryKey: ["favorites"],

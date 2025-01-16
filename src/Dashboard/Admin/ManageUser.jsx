@@ -50,6 +50,8 @@ const handleMakeAdmin = (id) => {
      <div className="overflow-x-auto">
       <Table hoverable>
         <Table.Head>
+          <Table.HeadCell>
+          </Table.HeadCell>
           <Table.HeadCell>User name
           </Table.HeadCell>
           <Table.HeadCell>User email
@@ -61,7 +63,8 @@ const handleMakeAdmin = (id) => {
         </Table.Head>
         <Table.Body className="divide-y">
          {
-            users.map(user =>  <Table.Row key={user?._id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
+            users.map((user,index) =>  <Table.Row key={user?._id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
+               <Table.Cell>{index + 1}</Table.Cell>
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                  {user?.name}
                 </Table.Cell>
