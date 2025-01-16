@@ -31,6 +31,10 @@ function BioDataDetail({ bio }) {
   const [isDisabled, setIsDisabled] = useState(false);
 
   const handleMakePremium = (id) => {
+
+
+
+
     const premiumId = id;
     const status = "pending";
     const bioDataInfo = {
@@ -72,6 +76,13 @@ function BioDataDetail({ bio }) {
           .post("/premiums", bioDataInfo)
           .then((res) => {
             console.log("premium req from", res.data);
+            if (res.data.message === 'Item already Added') {
+               return Swal.fire({
+                title: "Please wait ! Your request is under processing !",
+                icon: "error",
+                draggable: true,
+              });
+            }
             if (res.data.insertedId) {
               Swal.fire({
                 title: "Sent Premium Request  !",
@@ -229,3 +240,5 @@ function BioDataDetail({ bio }) {
 }
 
 export default BioDataDetail;
+
+

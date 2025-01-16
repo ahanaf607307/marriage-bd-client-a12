@@ -1,16 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import { Button, HR, Table } from "flowbite-react";
-import React, { useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 import BannarAll from "../../Shared/BannarAll";
 import Title from "../../Shared/Title";
 import BioDataCard from "./BioDataCard";
 
 function BioDataDetails() {
   const axiosPublic = useAxiosPublic();
-const {id} = useParams()
+  const axiosSecure = useAxiosSecure();
+
+  const { user } = useAuth();
+  const { id } = useParams();
   const { data: details = [] } = useQuery({
     queryKey: ["details"],
     queryFn: async () => {
@@ -19,7 +24,8 @@ const {id} = useParams()
     },
   });
 
-  console.log(details)
+
+  
 
   const {
     _id,
@@ -44,52 +50,93 @@ const {id} = useParams()
     biodataId,
   } = details;
 
-const [isDisabled , setIsDisabled] = useState(false)
-  const handleFavorite =(id) => {
-    console.log('favorite --> ' ,id)
-    const favoriteId = id
+  const handleFavorite = (id) => {
+   
+    
+
+    console.log("favorite --> ", id);
+    const favUserEmail = user.email
     const favoriteInfo = {
-      _id,
-    name,
-    imageLink,
-    date,
-    genderType,
-    height,
-    weight,
-    age,
-    occupation,
-    skinColor,
-    fathersName,
-    partnerAge,
-    mothersName,
-    partnerHeight,
-    partnerWeight,
-    permanentDivision,
-    presentDivision,
-    mobileNumber,
-    email,
-    biodataId,
-    favoriteId,
-    }
-    axiosPublic.post('/favorite' , favoriteInfo)
+      name,
+      imageLink,
+      date,
+      genderType,
+      height,
+      weight,
+      age,
+      occupation,
+      skinColor,
+      fathersName,
+      partnerAge,
+      mothersName,
+      partnerHeight,
+      partnerWeight,
+      permanentDivision,
+      presentDivision,
+      mobileNumber,
+      email,
+      biodataId,
+      favUserEmail ,
+    };
+    axiosPublic
+      .post("/favorite", favoriteInfo)
+      .then((res) => {
+        console.log("post favorite --->", res.data);
+        
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Add to favorite",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((err) => console.log("error from favorite ->", err));
+  };
+
+  const handleRequestContact = (id) => {
+    const contactUserEmail = user.email
+    const contactStatus = 'pending'
+    const contactInfo = {
+      name,
+      imageLink,
+      date,
+      genderType,
+      height,
+      weight,
+      age,
+      occupation,
+      skinColor,
+      fathersName,
+      partnerAge,
+      mothersName,
+      partnerHeight,
+      partnerWeight,
+      permanentDivision,
+      presentDivision,
+      mobileNumber,
+      email,
+      biodataId,
+      contactUserEmail,
+contactStatus,
+    };
+    console.log("request contact -----> ", id);
+    axiosPublic.post('/contact-request' ,contactInfo )
     .then(res => {
-      console.log('post favorite --->' , res.data)
+      console.log('contact request from ,' , res.data)
       if(res.data.insertedId){
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "Add to favorite",
+          title: "Successfully Request Sent",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
-        setIsDisabled(true)
       }
-    }).catch(err =>console.log('error from favorite ->' , err))
-  }
-
-  const handleRequestContact = (id) => {
-    console.log('request contact -----> ' , id)
-  }
+    }).catch(err=>console.log('error from contact req ->' , err))
+  };
   return (
     <div className="font-bannerFont ">
       <BannarAll bannerHeading={`BioData Details`} />
@@ -155,51 +202,68 @@ const [isDisabled , setIsDisabled] = useState(false)
 
           {/* right */}
           <div className="bg-pink-300 rounded-lg py-5 p-2 md:px-5 ">
-          <div className="overflow-x-auto">
-            <Table hoverable >
-              <Table.Body className="divide-y" >
-                <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
-                  <Table.Cell className=" ">Expected Partner Age</Table.Cell>
-                  <Table.Cell>{partnerAge}</Table.Cell>
-                </Table.Row>
-                <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
-                  <Table.Cell className=" ">Expected Partner Height</Table.Cell>
-                  <Table.Cell> {partnerHeight} "</Table.Cell>
-                </Table.Row>
-                <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
-                  <Table.Cell className=" ">Expected Partner Weight</Table.Cell>
-                  <Table.Cell> {partnerWeight} KG </Table.Cell>
-                </Table.Row>
+            <div className="overflow-x-auto">
+              <Table hoverable>
+                <Table.Body className="divide-y">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                    <Table.Cell className=" ">Expected Partner Age</Table.Cell>
+                    <Table.Cell>{partnerAge}</Table.Cell>
+                  </Table.Row>
+                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                    <Table.Cell className=" ">
+                      Expected Partner Height
+                    </Table.Cell>
+                    <Table.Cell> {partnerHeight} "</Table.Cell>
+                  </Table.Row>
+                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                    <Table.Cell className=" ">
+                      Expected Partner Weight
+                    </Table.Cell>
+                    <Table.Cell> {partnerWeight} KG </Table.Cell>
+                  </Table.Row>
 
-                <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
-                  <Table.Cell className=" ">Permanent Division</Table.Cell>
-                  <Table.Cell> {permanentDivision} </Table.Cell>
-                </Table.Row>
+                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                    <Table.Cell className=" ">Permanent Division</Table.Cell>
+                    <Table.Cell> {permanentDivision} </Table.Cell>
+                  </Table.Row>
 
-                <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
-                  <Table.Cell className=" ">Present Division</Table.Cell>
-                  <Table.Cell> {presentDivision} </Table.Cell>
-                </Table.Row>
+                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                    <Table.Cell className=" ">Present Division</Table.Cell>
+                    <Table.Cell> {presentDivision} </Table.Cell>
+                  </Table.Row>
 
-                {/* contact info */}
-                <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
-                  <Table.Cell className=" ">Contact Email</Table.Cell>
-                  <Table.Cell> {email} </Table.Cell>
-                </Table.Row>
+                  {/* contact info */}
+                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                    <Table.Cell className=" ">Contact Email</Table.Cell>
+                    <Table.Cell> {email} </Table.Cell>
+                  </Table.Row>
 
-                <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
-                  <Table.Cell className=" ">Mobile Number</Table.Cell>
-                  <Table.Cell >+88 {mobileNumber} </Table.Cell>
-                </Table.Row>
-              </Table.Body>
-            </Table>
-</div>
+                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                    <Table.Cell className=" ">Mobile Number</Table.Cell>
+                    <Table.Cell>+88 {mobileNumber} </Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+              </Table>
+            </div>
             <div className="flex justify-center items-center my-5 gap-x-5">
               {
-                isDisabled ? <Button disabled>Already Added to favorite</Button> :<Button onClick={()=>handleFavorite(_id)} className="bg-pink-500">Add to favorite</Button> 
+                user?.email === email ? '' : <Button
+                onClick={() => handleFavorite(_id)}
+                className="bg-pink-500"
+              >
+                Add to favorite
+              </Button>
               }
-             
-             <Button onClick={()=>handleRequestContact(_id)}  className="bg-pink-500"> Request Contact Information </Button> 
+              {
+                 user?.email === email ? <p className="border-2 border-pink-500 px-3 py-1 rounded-xl">'You Created This Biodata 😍 Thank You !'</p> :<Button
+                onClick={() => handleRequestContact(_id)}
+                className="bg-pink-500"
+              >
+                {" "}
+                Request Contact Information{" "}
+              </Button>
+              }
+              
             </div>
           </div>
         </div>
@@ -211,7 +275,6 @@ const [isDisabled , setIsDisabled] = useState(false)
           <BioDataCard />
           <BioDataCard />
           <BioDataCard />
-         
         </div>
       </div>
     </div>
