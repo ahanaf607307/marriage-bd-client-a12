@@ -29,7 +29,7 @@ const routes = createBrowserRouter([
                 element : <Home/>
             },
             {
-                path : '/bioDataDetails',
+                path : '/bioDataDetails/:id',
                 element : <BioDataDetails/>
             },
             {

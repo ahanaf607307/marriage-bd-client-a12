@@ -20,7 +20,7 @@ function AllBioDataCard({biodata}) {
             
              
         </div>
-       <Link to='/bioDataDetails'><Button className='w-10/12 mx-auto outline-none mb-7 hover:bg-gradient-to-r from-pink-300 to-pink-700 border-2 border-pink-500 text-pink-500 hover:text-white duration-100 hover:border-white bg-transparent'  >
+       <Link to={`/bioDataDetails/${biodata?._id}`}><Button className='w-10/12 mx-auto outline-none mb-7 hover:bg-gradient-to-r from-pink-300 to-pink-700 border-2 border-pink-500 text-pink-500 hover:text-white duration-100 hover:border-white bg-transparent'  >
         View Profile 
       </Button></Link>
     </div>
