@@ -2,20 +2,21 @@
 import { Button } from 'flowbite-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import bioDataImg from '../assets/bioData/1.jpeg';
 
-function AllBioDataCard() {
+function AllBioDataCard({biodata}) {
+  
+ 
   return (
     <div className='border font-bannerFont rounded-xl bg-white'>
         <div className='bg-pink-400 flex flex-col justify-center items-center py-10 rounded-tl-full  relative '>
-        <img src={bioDataImg} className='w-32 my-2 rounded-full' alt="" />
-        <h1 className='text-lg text-white/90 bg-pink-600 pl-5 pr-1  pt-1 rounded-tl-3xl absolute bottom-0 right-0 '>BioData No : 5025 </h1>
-        <p className='absolute text-xl top-2 left-2 '>Male</p>
+        <img src={biodata?.imageLink} className='w-32 my-2 rounded-full' alt="bio data image" />
+        <h1 className='text-lg text-white/90 bg-pink-600 pl-5 pr-1  pt-1 rounded-tl-3xl absolute bottom-0 right-0 '>BioData No : {biodata?.biodataId}</h1>
+        <p className='absolute text-xl top-2 left-2 '>{biodata?.genderType}</p>
         </div>
         <div className='px-10 py-4'>
-            <h1 className='text-xl flex justify-between '><span>Division </span>  <span > Rangpur</span></h1>
-            <h1 className='text-xl flex justify-between '><span>Age </span>  <span > 25</span></h1>
-            <h1 className='text-xl flex justify-between  '><span>Occupation </span>  <span > Engineer</span></h1>
+            <h1 className='text-xl flex justify-between '><span>Division </span>  <span > {biodata?.permanentDivision}</span></h1>
+            <h1 className='text-xl flex justify-between '><span>Age </span>  <span > {biodata?.age}</span></h1>
+            <h1 className='text-xl flex justify-between  '><span>Occupation </span>  <span > {biodata?.occupation}</span></h1>
             
              
         </div>

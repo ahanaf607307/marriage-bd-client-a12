@@ -1,39 +1,50 @@
 import { Button, HR, Table } from "flowbite-react";
 import React from "react";
-import { GrFavorite } from "react-icons/gr";
-import { MdContactPhone } from "react-icons/md";
-import AllBioDataCard from "../../Shared/AllBioDataCard";
-import BannarAll from "../../Shared/BannarAll";
-import Title from "../../Shared/Title";
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 
-function BioDataDetails({bio}) {
+function BioDataDetail({bio}) {
+const axiosPublic = useAxiosPublic()
+
+const handleMakePremium = (id) => {
+    
+    axiosPublic.post(`/premium/${id}`)
+    .then(res => {
+        console.log('premium req from', res.data)
+    })
+    .catch(err => {
+        console.log('err from make premium by bio data detail ->' , err)
+    })
+
+
+}
+
 console.log(bio)
-  const { 
-    name,
-    imageLink,
-    date,
-    genderType,
-    height,
-    weight,
-    age,
-    occupation,
-    skinColor,
-    fathersName,
-    partnerAge,
-    mothersName,
-    partnerHeight,
-    partnerWeight,
-    permanentDivision,
-    presentDivision,
-    mobileNumber,
-    email,
-    biodataId} = bio
+//   const { 
+//     name,
+//     imageLink,
+//     date,
+//     genderType,
+//     height,
+//     weight,
+//     age,
+//     occupation,
+//     skinColor,
+//     fathersName,
+//     partnerAge,
+//     mothersName,
+//     partnerHeight,
+//     partnerWeight,
+//     permanentDivision,
+//     presentDivision,
+//     mobileNumber,
+//     email,
+//     biodataId} = bio
   return (
     <div className="font-bannerFont ">
-      <BannarAll bannerHeading={`BioData Details`} />
-      <div className="my-10 border-2 py-10 max-w-7xl mx-auto bg-pink-200 rounded-xl">
-        <section className="flex flex-col justify-center items-center my-2  max-w-sm py-5 mx-auto bg-pink-400 rounded-tr-full  rounded-bl-full rounded-br-full shadow-2xl shadow-pink-600">
+    
+      <div className="my-10 border-2 py-10  bg-pink-200 rounded-xl">
+        <section className="flex flex-col justify-center items-center my-2  max-w-sm py-5 mx-auto bg-pink-400 rounded-tr-full  rounded-bl-full rounded-br-full shadow-2xl shadow-pink-600 mb-10">
           <img
             className="w-56 h-56 rounded-xl "
             src={bio?.imageLink}
@@ -41,9 +52,9 @@ console.log(bio)
           />
         </section>
         {/* image section ends */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 justify-center  gap-5 p-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 justify-center  gap-5 ">
           {/* left */}
-          <div className="bg-pink-400 rounded-lg py-5 px-5 md:px-20">
+          <div className="bg-pink-400 rounded-lg py-5 px-5 ">
             <h1 className="text-2xl my-3 text-center text-pink-950">
               Bio data id : {bio?.biodataId}
             </h1>
@@ -97,7 +108,7 @@ console.log(bio)
           </div>
 
           {/* right */}
-          <div className="bg-pink-300 rounded-lg py-5 px-5 md:px-20">
+          <div className="bg-pink-300 rounded-lg py-5 px-2">
 
           <Table hoverable>
         <Table.Body className="divide-y">
@@ -154,37 +165,16 @@ console.log(bio)
       </Table>
 
 
+<Button onClick={()=>handleMakePremium(bio?._id)} className=" my-4 mx-auto bg-pink-500">Make Bio Data Premium</Button>
 
-<div className="flex justify-center items-center my-5">
-<Button.Group outline>
-        <Button color="gray">
-          <GrFavorite className="mr-3 h-4 w-4" />
-         Add To Favorite
-        </Button>
-        <Button color="gray">
-          <MdContactPhone className="mr-3 h-4 w-4" />
-          Request Contact
-        </Button>
-       
-      </Button.Group>
-</div>
   
 
           </div>
         </div>
       </div>
-         {/* similar biodata */}
-         <div className="my-16 px-5">
-            <Title heading={`Similar Biodata`}/>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-<AllBioDataCard/>
-<AllBioDataCard/>
-<AllBioDataCard/>
-      </div>
-         </div>
          
     </div>
   );
 }
 
-export default BioDataDetails;
+export default BioDataDetail;

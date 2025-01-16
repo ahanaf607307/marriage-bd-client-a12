@@ -17,7 +17,7 @@ function Dashboard() {
     <div className="">
       <div className="grid gird-cols-1 md:grid-cols-12 ">
         {/* dashboard link */}
-        <div className="md:col-span-4 lg:col-span-3 bg-pink-400 flex flex-col gap-y-5 md:min-h-screen py-10 px-5 lg:px-20">
+        <div className="md:col-span-3 bg-pink-400 flex flex-col gap-y-5 md:min-h-screen py-10 px-2 ">
           <Link
             to="/"
             className=" font-bold text-black"
@@ -104,7 +104,7 @@ function Dashboard() {
           </Button>
         </div>
         {/* dashboard page dynamic */}
-        <div className="md:col-span-8 lg:col-span-9 bg-pink-300 ">
+        <div className="md:col-span-9  bg-pink-300 ">
           <Outlet />
         </div>
       </div>
