@@ -169,14 +169,19 @@ function EditBiodata() {
           </section>
 
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-            <FloatingLabel
-              {...register("skinColor", { required: true })}
-              name="skinColor"
-              type="text"
-              className="text-white/80"
-              variant="standard"
-              label="Skin color"
-            />
+            <Select
+               {...register("skinColor", { required: true })}
+                name="skinColor"
+              defaultValue=""
+            >
+              <option value="" disabled>
+                Select Skin Color
+              </option>
+              <option value="Fair">Fair</option>
+              <option value="Medium">Medium</option>
+              <option value="Olive ">Olive </option>
+              <option value="Dark">Dark</option>
+            </Select>
             <FloatingLabel
               {...register("fathersName", { required: true })}
               name="fathersName"

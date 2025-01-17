@@ -17,6 +17,7 @@ import AboutUs from "../Pages/AboutUs/AboutUs"
 import BioDataDetails from "../Pages/Biodata/BioDataDetails"
 import Biodatas from "../Pages/BioDataPage/BioDatas"
 import Contact from "../Pages/Contact/Contact"
+import CheckOutPage from "../Pages/Payment/CheckOutForm"
 
 
 const routes = createBrowserRouter([
@@ -43,6 +44,10 @@ const routes = createBrowserRouter([
             {
                 path : '/contactUs',
                 element : <Contact/>
+            },
+            {
+                path : '/checkOutPage',
+                element : <CheckOutPage/>
             },
         ]
     },

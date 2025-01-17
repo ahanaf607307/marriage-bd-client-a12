@@ -24,17 +24,14 @@ function BioDataDetail({ bio }) {
     mobileNumber,
     email,
     biodataId,
+    bioDataRole,
+    userRole,
   } = bio;
-
   const axiosPublic = useAxiosPublic();
 
   const [isDisabled, setIsDisabled] = useState(false);
 
   const handleMakePremium = (id) => {
-
-
-
-
     const premiumId = id;
     const status = "pending";
     const bioDataInfo = {
@@ -59,8 +56,10 @@ function BioDataDetail({ bio }) {
       biodataId,
       premiumId,
       status,
+      bioDataRole,
+      userRole,
     };
-    console.log(premiumId);
+    console.log('info',bioDataInfo);
 
     Swal.fire({
       title: "Are you sure want to make premium?",
@@ -100,26 +99,7 @@ function BioDataDetail({ bio }) {
   };
 
   console.log(bio);
-  //   const {
-  //     name,
-  //     imageLink,
-  //     date,
-  //     genderType,
-  //     height,
-  //     weight,
-  //     age,
-  //     occupation,
-  //     skinColor,
-  //     fathersName,
-  //     partnerAge,
-  //     mothersName,
-  //     partnerHeight,
-  //     partnerWeight,
-  //     permanentDivision,
-  //     presentDivision,
-  //     mobileNumber,
-  //     email,
-  //     biodataId} = bio
+
   return (
     <div className="font-bannerFont  px-2">
       <div className="my-10 border-2 py-10  bg-pink-200 rounded-xl">
