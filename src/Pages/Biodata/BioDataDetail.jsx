@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Button, HR, Table } from "flowbite-react";
-import React, { useState } from "react";
+import React from "react";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
@@ -8,22 +8,23 @@ import useAxiosPublic from "../../Hook/useAxiosPublic";
 function BioDataDetail({ bio }) {
   const { user } = useAuth();
 
-const { data: users = [] } = useQuery({
-  queryKey: [user?.email, "users"],
-  queryFn: async () => {
-    const res = await axiosPublic.get(`/users/premium/${user?.email}`);
-    return res.data;
-  },
-});
+  const { data: users = [] } = useQuery({
+    queryKey: [user?.email, "users"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/users/premium/${user?.email}`);
+      return res.data;
+    },
+  });
 
-const { data: premiums = [] , refetch } = useQuery({
-  queryKey: ["premiums"],
-  queryFn: async () => {
-    const res = await axiosPublic.get("/premiums");
-    return res.data;
-  },
-});
-  
+  console.log("user email from bio data detail ->>>>>", users?._id);
+
+  const { data: premiums = [], refetch } = useQuery({
+    queryKey: ["premiums"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/premiums");
+      return res.data;
+    },
+  });
 
   const {
     _id,
@@ -51,13 +52,11 @@ const { data: premiums = [] , refetch } = useQuery({
   } = bio;
   const axiosPublic = useAxiosPublic();
 
-
-
   const handleMakePremium = (id) => {
     const premiumId = id;
     const status = "pending";
     const requestedUser = user?.email;
-    const requestedUserId = users?._id
+    const requestedUserId = users?._id;
     const bioDataInfo = {
       name,
       imageLink,
@@ -114,9 +113,8 @@ const { data: premiums = [] , refetch } = useQuery({
                 icon: "success",
                 draggable: true,
               });
-              refetch()
+              refetch();
             }
-           
           })
           .catch((err) => {
             console.log("err from make premium by bio data detail ->", err);
@@ -125,7 +123,7 @@ const { data: premiums = [] , refetch } = useQuery({
     });
   };
 
-  console.log('y' ,_id);
+
 
   return (
     <div className="font-bannerFont  px-2">
@@ -238,20 +236,18 @@ const { data: premiums = [] , refetch } = useQuery({
                 </Table.Body>
               </Table>
             </div>
-            { premiums.some(premium => premium?.premiumId === bio?._id ) ? (
-    <Button className="my-4 mx-auto bg-pink-500" disabled>
-     Thank You ! 🥰
-    </Button>
-  ) : (
-    <Button
-      onClick={() => handleMakePremium(bio?._id)}
-      className="my-4 mx-auto bg-pink-500"
-    >
-      Make Bio Data Premium
-    </Button>
-  )
-}
-
+            {premiums.some((premium) => premium?.premiumId === bio?._id) ? (
+              <Button className="my-4 mx-auto bg-pink-500" disabled>
+                Thank You ! 🥰
+              </Button>
+            ) : (
+              <Button
+                onClick={() => handleMakePremium(bio?._id)}
+                className="my-4 mx-auto bg-pink-500"
+              >
+                Make Bio Data Premium
+              </Button>
+            )}
           </div>
         </div>
       </div>

@@ -9,14 +9,14 @@ import useRole from "../../Hook/useRole";
 function ApprovedPremium() {
   const axiosSecure = useAxiosSecure();
 
-  const { data: premiums = [], refetch } = useQuery({
+  const { data: premiums = [] } = useQuery({
     queryKey: ["premiums"],
     queryFn: async () => {
       const res = await axiosSecure.get("/premiums");
       return res.data;
     },
   });
-  const { data: users = [] } = useQuery({
+  const { data: users = [] ,refetch} = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
