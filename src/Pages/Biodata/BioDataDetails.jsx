@@ -5,12 +5,15 @@ import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
+import useRole from "../../Hook/useRole";
 import BannarAll from "../../Shared/BannarAll";
 import Title from "../../Shared/Title";
 import BioDataCard from "./BioDataCard";
 
 function BioDataDetails() {
   const axiosPublic = useAxiosPublic();
+  const [users] = useRole()
+  console.log('user role -->',users.role)
 
   const { user } = useAuth();
   const { id } = useParams();
@@ -192,14 +195,14 @@ function BioDataDetails() {
                   <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
                     <Table.Cell className=" ">Contact Email</Table.Cell>
                  {
-                  user?.role === "normalUser" ? <p className="text-sm text-red-500  mt-5">"Request Contact Information"</p> :    <Table.Cell> {email} </Table.Cell>
+                  users?.role === "premium" ? <Table.Cell> {email} </Table.Cell> :   <p className="text-sm text-red-500  mt-5">"Request Contact Information"</p> 
                  }
                   </Table.Row>
 
                   <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
                     <Table.Cell className=" ">Mobile Number</Table.Cell>
                     {
-                      user?.role === "normalUser" ? <p className="text-sm text-red-500  mt-5">"Request Contact Information"</p> : <Table.Cell>+88 {mobileNumber} </Table.Cell>
+                      users?.role === "premium" ?<Table.Cell>+88 {mobileNumber} </Table.Cell> :<p className="text-sm text-red-500  mt-5">"Request Contact Information"</p>  
                     }
                   </Table.Row>
                 </Table.Body>

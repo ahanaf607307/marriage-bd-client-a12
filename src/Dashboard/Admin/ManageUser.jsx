@@ -2,13 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import { Button, Table } from "flowbite-react";
 import React from "react";
 import Swal from "sweetalert2";
+import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 function ManageUser() {
   const axiosSecure = useAxiosSecure();
+  const {loading} = useAuth()
 
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
+    enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
       return res.data;
@@ -60,7 +63,7 @@ function ManageUser() {
             <Table.HeadCell>Premium</Table.HeadCell>
           </Table.Head>
           <Table.Body className="divide-y">
-            {users.map((user, index) => (
+            {users?.map((user, index) => (
               <Table.Row
                 key={user?._id}
                 className="bg-white dark:border-gray-700 dark:bg-gray-800"
@@ -79,9 +82,7 @@ function ManageUser() {
                     </Button>
                   )}
                 </Table.Cell>
-                <Table.Cell>
-                  <Button>Make Premium</Button>
-                </Table.Cell>
+               
               </Table.Row>
             ))}
           </Table.Body>

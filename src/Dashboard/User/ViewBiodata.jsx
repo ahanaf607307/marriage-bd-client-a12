@@ -6,7 +6,7 @@ import BioDataDetail from "../../Pages/Biodata/BioDataDetail";
 import Title from "../../Shared/Title";
 
 function ViewBiodata() {
-  const { user } = useAuth();
+   const { user , loading } = useAuth();
   const axiosPublic = useAxiosPublic();
   const { data: bioData = [] } = useQuery({
     queryKey: ["bioData"],
@@ -15,6 +15,7 @@ function ViewBiodata() {
       return res.data;
     },
   });
+
   return (
     <div>
       <Title heading={`View Your Bio Data `} />
