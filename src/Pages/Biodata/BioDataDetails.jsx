@@ -25,6 +25,8 @@ function BioDataDetails() {
     },
   });
 
+
+
   console.log(details);
 
   const {

@@ -15,9 +15,18 @@ const { data: users = [] } = useQuery({
     return res.data;
   },
 });
+
+const { data: premiums = [] , refetch } = useQuery({
+  queryKey: ["premiums"],
+  queryFn: async () => {
+    const res = await axiosPublic.get("/premiums");
+    return res.data;
+  },
+});
   
 
   const {
+    _id,
     name,
     imageLink,
     date,
@@ -42,7 +51,7 @@ const { data: users = [] } = useQuery({
   } = bio;
   const axiosPublic = useAxiosPublic();
 
-  const [isDisabled, setIsDisabled] = useState(false);
+
 
   const handleMakePremium = (id) => {
     const premiumId = id;
@@ -105,8 +114,9 @@ const { data: users = [] } = useQuery({
                 icon: "success",
                 draggable: true,
               });
+              refetch()
             }
-            setIsDisabled(true);
+           
           })
           .catch((err) => {
             console.log("err from make premium by bio data detail ->", err);
@@ -115,7 +125,7 @@ const { data: users = [] } = useQuery({
     });
   };
 
-  console.log(bio);
+  console.log('y' ,_id);
 
   return (
     <div className="font-bannerFont  px-2">
@@ -228,19 +238,20 @@ const { data: users = [] } = useQuery({
                 </Table.Body>
               </Table>
             </div>
-            {isDisabled ? (
-              <Button className=" my-4 mx-auto bg-pink-500" disabled>
-                - Makeing your biodata Premium - "Please Wait Sometime's . This
-                Process is under review... "
-              </Button>
-            ) : (
-              <Button
-                onClick={() => handleMakePremium(bio?._id)}
-                className=" my-4 mx-auto bg-pink-500"
-              >
-                Make Bio Data Premium
-              </Button>
-            )}
+            { premiums.some(premium => premium?.premiumId === bio?._id ) ? (
+    <Button className="my-4 mx-auto bg-pink-500" disabled>
+     Thank You ! 🥰
+    </Button>
+  ) : (
+    <Button
+      onClick={() => handleMakePremium(bio?._id)}
+      className="my-4 mx-auto bg-pink-500"
+    >
+      Make Bio Data Premium
+    </Button>
+  )
+}
+
           </div>
         </div>
       </div>

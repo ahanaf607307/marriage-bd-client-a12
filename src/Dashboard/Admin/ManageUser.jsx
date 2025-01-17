@@ -4,6 +4,7 @@ import React from "react";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import Title from "../../Shared/Title";
 
 function ManageUser() {
   const axiosSecure = useAxiosSecure();
@@ -50,9 +51,8 @@ function ManageUser() {
   };
 
   return (
-    <div className="mt-10">
-      <h1 className="text-5xl text-center my-5">Users : {users?.length}</h1>
-
+    <div className="mt-10 md:px-10">
+<Title heading={`Manage User `} />
       <div className="overflow-x-auto">
         <Table hoverable>
           <Table.Head>
@@ -60,7 +60,7 @@ function ManageUser() {
             <Table.HeadCell>User name</Table.HeadCell>
             <Table.HeadCell>User email</Table.HeadCell>
             <Table.HeadCell> Admin</Table.HeadCell>
-            <Table.HeadCell>Premium</Table.HeadCell>
+
           </Table.Head>
           <Table.Body className="divide-y">
             {users?.map((user, index) => (

@@ -9,17 +9,24 @@ import useRole from "../../Hook/useRole";
 function ApprovedPremium() {
   const axiosSecure = useAxiosSecure();
 
-  const { data: premiums = [] , refetch } = useQuery({
+  const { data: premiums = [], refetch } = useQuery({
     queryKey: ["premiums"],
     queryFn: async () => {
       const res = await axiosSecure.get("/premiums");
       return res.data;
     },
   });
-  console.log('approvedPremium ' , premiums)
- 
+  const { data: users = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/users");
+      return res.data;
+    },
+  });
+  console.log("approvedPremium ", users);
+
   const handleMakePremium = (id) => {
-    console.log(id)
+    console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -30,7 +37,7 @@ function ApprovedPremium() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log('hello')
+        console.log("hello");
         axiosSecure
           .patch(`/users/premium/${id}`)
           .then((res) => {
@@ -52,11 +59,11 @@ function ApprovedPremium() {
   };
 
   return (
-    <div className="px-5">
+    <div className="px-2 md:px-10">
       <Title heading={`Approved Premium`} />
-      <h1 className="text-5xl">{premiums?.length}</h1>
+
       <div className="overflow-x-auto ">
-        <Table hoverable>
+        <Table hoverable >
           <Table.Head>
             <Table.HeadCell></Table.HeadCell>
             <Table.HeadCell>User name</Table.HeadCell>
@@ -77,12 +84,20 @@ function ApprovedPremium() {
                 <Table.Cell>{premium?.requestedUser}</Table.Cell>
                 <Table.Cell>{premium?.biodataId}</Table.Cell>
                 <Table.Cell>
-                  {premium?.role === "premium" ? (
+                  {users.some(
+                    (user) =>
+                      user?.email === premium?.requestedUser &&
+                      user?.role === "premium"
+                  ) ? (
                     "Premium"
                   ) : (
-                    <Button onClick={() => handleMakePremium(premium?.requestedUserId)}>
-                    Make Premium
-                  </Button>
+                    <Button
+                      onClick={() =>
+                        handleMakePremium(premium?.requestedUserId)
+                      }
+                    >
+                      Make Premium
+                    </Button>
                   )}
                 </Table.Cell>
               </Table.Row>

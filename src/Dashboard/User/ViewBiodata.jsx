@@ -16,6 +16,9 @@ function ViewBiodata() {
     },
   });
 
+  
+ 
+
   return (
     <div>
       <Title heading={`View Your Bio Data `} />
