@@ -4,6 +4,10 @@ import ApprovedPremium from "../Dashboard/Admin/ApprovedPremium"
 import ContactRequest from "../Dashboard/Admin/ContactRequest"
 import ManageUser from "../Dashboard/Admin/ManageUser"
 import Dashboard from "../Dashboard/Dashboard"
+import EditBiodata from "../Dashboard/User/EditBiodata"
+import FavouritesBiodata from "../Dashboard/User/FavouritesBiodata"
+import MyContactRequest from "../Dashboard/User/MyContactRequest"
+import ViewBiodata from "../Dashboard/User/ViewBiodata"
 import Login from "../Firebase/Login/Login"
 import PrivateRoute from "../Firebase/PrivateRoute/PrivateRoute"
 import SignUp from "../Firebase/Signup/SignUp"
@@ -13,10 +17,6 @@ import AboutUs from "../Pages/AboutUs/AboutUs"
 import BioDataDetails from "../Pages/Biodata/BioDataDetails"
 import Biodatas from "../Pages/BioDataPage/BioDatas"
 import Contact from "../Pages/Contact/Contact"
-import EditBiodata from "../Dashboard/User/EditBiodata"
-import ViewBiodata from "../Dashboard/User/ViewBiodata"
-import MyContactRequest from "../Dashboard/User/MyContactRequest"
-import FavouritesBiodata from "../Dashboard/User/FavouritesBiodata"
 
 
 const routes = createBrowserRouter([
@@ -30,7 +30,7 @@ const routes = createBrowserRouter([
             },
             {
                 path : '/bioDataDetails/:id',
-                element : <BioDataDetails/>
+                element :<PrivateRoute> <BioDataDetails/></PrivateRoute>
             },
             {
                 path : '/bioDatas',

@@ -8,10 +8,9 @@ import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import BannarAll from "../../Shared/BannarAll";
 
-
 function EditBiodata() {
   const { user } = useAuth();
-  const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
   const [startDate, setStartDate] = useState(new Date());
   const {
     register,
@@ -38,7 +37,8 @@ function EditBiodata() {
     const presentDivision = data.presentDivision;
     const mobileNumber = data.mobileNumber;
     const email = data.email;
-
+    const userRole = "normalUser";
+    const bioDataRole = "normal";
     const bioDataInfo = {
       name,
       imageLink,
@@ -58,23 +58,26 @@ function EditBiodata() {
       presentDivision,
       mobileNumber,
       email,
+      userRole,
+      bioDataRole,
     };
 
-    axiosPublic.post('/biodatas' , bioDataInfo)
-    .then(res => {
-      console.log("bio data post form edit bio data",res.data)
-      if(res.data.insertedId ){
-        Swal.fire({
-          title: "Biodata Publish Successfully !",
-          icon: "success",
-          draggable: true
-        });
-        reset()
-      }
-    })
-    .catch(err => {
-      console.log('error from edit bio data --->' , err)
-    })
+    axiosPublic
+      .post("/biodatas", bioDataInfo)
+      .then((res) => {
+        console.log("bio data post form edit bio data", res.data);
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: "Biodata Publish Successfully !",
+            icon: "success",
+            draggable: true,
+          });
+          reset();
+        }
+      })
+      .catch((err) => {
+        console.log("error from edit bio data --->", err);
+      });
 
     console.log(bioDataInfo);
   };
@@ -92,7 +95,7 @@ function EditBiodata() {
             <FloatingLabel
               {...register("name", { required: true })}
               name="name"
-                type="text"
+              type="text"
               className="text-white/80"
               variant="standard"
               label="Name"
@@ -100,7 +103,7 @@ function EditBiodata() {
             <FloatingLabel
               {...register("imageLink", { required: true })}
               name="imageLink"
-                type="url"
+              type="url"
               className="text-white/80"
               variant="standard"
               label="Profile Image Link"
@@ -108,13 +111,12 @@ function EditBiodata() {
           </section>
 
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0 ">
-           
-          <DatePicker
-          className="border px-3 text-black/90  py-2 rounded-xl w-full cursor-pointer "
-          type='date'
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-        />
+            <DatePicker
+              className="border px-3 text-black/90  py-2 rounded-xl w-full cursor-pointer "
+              type="date"
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+            />
 
             <Select
               {...register("genderType", { required: true })}
@@ -132,7 +134,7 @@ function EditBiodata() {
             <FloatingLabel
               {...register("height", { required: true })}
               name="height"
-                type="text"
+              type="text"
               className="text-white/80"
               variant="standard"
               label="Height"
@@ -140,7 +142,7 @@ function EditBiodata() {
             <FloatingLabel
               {...register("weight", { required: true })}
               name="weight"
-                type="number"
+              type="number"
               className="text-white/80"
               variant="standard"
               label="Weight"
@@ -151,7 +153,7 @@ function EditBiodata() {
             <FloatingLabel
               {...register("age", { required: true })}
               name="age"
-                type="number"
+              type="number"
               className="text-white/80"
               variant="standard"
               label="Age"
@@ -159,7 +161,7 @@ function EditBiodata() {
             <FloatingLabel
               {...register("occupation", { required: true })}
               name="occupation"
-                type="text"
+              type="text"
               className="text-white/80"
               variant="standard"
               label="Occupation"
@@ -282,7 +284,7 @@ function EditBiodata() {
             />
           </section>
           <Button type="submit" className="w-full bg-pink-500 text-white my-5 ">
-          Publish Now
+            Publish Now
           </Button>
         </form>
       </div>
