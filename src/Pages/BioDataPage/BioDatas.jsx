@@ -9,7 +9,7 @@ import Title from '../../Shared/Title'
 function Biodatas() {
 const axiosPublic = useAxiosPublic()
 
-const {data : biodatas = [] , refetch } = useQuery({
+const {data : biodatas = [] , refetch , isLoading } = useQuery({
   queryKey : ['biodatas'],
   queryFn : async () => {
     const res =await axiosPublic.get('/biodatas')
@@ -40,6 +40,10 @@ const {data : biodatas = [] , refetch } = useQuery({
     console.log(bioDataInfo )
     refetch()
     reset()
+  }
+
+  if(isLoading) {
+    return <h1 className="text-5xl text-center text-red-500">Loading Now ........</h1>
   }
 
   return (

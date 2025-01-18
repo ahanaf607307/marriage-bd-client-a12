@@ -8,27 +8,25 @@ import useAxiosPublic from "../../Hook/useAxiosPublic";
 import useRole from "../../Hook/useRole";
 import BannarAll from "../../Shared/BannarAll";
 import Title from "../../Shared/Title";
-import BioDataCard from "./BioDataCard";
+import SimilarBioCard from "./SimilarBioCard";
 
 function BioDataDetails() {
   const axiosPublic = useAxiosPublic();
   const [users] = useRole()
 
+
   console.log('user role -->',users)
 
   const { user } = useAuth();
   const { id } = useParams();
-  const { data: details = [] } = useQuery({
+  const { data: details = [] , isLoading } = useQuery({
     queryKey: ["details"],
+
     queryFn: async () => {
       const res = await axiosPublic.get(`/details/${id}`);
       return res.data;
     },
   });
-
-
-
-
 
   const {
     _id,
@@ -54,6 +52,19 @@ function BioDataDetails() {
     bioDataRole,
     userRole,
   } = details;
+
+ 
+
+// 3 similer data get api 
+const {data : similar = [] } = useQuery({
+  queryKey : ['similarData'] , 
+  enabled : !isLoading,
+  queryFn : async() => {
+    const res = await axiosPublic.post(`/biodatas/for-gender?genderType=${details.genderType}`)
+    return res.data
+  }
+})
+
 
   const handleFavorite = (id) => {
     console.log("favorite --> ", id);
@@ -98,7 +109,12 @@ function BioDataDetails() {
       .catch((err) => console.log("error from favorite ->", err));
   };
 
+  if(isLoading) {
+    return <h1 className="text-5xl text-center">LOADING -----------</h1>
+  }
   
+
+  console.log('similar data ---> ',similar)
   return (
     <div className="font-bannerFont ">
       <BannarAll bannerHeading={`BioData Details`} />
@@ -229,7 +245,7 @@ function BioDataDetails() {
                   'You Created This Biodata 😍 Thank You !'
                 </p>
               ) : (
-              <Link to='/checkOutPage'>
+              <Link to={`/payment/${_id}`}>
                 <Button
                   className="bg-pink-500"
                 >
@@ -248,9 +264,12 @@ function BioDataDetails() {
       <div className="my-16 px-5">
         <Title heading={`Similar Biodata`} />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          <BioDataCard />
-          <BioDataCard />
-          <BioDataCard />
+          
+          
+          {
+           similar && similar?.map(similarCard => <SimilarBioCard key={similarCard?._id} similarCard={similarCard}  />)
+          }
+
         </div>
       </div>
     </div>

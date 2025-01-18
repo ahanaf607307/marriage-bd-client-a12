@@ -22,7 +22,17 @@ function MyContactRequest() {
 
   const handleDeleteContact = (_id) => {
     console.log(_id);
-    axiosPublic
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosPublic
       .delete(`/contact-request/${_id}`)
       .then((res) => {
         console.log("delete form contact ", res.data);
@@ -40,6 +50,9 @@ function MyContactRequest() {
       .catch((err) => {
         console.log("error form delete contact ---> ", err);
       });
+      }
+    });
+   
   };
 
   console.log(contacts);
@@ -64,20 +77,20 @@ function MyContactRequest() {
                 className="bg-white dark:border-gray-700 dark:bg-gray-800"
               >
                 <Table.Cell>{index + 1}</Table.Cell>
-                <Table.Cell>{contact?.name}</Table.Cell>
-                <Table.Cell>{contact?.biodataId}</Table.Cell>
-                <Table.Cell>{contact?.contactStatus}</Table.Cell>
+                <Table.Cell>{contact?.bioDataOwnerName}</Table.Cell>
+                <Table.Cell>{contact?.biodataIds}</Table.Cell>
+                <Table.Cell>{contact?.status}</Table.Cell>
                 <Table.Cell>
                   {
-                    contact?.contactStatus === "approved" ? <>
-                    {contact?.mobileNumber}
+                    contact?.status === "approved" ? <>
+                    {contact?.mobileNumbers}
                     </> : 'pending request'
                   }
                 </Table.Cell>
                 <Table.Cell>
                 {
-                    contact?.contactStatus === "approved" ? <>
-                   {contact?.email}
+                    contact?.status === "approved" ? <>
+                   {contact?.bioDataOwnerEmail}
                     </> : 'pending request'
                   }
                 </Table.Cell>

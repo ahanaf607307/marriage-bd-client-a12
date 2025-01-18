@@ -19,6 +19,7 @@ import PremiumDetails from "../Pages/Biodata/PremiumDetails"
 import Biodatas from "../Pages/BioDataPage/BioDatas"
 import Contact from "../Pages/Contact/Contact"
 import CheckOutPage from "../Pages/Payment/CheckOutForm"
+import Payment from "../Pages/Payment/Payment"
 
 
 const routes = createBrowserRouter([
@@ -51,8 +52,8 @@ const routes = createBrowserRouter([
                 element : <Contact/>
             },
             {
-                path : '/checkOutPage',
-                element : <CheckOutPage/>
+                path : '/payment/:id',
+                element : <Payment/>
             },
         ]
     },

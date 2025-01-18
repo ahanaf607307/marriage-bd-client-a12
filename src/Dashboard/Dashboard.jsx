@@ -1,4 +1,3 @@
-import { Button } from "flowbite-react";
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Firebase/UseAuth/useAuth";
@@ -99,9 +98,9 @@ function Dashboard() {
           }
           
 
-          <Button className="" onClick={handleLogout}>
+          <button  className="text-white/90 font-semibold hover:scale-90 bg-pink-500 rounded-xl px-3 py-2 duration-100" onClick={handleLogout}>
             Logout
-          </Button>
+          </button>
         </div>
         {/* dashboard page dynamic */}
         <div className="md:col-span-9  bg-pink-300 ">

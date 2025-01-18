@@ -62,6 +62,7 @@ function FavouritesBiodata() {
       <div className="overflow-x-auto my-10 px-5 md:px-10">
         <Table>
           <Table.Head>
+            <Table.HeadCell></Table.HeadCell>
             <Table.HeadCell>Candidate Name</Table.HeadCell>
             <Table.HeadCell>Biodata Id</Table.HeadCell>
             <Table.HeadCell>Permanent Address</Table.HeadCell>
@@ -69,11 +70,12 @@ function FavouritesBiodata() {
             <Table.HeadCell>Delete Favorite</Table.HeadCell>
           </Table.Head>
           <Table.Body className="divide-y">
-            {favorite?.map((fav) => (
+            {favorite?.map((fav , index) => (
               <Table.Row
                 key={fav?._id}
                 className="bg-white dark:border-gray-700 dark:bg-gray-800"
               >
+                <Table.Cell>{index + 1}</Table.Cell>
                 <Table.Cell>{fav?.name}</Table.Cell>
                 <Table.Cell>{fav?.biodataId}</Table.Cell>
                 <Table.Cell>{fav?.permanentDivision}</Table.Cell>
