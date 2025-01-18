@@ -13,7 +13,8 @@ import BioDataCard from "./BioDataCard";
 function BioDataDetails() {
   const axiosPublic = useAxiosPublic();
   const [users] = useRole()
-  console.log('user role -->',users.role)
+
+  console.log('user role -->',users)
 
   const { user } = useAuth();
   const { id } = useParams();
@@ -27,7 +28,7 @@ function BioDataDetails() {
 
 
 
-  console.log(details);
+
 
   const {
     _id,

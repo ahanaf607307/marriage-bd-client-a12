@@ -15,7 +15,6 @@ function ViewBiodata() {
       return res.data;
     },
   });
-
   
  
 

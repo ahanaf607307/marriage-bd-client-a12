@@ -15,6 +15,7 @@ import Home from "../Home/Home"
 import Mainlayout from "../Main/Mainlayout"
 import AboutUs from "../Pages/AboutUs/AboutUs"
 import BioDataDetails from "../Pages/Biodata/BioDataDetails"
+import PremiumDetails from "../Pages/Biodata/PremiumDetails"
 import Biodatas from "../Pages/BioDataPage/BioDatas"
 import Contact from "../Pages/Contact/Contact"
 import CheckOutPage from "../Pages/Payment/CheckOutForm"
@@ -32,6 +33,10 @@ const routes = createBrowserRouter([
             {
                 path : '/bioDataDetails/:id',
                 element :<PrivateRoute> <BioDataDetails/></PrivateRoute>
+            },
+            {
+                path : '/premiumDetails/:id',
+                element :<PrivateRoute> <PremiumDetails/></PrivateRoute>
             },
             {
                 path : '/bioDatas',
