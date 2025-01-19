@@ -97,8 +97,8 @@ function MyContactRequest() {
 
                 <Table.Cell>
                 {
-                    contact?.contactStatus === "approved" ? <>
-                   <FaCheckCircle className="text-lime-500 text-xl" />
+                    contact?.status === "approved" ? <>
+                   <FaCheckCircle className="text-lime-500 text-2xl" />
                     </> : <Button
                     onClick={() => handleDeleteContact(contact?._id)}
                     className="bg-pink-700 "

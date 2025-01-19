@@ -27,7 +27,7 @@ const {user} = useAuth()
 
   return (
     <div className="px-4 md:max-w-sm lg:max-w-md xl:max-w-lg mx-auto">
-    <Title heading={`Pay Now`} />
+    <Title heading={`Pay Now`} title={`Pay 5 $ For See Contact Information . After Pay wait sometime . `} />
     <h1 className='text-center text-sm text-pink-500 my-2'>Copy to use for test</h1>
     <h1 className='text-center text-sm text-pink-500 my-5'>Test Card : 4242 4242 4242 4242  Date : 5/26 CVC : 123 ZIP : 42424</h1>
     <FloatingLabel className='mb-2' defaultValue={details?.biodataId} readOnly  variant="filled" label="Biodata Id" />

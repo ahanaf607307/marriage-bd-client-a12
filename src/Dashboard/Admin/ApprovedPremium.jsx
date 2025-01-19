@@ -4,7 +4,6 @@ import React from "react";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Title from "../../Shared/Title";
-import useRole from "../../Hook/useRole";
 
 function ApprovedPremium() {
   const axiosSecure = useAxiosSecure();

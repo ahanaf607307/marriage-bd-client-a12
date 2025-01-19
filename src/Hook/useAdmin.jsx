@@ -1,6 +1,5 @@
-import React from "react";
-import useAuth from "../Firebase/UseAuth/useAuth";
 import { useQuery } from "@tanstack/react-query";
+import useAuth from "../Firebase/UseAuth/useAuth";
 import useAxiosSecure from "./useAxiosSecure";
 
 function useAdmin() {

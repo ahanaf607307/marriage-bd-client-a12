@@ -1,11 +1,11 @@
-import React from 'react'
-import useAxiosPublic from '../../Hook/useAxiosPublic';
-import useAuth from '../../Firebase/UseAuth/useAuth';
 import { useQuery } from '@tanstack/react-query';
-import { Button, Table } from 'flowbite-react';
-import Title from '../../Shared/Title';
-import { FaCheckCircle, FaTrash } from 'react-icons/fa';
+import { Table } from 'flowbite-react';
+import React from 'react';
+import { FaCheckCircle } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import useAuth from '../../Firebase/UseAuth/useAuth';
+import useAxiosPublic from '../../Hook/useAxiosPublic';
+import Title from '../../Shared/Title';
 
 function ContactRequest() {
   const axiosPublic = useAxiosPublic();

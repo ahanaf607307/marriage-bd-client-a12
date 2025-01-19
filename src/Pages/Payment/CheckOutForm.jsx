@@ -26,13 +26,13 @@ const navigate = useNavigate();
 // fetch bio data 
 const axiosPublic = useAxiosPublic()
 
-const {
-  _id,
-  name,
-  mobileNumber,
-  email,
-  biodataId,
-} = details;
+// const {
+//   _id,
+//   name,
+//   mobileNumber,
+//   email,
+//   biodataId,
+// } = details;
 
 
   
@@ -99,11 +99,11 @@ if (!stripe || !elements) {
                 requesterName : user.displayName,
                 price: totalPrice,
                 transactionId: paymentIntent.id,
-                mainBioDataIds: _id,
-                biodataIds: biodataId,
-                mobileNumbers: mobileNumber,
-                bioDataOwnerEmail: email,
-                bioDataOwnerName: name,
+                mainBioDataIds: details?._id,
+                biodataIds: details?.biodataId,
+                mobileNumbers: details?.mobileNumber,
+                bioDataOwnerEmail: details?.email,
+                bioDataOwnerName: details?.name,
                 status: 'pending'
             }
             // post contact req data with payment 
@@ -150,7 +150,7 @@ if (!stripe || !elements) {
         type="submit"
         disabled={!stripe || !clientSecret}
       >
-        Request Successfull
+       Pay Now
       </Button>
       <p className="text-red-600">{error}</p>
      
