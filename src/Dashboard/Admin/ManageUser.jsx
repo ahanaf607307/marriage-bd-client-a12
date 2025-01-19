@@ -51,7 +51,7 @@ function ManageUser() {
   };
 
   return (
-    <div className=" md:px-10">
+    <div className=" md:px-10 bg-banner1 bg-cover bg-center min-h-screen">
 <div className="py-10">
 
 <TitleDashboard heading={`Manage User `} />

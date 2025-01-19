@@ -14,6 +14,7 @@ import {
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Firebase/UseAuth/useAuth";
 import useAdmin from "../Hook/useAdmin";
+import AppFooter from "../Main/AppFooter";
 
 function Dashboard() {
   const { logOutUser } = useAuth();
@@ -32,7 +33,7 @@ function Dashboard() {
     <div className="">
       <div className=" grid grid-cols-12">
         {/* dashboard link */}
-        <div className="col-span-2 md:col-span-1 bg-pink-400 flex flex-col gap-y-5 md:min-h-screen md:py-10 md:px-2 ">
+        <div className="col-span-2 md:col-span-1 bg-pink-400 flex flex-col  md:min-h-screen  md:px-2 ">
           <div className="flex py-3 px-1 flex-col min-h-screen items-start justify-start">
             <button className="bg-pink-600 p-2 w-full rounded-xl hover:scale-105 duration-150" onClick={() => setIsOpen(true)}>
               <FiAlignLeft className="text-xl text-white/90 md:text-2xl lg:text-3xl" />
@@ -106,8 +107,19 @@ function Dashboard() {
                             Approved Contact Request
                           </NavLink>
                         </Sidebar.Item>
+                        <Sidebar.Item  icon={HiLogin}>
+                          <button
+                            className="text-white/90  font-semibold hover:scale-90 bg-pink-500 rounded-xl px-3 py-2 duration-100"
+                            onClick={handleLogout}
+                          >
+                            Logout
+                          </button>
+                        </Sidebar.Item>
                        
-                      </Sidebar.ItemGroup>: 
+                      </Sidebar.ItemGroup>
+                      
+                      
+                      : 
 
 
                       
@@ -180,8 +192,10 @@ function Dashboard() {
         {/* dashboard page dynamic */}
         <div className="col-span-10 md:col-span-11 bg-pink-300 ">
           <Outlet />
+
         </div>
       </div>
+      <AppFooter/>
     </div>
   );
 }

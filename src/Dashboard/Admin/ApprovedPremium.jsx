@@ -58,7 +58,7 @@ function ApprovedPremium() {
   };
 
   return (
-    <div className="px-2 md:px-10">
+    <div className="px-2 bg-banner1 bg-cover bg-center min-h-screen md:px-10">
       
       <div className='py-10'>
 <TitleDashboard heading={`Approved Premium`}  />

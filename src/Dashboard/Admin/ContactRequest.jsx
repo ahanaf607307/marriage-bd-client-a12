@@ -54,7 +54,7 @@ function ContactRequest() {
     };
   
   return (
-    <div className="font-bannerFont  mx-2">
+    <div className="font-bannerFont bg-banner1 bg-cover bg-center min-h-screen  mx-2">
     <div className='py-10'>
     <TitleDashboard heading={`Approved contact request`} />
     </div>

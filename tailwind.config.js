@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'banner': "url('/src/assets/banner/bannerCompleate.png')",
+        'bannerAbout': "url('/src/assets/banner/aboutBanner.png')",
         'card1': "url('/src/assets/card/1.png')",
         'card2': "url('/src/assets/card/2.png')",
         'banner1': "url('/src/assets/banner/1.png')",
