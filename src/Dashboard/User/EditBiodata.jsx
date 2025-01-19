@@ -131,41 +131,96 @@ function EditBiodata() {
           </section>
 
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-            <FloatingLabel
-              {...register("height", { required: true })}
-              name="height"
-              type="text"
-              className="text-white/80"
-              variant="standard"
-              label="Height"
-            />
-            <FloatingLabel
-              {...register("weight", { required: true })}
-              name="weight"
-              type="number"
-              className="text-white/80"
-              variant="standard"
-              label="Weight"
-            />
+          
+             <Select
+                {...register("height", { required: true })}
+                name="height"
+              defaultValue=""
+            >
+              <option value="" disabled>
+                Select your height
+              </option>
+              <option value="5">5</option>
+              <option value="5.1">5.1</option>
+              <option value="5.2 ">5.2 </option>
+              <option value="5.3">5.3</option>
+              <option value="5.4">5.4</option>
+              <option value="5.5">5.5</option>
+              <option value="5.6">5.6</option>
+              <option value="5.7">5.7</option>
+              <option value="5.8">5.8</option>
+              <option value="5.9">5.9</option>
+              <option value="5.10">5.10</option>
+              <option value="5.11">5.11</option>
+              <option value="6">6</option>
+            </Select>
+            <Select
+             {...register("weight", { required: true })}
+                  name="weight"
+              defaultValue=""
+            >
+              <option value="" disabled>
+                Select your weight
+              </option>
+              <option value="40">40</option>
+              <option value="42">42</option>
+              <option value="44">44</option>
+              <option value="46">46</option>
+              <option value="48">48</option>
+              <option value="50 ">50 </option>
+              <option value="52 ">52</option>
+              <option value="54 ">54 </option>
+              <option value="58 ">58 </option>
+              <option value="60">60</option>
+              <option value="75">75</option>
+              <option value="80">80</option>
+             
+            </Select>
+            
           </section>
 
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-            <FloatingLabel
+            
+               <Select
               {...register("age", { required: true })}
               name="age"
-              type="number"
-              className="text-white/80"
-              variant="standard"
-              label="Age"
-            />
-            <FloatingLabel
-              {...register("occupation", { required: true })}
+              defaultValue=""
+            >
+              <option value="" disabled>
+                Select Your Age
+              </option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="22">22</option>
+              <option value="24">24</option>
+              <option value="26">26</option>
+              <option value="28">28 </option>
+              <option value="30">30</option>
+              <option value="32">32 </option>
+              <option value="34">34 </option>
+              <option value="38">38</option>
+              <option value="40">40</option>
+             
+            </Select>
+           
+
+<Select
+               {...register("occupation", { required: true })}
               name="occupation"
-              type="text"
-              className="text-white/80"
-              variant="standard"
-              label="Occupation"
-            />
+              defaultValue=""
+            >
+              <option value="" disabled>
+                Select Your occupation
+              </option>
+              <option value="Job Holder">Job Holder</option>
+              <option value="Studeng">Studeng</option>
+              <option value="Engneer">Engneer</option>
+              <option value="Doctor">Doctor</option>
+              <option value="Developer">Developer</option>
+              <option value="Softwere Engineer">Softwere Engineer</option>
+             
+            </Select>
           </section>
 
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
@@ -193,14 +248,30 @@ function EditBiodata() {
           </section>
 
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-            <FloatingLabel
+          <Select
               {...register("partnerAge", { required: true })}
               name="partnerAge"
-              type="number"
-              className="text-white/80"
-              variant="standard"
-              label="Expected Partner Age"
-            />
+              defaultValue=""
+            >
+              <option value="" disabled>
+              Select your Partner Age You Expect
+              </option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="22">22</option>
+              <option value="24">24</option>
+              <option value="26">26</option>
+              <option value="28">28 </option>
+              <option value="30">30</option>
+              <option value="32">32 </option>
+              <option value="34">34 </option>
+              <option value="38">38</option>
+              <option value="40">40</option>
+             
+            </Select>
+           
+            
             <FloatingLabel
               {...register("mothersName", { required: true })}
               name="mothersName"
@@ -212,22 +283,52 @@ function EditBiodata() {
           </section>
 
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-            <FloatingLabel
-              {...register("partnerHeight", { required: true })}
+            
+            <Select
+           {...register("partnerHeight", { required: true })}
               name="partnerHeight"
-              type="text"
-              className="text-white/80"
-              variant="standard"
-              label="Expected Partner Height"
-            />
-            <FloatingLabel
-              {...register("partnerWeight", { required: true })}
+          defaultValue=""
+        >
+          <option value="" disabled>
+          Expected Partner Height
+          </option>
+          <option value="40">40</option>
+          <option value="42">42</option>
+          <option value="44">44</option>
+          <option value="46">46</option>
+          <option value="48">48</option>
+          <option value="50 ">50 </option>
+          <option value="52 ">52</option>
+          <option value="54 ">54 </option>
+          <option value="58 ">58 </option>
+          <option value="60">60</option>
+          <option value="75">75</option>
+          <option value="80">80</option>
+         
+        </Select>
+            
+             <Select
+            {...register("partnerWeight", { required: true })}
               name="partnerWeight"
-              type="number"
-              className="text-white/80"
-              variant="standard"
-              label="Expected Partner Weight"
-            />
+          defaultValue=""
+        >
+          <option value="" disabled>
+          Expected Partner Weight
+          </option>
+          <option value="40">40</option>
+          <option value="42">42</option>
+          <option value="44">44</option>
+          <option value="46">46</option>
+          <option value="48">48</option>
+          <option value="50 ">50 </option>
+          <option value="52 ">52</option>
+          <option value="54 ">54 </option>
+          <option value="58 ">58 </option>
+          <option value="60">60</option>
+          <option value="75">75</option>
+          <option value="80">80</option>
+         
+        </Select>
           </section>
 
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0 ">

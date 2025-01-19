@@ -9,11 +9,12 @@ import useRole from "../../Hook/useRole";
 import BannarAll from "../../Shared/BannarAll";
 import Title from "../../Shared/Title";
 import SimilarBioCard from "./SimilarBioCard";
+import useAdmin from "../../Hook/useAdmin";
 
 function BioDataDetails() {
   const axiosPublic = useAxiosPublic();
   const [users] = useRole()
-
+const [isAdmin] = useAdmin()
 
   console.log('user role -->',users)
 
@@ -214,21 +215,23 @@ const {data : similar = [] } = useQuery({
                   <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
                     <Table.Cell className=" ">Contact Email</Table.Cell>
                  {
-                  users?.role === "premium" ? <Table.Cell> {email} </Table.Cell> :   <p className="text-sm text-red-500  mt-5">"Request Contact Information"</p> 
+                  users?.role === "premium" || isAdmin ? <Table.Cell> {email} </Table.Cell> :   <p className="text-sm text-red-500  mt-5">"Request Contact Information"</p> 
                  }
                   </Table.Row>
 
                   <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
                     <Table.Cell className=" ">Mobile Number</Table.Cell>
                     {
-                      users?.role === "premium" ?<Table.Cell>+88 {mobileNumber} </Table.Cell> :<p className="text-sm text-red-500  mt-5">"Request Contact Information"</p>  
+                      users?.role === "premium" || isAdmin ?<Table.Cell>+88 {mobileNumber} </Table.Cell> :<p className="text-sm text-red-500  mt-5">"Request Contact Information"</p>  
                     }
                   </Table.Row>
                 </Table.Body>
               </Table>
             </div>
             <div className="flex justify-center items-center my-5 gap-x-5">
-              {user?.email === email ? (
+           {
+            isAdmin ? '' : <>
+               {user?.email === email ? (
                 ""
               ) : (
                 <Button
@@ -238,7 +241,12 @@ const {data : similar = [] } = useQuery({
                   Add to favorite
                 </Button>
               )}
+            
+            </>
+           }
               {
+                isAdmin ? <p className="text-xs text-pink-500">"Hey ! Admin"</p> : <>
+                {
                 userRole === "normalUser" ? <>
                 {user?.email === email ? (
                 <p className="border-2 border-pink-500 px-3 py-1 rounded-xl">
@@ -255,6 +263,8 @@ const {data : similar = [] } = useQuery({
               </Link>
               )}
                 </> : ""
+              }
+                </>
               }
             </div>
           </div>
