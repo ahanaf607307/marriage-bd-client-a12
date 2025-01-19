@@ -8,10 +8,11 @@ import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 import BannarAll from "../../Shared/BannarAll";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 function CreateBiodata() {
   const { user, loading } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [startDate, setStartDate] = useState(new Date());
 
   const {
@@ -64,7 +65,7 @@ function CreateBiodata() {
       bioDataRole,
     };
 
-    axiosPublic
+    axiosSecure
       .post("/biodatas", bioDataInfo)
       .then((res) => {
         console.log("bio data post form edit bio data", res.data);

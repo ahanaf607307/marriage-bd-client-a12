@@ -3,15 +3,15 @@ import { Button, HR, Table } from "flowbite-react";
 import React from "react";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
-import useAxiosPublic from "../../Hook/useAxiosPublic";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 function BioDataDetail({ bio }) {
   const { user } = useAuth();
-
+const axiosSecure = useAxiosSecure()
   const { data: users = [] } = useQuery({
     queryKey: [user?.email, "users"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/users/premium/${user?.email}`);
+      const res = await axiosSecure.get(`/users/premium/${user?.email}`);
       return res.data;
     },
   });
@@ -21,7 +21,7 @@ function BioDataDetail({ bio }) {
   const { data: premiums = [], refetch } = useQuery({
     queryKey: ["premiums"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/premiums");
+      const res = await axiosSecure.get("/premiums");
       return res.data;
     },
   });
@@ -50,7 +50,7 @@ function BioDataDetail({ bio }) {
     bioDataRole,
     userRole,
   } = bio;
-  const axiosPublic = useAxiosPublic();
+
 
   const handleMakePremium = (id) => {
     const premiumId = id;
@@ -96,7 +96,7 @@ function BioDataDetail({ bio }) {
       confirmButtonText: "Yes, make it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPublic
+        axiosSecure
           .post("/premiums", bioDataInfo)
           .then((res) => {
             console.log("premium req from", res.data);

@@ -4,14 +4,15 @@ import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import BioDataDetail from "../../Pages/Biodata/BioDataDetail";
 import Title from "../../Shared/Title";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 function ViewBiodata() {
   const { user } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { data: bio = [] } = useQuery({
     queryKey: ["bio"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/bioDatas/${user.email}`);
+      const res = await axiosSecure.get(`/bioDatas/${user.email}`);
       return res.data;
     },
   });

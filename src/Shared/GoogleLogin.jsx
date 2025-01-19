@@ -1,5 +1,5 @@
 import { Button } from "flowbite-react";
-import React from "react";
+import React, { useState } from "react";
 import { IoLogoGoogleplus } from "react-icons/io";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -8,6 +8,7 @@ import useAxiosPublic from "../Hook/UseAxiosPublic";
 
 function GoogleLogin() {
   const { setUser, setLoading, googleLoginUser } = useAuth();
+   const [errorFound , setErrorFound] = useState('')
   const axiosPublic = useAxiosPublic();
   const location = useLocation();
   const navigate = useNavigate();
@@ -29,7 +30,9 @@ function GoogleLogin() {
             console.log(
               "Error Caught From Google Login Post Api-->",
               err.message
-            );
+
+            )
+            setErrorFound(err.message)
           });
         setUser({
           ...res.user,
@@ -53,6 +56,9 @@ function GoogleLogin() {
         <IoLogoGoogleplus className="text-lime-500 text-xl mr-2" /> Login With
         Google
       </Button>
+      <p className="text-lg  font-bannerFont text-center text-pink-600 bg-white/70 px-3 py-2 rounded-xl  mt-6">
+          {errorFound}
+        </p>
     </div>
   );
 }

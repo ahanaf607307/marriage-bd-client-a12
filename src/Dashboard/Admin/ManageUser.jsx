@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { Button, Table } from "flowbite-react";
-import React from "react";
+import { Button, FloatingLabel, Table } from "flowbite-react";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
@@ -8,13 +8,14 @@ import TitleDashboard from "../../Shared/TitleDashboard";
 
 function ManageUser() {
   const axiosSecure = useAxiosSecure();
-  const {loading} = useAuth()
+  const { loading } = useAuth();
+  const [search, setSearch] = useState("");
 
   const { data: users = [], refetch } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["users", search],
     enabled: !loading,
     queryFn: async () => {
-      const res = await axiosSecure.get("/users");
+      const res = await axiosSecure.get(`/users?search=${search}`);
       return res.data;
     },
   });
@@ -31,31 +32,39 @@ function ManageUser() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.patch(`/users/admin/${id}`).then((res) => {
-          if (res.data.modifiedCount > 0) {
-            console.log(res.data);
-            Swal.fire({
-              title: "Done!",
-              text: "Make Admin Successfull",
-              icon: "success",
-            });
-             refetch();
-          }
-         
-        })
-        .catch(err => {
-          console.log('error from make admin manage user ==> ' , err)
-        })
+        axiosSecure
+          .patch(`/users/admin/${id}`)
+          .then((res) => {
+            if (res.data.modifiedCount > 0) {
+              console.log(res.data);
+              Swal.fire({
+                title: "Done!",
+                text: "Make Admin Successfull",
+                icon: "success",
+              });
+              refetch();
+            }
+          })
+          .catch((err) => {
+            console.log("error from make admin manage user ==> ", err);
+          });
       }
     });
   };
 
   return (
     <div className=" md:px-10 bg-banner1 bg-cover bg-center min-h-screen">
-<div className="py-10">
-
-<TitleDashboard heading={`Manage User `} />
-</div>
+      <div className="py-10">
+        <TitleDashboard heading={`Manage User `} />
+      </div>
+      <section>
+        <FloatingLabel
+          onKeyUp={(e) => setSearch(e.target.value)}
+          className="w-full"
+          variant="filled"
+          label="Search"
+        />
+      </section>
       <div className="overflow-x-auto">
         <Table hoverable>
           <Table.Head>
@@ -63,7 +72,6 @@ function ManageUser() {
             <Table.HeadCell>User name</Table.HeadCell>
             <Table.HeadCell>User email</Table.HeadCell>
             <Table.HeadCell> Admin</Table.HeadCell>
-
           </Table.Head>
           <Table.Body className="divide-y">
             {users?.map((user, index) => (
@@ -85,7 +93,6 @@ function ManageUser() {
                     </Button>
                   )}
                 </Table.Cell>
-               
               </Table.Row>
             ))}
           </Table.Body>

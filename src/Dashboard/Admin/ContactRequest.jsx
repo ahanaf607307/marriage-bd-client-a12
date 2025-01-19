@@ -6,14 +6,15 @@ import Swal from 'sweetalert2';
 import useAuth from '../../Firebase/UseAuth/useAuth';
 import useAxiosPublic from '../../Hook/useAxiosPublic';
 import TitleDashboard from '../../Shared/TitleDashboard';
+import useAxiosSecure from '../../Hook/useAxiosSecure';
 
 function ContactRequest() {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const { data: contacts = [], refetch } = useQuery({
     queryKey: ["contacts"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/contact-request`);
+      const res = await axiosSecure.get(`/contact-request`);
       return res.data;
     },
   });
@@ -30,7 +31,7 @@ function ContactRequest() {
         confirmButtonText: "Yes, Approve"
       }).then((result) => {
         if (result.isConfirmed) {
-         axiosPublic
+          axiosSecure
         .patch(`/contact-request/${_id}`)
         .then((res) => {
           console.log("Approved Request ", res.data);

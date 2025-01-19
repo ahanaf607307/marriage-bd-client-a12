@@ -1,20 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { Button, Table } from "flowbite-react";
 import React from "react";
-import { FaCheckCircle, FaTimes, FaTimesCircle, FaTrash } from "react-icons/fa";
+import { FaCheckCircle, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
-import useAxiosPublic from "../../Hook/UseAxiosPublic";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Title from "../../Shared/Title";
-import { FaDiagramSuccessor } from "react-icons/fa6";
 
 function MyContactRequest() {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const { data: contacts = [], refetch } = useQuery({
     queryKey: ["contacts"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/contact-request/${user.email}`);
+      const res = await axiosSecure.get(`/contact-request/${user.email}`);
       return res.data;
     },
   });
@@ -32,7 +31,7 @@ function MyContactRequest() {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPublic
+        axiosSecure
       .delete(`/contact-request/${_id}`)
       .then((res) => {
         console.log("delete form contact ", res.data);

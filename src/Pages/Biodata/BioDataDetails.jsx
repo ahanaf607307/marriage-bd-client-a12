@@ -10,9 +10,10 @@ import BannarAll from "../../Shared/BannarAll";
 import Title from "../../Shared/Title";
 import SimilarBioCard from "./SimilarBioCard";
 import useAdmin from "../../Hook/useAdmin";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 function BioDataDetails() {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [users] = useRole()
 const [isAdmin] = useAdmin()
 
@@ -24,7 +25,7 @@ const [isAdmin] = useAdmin()
     queryKey: ["details" , id],
 
     queryFn: async () => {
-      const res = await axiosPublic.get(`/details/${id}`);
+      const res = await axiosSecure.get(`/details/${id}`);
       return res.data;
     },
   });
@@ -61,7 +62,7 @@ const {data : similar = [] } = useQuery({
   queryKey : ['similarData' ] , 
   enabled : !isLoading,
   queryFn : async() => {
-    const res = await axiosPublic.post(`/biodatas/for-gender?genderType=${details.genderType}`)
+    const res = await axiosSecure.post(`/biodatas/for-gender?genderType=${details.genderType}`)
     return res.data
   }
 })
@@ -92,7 +93,7 @@ const {data : similar = [] } = useQuery({
       biodataId,
       favUserEmail,
     };
-    axiosPublic
+    axiosSecure
       .post("/favorite", favoriteInfo)
       .then((res) => {
         console.log("post favorite --->", res.data);

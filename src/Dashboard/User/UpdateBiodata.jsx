@@ -9,16 +9,17 @@ import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 import { useQuery } from "@tanstack/react-query";
 import BannarAll from "../../Shared/BannarAll";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 function UpdateBiodata() {
   const { user, loading } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [startDate, setStartDate] = useState(new Date());
 
   const { data: bioData = [], refetch } = useQuery({
     queryKey: ["bioData"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/bioDatas/${user.email}`);
+      const res = await axiosSecure.get(`/bioDatas/${user.email}`);
       return res.data;
     },
   });
@@ -94,7 +95,7 @@ function UpdateBiodata() {
       bioDataRole,
     };
 
-    axiosPublic
+    axiosSecure
       .patch(`/biodatas-update/${_id}`, bioDataInfo)
       .then((res) => {
         console.log("hello");

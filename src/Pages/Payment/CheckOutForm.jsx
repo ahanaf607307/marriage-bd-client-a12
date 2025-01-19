@@ -24,15 +24,7 @@ function CheckOutForm({details}) {
 const navigate = useNavigate();
 
 // fetch bio data 
-const axiosPublic = useAxiosPublic()
 
-// const {
-//   _id,
-//   name,
-//   mobileNumber,
-//   email,
-//   biodataId,
-// } = details;
 
 
   

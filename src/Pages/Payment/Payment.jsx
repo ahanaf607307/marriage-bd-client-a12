@@ -8,18 +8,19 @@ import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import useAxiosPublic from '../../Hook/useAxiosPublic'
 import { FloatingLabel } from 'flowbite-react'
+import useAxiosSecure from '../../Hook/useAxiosSecure'
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_KEY)
 
 function Payment() {
-const axiosPublic = useAxiosPublic()
+const axiosSecure = useAxiosSecure()
 const {user} = useAuth()
   const { id } = useParams();
   const { data: details = []  } = useQuery({
     queryKey: ["details"],
 
     queryFn: async () => {
-      const res = await axiosPublic.get(`/details/${id}`);
+      const res = await axiosSecure.get(`/details/${id}`);
       return res.data;
     },
   });

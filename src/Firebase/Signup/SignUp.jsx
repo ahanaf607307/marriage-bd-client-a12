@@ -1,15 +1,17 @@
 import { Button, FloatingLabel } from "flowbite-react";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hook/UseAxiosPublic";
 import GoogleLogin from "../../Shared/GoogleLogin";
+import TitleDashboard from "../../Shared/TitleDashboard";
 import useAuth from "../UseAuth/useAuth";
 
 function SignUp() {
   const axiosPublic = useAxiosPublic();
   const { signUpNewUser, setLoading, setUser, updateUserProfile } = useAuth();
+  const [errorFound , setErrorFound] = useState('')
   const navigate = useNavigate();
   const {
     register,
@@ -57,17 +59,20 @@ function SignUp() {
       })
       .catch((error) => {
         console.log("error from login user --->", error.message);
+        setErrorFound(error.message)
       });
 
     console.log("signup", signUpInfo);
   };
 
   return (
-    <div className="bg-pink-300 min-h-screen ">
-      <h1 className="text-5xl text-pink-500 text-center pt-10">Sign Up</h1>
+    <div className="bg-login bg-cover bg-center object-cover min-h-screen flex flex-col justify-center items-center ">
+     <section className="pt-10 ">
+   <TitleDashboard heading={`Signup Now`}/>
+   </section>
 
       {/* signup form */}
-      <div className="flex flex-col justify-center items-center max-w-lg mx-auto bg-white p-10 rounded-xl mt-14">
+      <div className="flex flex-col justify-center items-center w-screen md:min-w-[500px] max-w-xl mx-auto backdrop-blur-xl bg-white/10 p-4 md:p-10 rounded-xl mt-8 ">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex w-full flex-col gap-4 "
@@ -77,7 +82,7 @@ function SignUp() {
             type="text"
             name="name"
             className="w-full"
-            variant="standard"
+            variant="filled"
             label="Name"
           />
 
@@ -86,7 +91,7 @@ function SignUp() {
             type="url"
             name="photoUrl"
             className="w-full"
-            variant="standard"
+            variant="filled"
             label="Photo url"
           />
 
@@ -108,10 +113,13 @@ function SignUp() {
             label="Password"
           />
 
-          <Button type="submit">SignUp</Button>
+          <button  className="text-white/90 font-semibold hover:scale-105 bg-pink-500 rounded-xl px-3 py-2 duration-100" type="submit">SignUp</button>
         </form>
         <GoogleLogin/>
-        <p className="text-md block text-start mt-5 ">Already have an account ?<Link className="underline text-red-500" to='/login'>Login </Link>Now </p>
+        <p className="text-md block text-start mt-5 text-white">Already have an account ?<Link className="underline font-bannerFont text-xl text-red-500 px-2" to='/login'>Login </Link>Now </p>
+        <p className="text-lg  font-bannerFont text-center text-pink-600 bg-white/70 px-3 py-2 rounded-xl  mt-6">
+          {errorFound}
+        </p>
       </div>
     </div>
   );
