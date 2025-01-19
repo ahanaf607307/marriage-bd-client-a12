@@ -1,13 +1,14 @@
 import {
-    createUserWithEmailAndPassword,
-    GoogleAuthProvider,
-    onAuthStateChanged,
-    signInWithEmailAndPassword,
-    signInWithPopup,
-    signOut,
-    updateProfile,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 import auth from "../firebase.init";
 
 export const AuthContext = createContext(null);
@@ -15,6 +16,7 @@ export const AuthContext = createContext(null);
 function AuthProvider({ children }) {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
+  const axiosPublic = useAxiosPublic();
 
   // Create New User
   const signUpNewUser = (email, password) => {
@@ -56,6 +58,20 @@ function AuthProvider({ children }) {
     const unSubscribe = () => {
       onAuthStateChanged(auth, (currenUser) => {
         setUser(currenUser);
+        if (currenUser) {
+          const userInfo = {
+            email: currenUser.email,
+          };
+          axiosPublic.post("/jwt", userInfo).then((res) => {
+            if (res.data.token) {
+              localStorage.setItem("access-token", res.data.token);
+              setLoading(false);
+            }
+          });
+        } else {
+          localStorage.removeItem("access-token");
+          setLoading(false);
+        }
         setLoading(false);
         console.log("currenUser is --->", currenUser);
       });
@@ -63,7 +79,7 @@ function AuthProvider({ children }) {
     return () => {
       unSubscribe();
     };
-  }, []);
+  }, [axiosPublic]);
 
   const userInfo = {
     signUpNewUser,
