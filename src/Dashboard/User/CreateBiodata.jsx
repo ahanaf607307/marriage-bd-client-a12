@@ -10,10 +10,9 @@ import useAxiosPublic from "../../Hook/useAxiosPublic";
 import BannarAll from "../../Shared/BannarAll";
 
 function CreateBiodata() {
-  const { user , loading } = useAuth();
+  const { user, loading } = useAuth();
   const axiosPublic = useAxiosPublic();
   const [startDate, setStartDate] = useState(new Date());
-
 
   const {
     register,
@@ -85,322 +84,322 @@ function CreateBiodata() {
     console.log(bioDataInfo);
   };
 
-
-  
   return (
     <div>
-<div>
-      <BannarAll bannerHeading={`"Build Your Matrimonial Profile"`} />
+      <div>
+        <BannarAll bannerHeading={`"Build Your Matrimonial Profile"`} />
 
-      <div className=" max-w-[90%]  xl:max-w-[80%] mx-auto my-10 bg-pink-400 p-5 md:p-10">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="text-white/80 font-semibold font-bannerFont"
-        >
-          <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-            <FloatingLabel
-              {...register("name", { required: true })}
-              name="name"
-              type="text"
-              className="text-white/80"
-              variant="standard"
-              label="Name"
-            />
-            <FloatingLabel
-              {...register("imageLink", { required: true })}
-              name="imageLink"
-              type="url"
-              className="text-white/80"
-              variant="standard"
-              label="Profile Image Link"
-            />
-          </section>
+        <div className=" max-w-[90%]  xl:max-w-[80%] mx-auto my-10 bg-pink-400 p-5 md:p-10">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="text-pink-500  font-semibold font-bannerFont"
+          >
+            <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
+              <FloatingLabel
+                {...register("name", { required: true })}
+                name="name"
+                type="text"
+                className="text-pink-500 "
+                variant="filled"
+                label="Name"
+              />
+              <FloatingLabel
+                {...register("imageLink", { required: true })}
+                name="imageLink"
+                type="url"
+                className="text-pink-500 "
+                variant="filled"
+                label="Profile Image Link"
+              />
+            </section>
 
-          <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0 ">
-            <DatePicker
-              className="border px-3 text-black/90  py-2 rounded-xl w-full cursor-pointer "
-              type="date"
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-            />
+            <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0 ">
+              <DatePicker
+                className="border px-3 text-pink-500   py-2 rounded-xl w-full cursor-pointer "
+                type="date"
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+              />
 
-            <Select
-              {...register("genderType", { required: true })}
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Select Gender Type
-              </option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </Select>
-          </section>
+              <Select
+                className="text-pink-500 "
+                {...register("genderType", { required: true })}
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Select Gender Type
+                </option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </Select>
+            </section>
 
-          <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-          
-             <Select
+            <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
+              <Select
+                className="text-pink-500 "
                 {...register("height", { required: true })}
                 name="height"
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Select your height
-              </option>
-              <option value="5">5</option>
-              <option value="5.1">5.1</option>
-              <option value="5.2 ">5.2 </option>
-              <option value="5.3">5.3</option>
-              <option value="5.4">5.4</option>
-              <option value="5.5">5.5</option>
-              <option value="5.6">5.6</option>
-              <option value="5.7">5.7</option>
-              <option value="5.8">5.8</option>
-              <option value="5.9">5.9</option>
-              <option value="5.10">5.10</option>
-              <option value="5.11">5.11</option>
-              <option value="6">6</option>
-            </Select>
-            <Select
-             {...register("weight", { required: true })}
-                  name="weight"
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Select your weight
-              </option>
-              <option value="40">40</option>
-              <option value="42">42</option>
-              <option value="44">44</option>
-              <option value="46">46</option>
-              <option value="48">48</option>
-              <option value="50 ">50 </option>
-              <option value="52 ">52</option>
-              <option value="54 ">54 </option>
-              <option value="58 ">58 </option>
-              <option value="60">60</option>
-              <option value="75">75</option>
-              <option value="80">80</option>
-             
-            </Select>
-            
-          </section>
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Select your height
+                </option>
+                <option value="5">5</option>
+                <option value="5.1">5.1</option>
+                <option value="5.2 ">5.2 </option>
+                <option value="5.3">5.3</option>
+                <option value="5.4">5.4</option>
+                <option value="5.5">5.5</option>
+                <option value="5.6">5.6</option>
+                <option value="5.7">5.7</option>
+                <option value="5.8">5.8</option>
+                <option value="5.9">5.9</option>
+                <option value="5.10">5.10</option>
+                <option value="5.11">5.11</option>
+                <option value="6">6</option>
+              </Select>
+              <Select
+                className="text-pink-500 "
+                {...register("weight", { required: true })}
+                name="weight"
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Select your weight
+                </option>
+                <option value="40">40</option>
+                <option value="42">42</option>
+                <option value="44">44</option>
+                <option value="46">46</option>
+                <option value="48">48</option>
+                <option value="50 ">50 </option>
+                <option value="52 ">52</option>
+                <option value="54 ">54 </option>
+                <option value="58 ">58 </option>
+                <option value="60">60</option>
+                <option value="75">75</option>
+                <option value="80">80</option>
+              </Select>
+            </section>
 
-          <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-            
-               <Select
-              {...register("age", { required: true })}
-              name="age"
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Select Your Age
-              </option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="22">22</option>
-              <option value="24">24</option>
-              <option value="26">26</option>
-              <option value="28">28 </option>
-              <option value="30">30</option>
-              <option value="32">32 </option>
-              <option value="34">34 </option>
-              <option value="38">38</option>
-              <option value="40">40</option>
-             
-            </Select>
-           
+            <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
+              <Select
+                className="text-pink-500 "
+                {...register("age", { required: true })}
+                name="age"
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Select Your Age
+                </option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="22">22</option>
+                <option value="24">24</option>
+                <option value="26">26</option>
+                <option value="28">28 </option>
+                <option value="30">30</option>
+                <option value="32">32 </option>
+                <option value="34">34 </option>
+                <option value="38">38</option>
+                <option value="40">40</option>
+              </Select>
 
-<Select
-               {...register("occupation", { required: true })}
-              name="occupation"
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Select Your occupation
-              </option>
-              <option value="Job Holder">Job Holder</option>
-              <option value="Studeng">Studeng</option>
-              <option value="Engneer">Engneer</option>
-              <option value="Doctor">Doctor</option>
-              <option value="Developer">Developer</option>
-              <option value="Softwere Engineer">Softwere Engineer</option>
-             
-            </Select>
-          </section>
+              <Select
+                className="text-pink-500 "
+                {...register("occupation", { required: true })}
+                name="occupation"
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Select Your occupation
+                </option>
+                <option value="Job Holder">Job Holder</option>
+                <option value="Studeng">Studeng</option>
+                <option value="Engneer">Engneer</option>
+                <option value="Doctor">Doctor</option>
+                <option value="Developer">Developer</option>
+                <option value="Softwere Engineer">Softwere Engineer</option>
+              </Select>
+            </section>
 
-          <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-            <Select
-               {...register("skinColor", { required: true })}
+            <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
+              <FloatingLabel
+                {...register("fathersName", { required: true })}
+                name="fathersName"
+                type="text"
+                className="text-pink-500  "
+                variant="filled"
+                label="Fathers Name"
+              />
+              <FloatingLabel
+                {...register("mothersName", { required: true })}
+                name="mothersName"
+                type="text"
+                className="text-pink-500 "
+                variant="filled"
+                label="Mothers Name"
+              />
+            </section>
+
+            <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
+              <Select
+                className="text-pink-500 "
+                {...register("partnerAge", { required: true })}
+                name="partnerAge"
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Select your Partner Age You Expect
+                </option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="22">22</option>
+                <option value="24">24</option>
+                <option value="26">26</option>
+                <option value="28">28 </option>
+                <option value="30">30</option>
+                <option value="32">32 </option>
+                <option value="34">34 </option>
+                <option value="38">38</option>
+                <option value="40">40</option>
+              </Select>
+
+              <Select
+                className="text-pink-500 "
+                {...register("skinColor", { required: true })}
                 name="skinColor"
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Select Skin Color
-              </option>
-              <option value="Fair">Fair</option>
-              <option value="Medium">Medium</option>
-              <option value="Olive ">Olive </option>
-              <option value="Dark">Dark</option>
-            </Select>
-            <FloatingLabel
-              {...register("fathersName", { required: true })}
-              name="fathersName"
-              type="text"
-              className="text-white/80"
-              variant="standard"
-              label="Fathers Name"
-            />
-          </section>
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Select Skin Color
+                </option>
+                <option value="Fair">Fair</option>
+                <option value="Medium">Medium</option>
+                <option value="Olive ">Olive </option>
+                <option value="Dark">Dark</option>
+              </Select>
+            </section>
 
-          <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-          <Select
-              {...register("partnerAge", { required: true })}
-              name="partnerAge"
-              defaultValue=""
-            >
-              <option value="" disabled>
-              Select your Partner Age You Expect
-              </option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="22">22</option>
-              <option value="24">24</option>
-              <option value="26">26</option>
-              <option value="28">28 </option>
-              <option value="30">30</option>
-              <option value="32">32 </option>
-              <option value="34">34 </option>
-              <option value="38">38</option>
-              <option value="40">40</option>
-             
-            </Select>
-           
-            
-            <FloatingLabel
-              {...register("mothersName", { required: true })}
-              name="mothersName"
-              type="text"
-              className="text-white/80"
-              variant="standard"
-              label="Mothers Name"
-            />
-          </section>
+            <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
+              <Select
+                className="text-pink-500 "
+                {...register("partnerHeight", { required: true })}
+                name="partnerHeight"
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Expected Partner Height
+                </option>
+                <option value="40">40</option>
+                <option value="42">42</option>
+                <option value="44">44</option>
+                <option value="46">46</option>
+                <option value="48">48</option>
+                <option value="50 ">50 </option>
+                <option value="52 ">52</option>
+                <option value="54 ">54 </option>
+                <option value="58 ">58 </option>
+                <option value="60">60</option>
+                <option value="75">75</option>
+                <option value="80">80</option>
+              </Select>
 
-          <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-            
-            <Select
-           {...register("partnerHeight", { required: true })}
-              name="partnerHeight"
-          defaultValue=""
-        >
-          <option value="" disabled>
-          Expected Partner Height
-          </option>
-          <option value="40">40</option>
-          <option value="42">42</option>
-          <option value="44">44</option>
-          <option value="46">46</option>
-          <option value="48">48</option>
-          <option value="50 ">50 </option>
-          <option value="52 ">52</option>
-          <option value="54 ">54 </option>
-          <option value="58 ">58 </option>
-          <option value="60">60</option>
-          <option value="75">75</option>
-          <option value="80">80</option>
-         
-        </Select>
-            
-             <Select
-            {...register("partnerWeight", { required: true })}
-              name="partnerWeight"
-          defaultValue=""
-        >
-          <option value="" disabled>
-          Expected Partner Weight
-          </option>
-          <option value="40">40</option>
-          <option value="42">42</option>
-          <option value="44">44</option>
-          <option value="46">46</option>
-          <option value="48">48</option>
-          <option value="50 ">50 </option>
-          <option value="52 ">52</option>
-          <option value="54 ">54 </option>
-          <option value="58 ">58 </option>
-          <option value="60">60</option>
-          <option value="75">75</option>
-          <option value="80">80</option>
-         
-        </Select>
-          </section>
+              <Select
+                className="text-pink-500 "
+                {...register("partnerWeight", { required: true })}
+                name="partnerWeight"
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Expected Partner Weight
+                </option>
+                <option value="40">40</option>
+                <option value="42">42</option>
+                <option value="44">44</option>
+                <option value="46">46</option>
+                <option value="48">48</option>
+                <option value="50 ">50 </option>
+                <option value="52 ">52</option>
+                <option value="54 ">54 </option>
+                <option value="58 ">58 </option>
+                <option value="60">60</option>
+                <option value="75">75</option>
+                <option value="80">80</option>
+              </Select>
+            </section>
 
-          <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0 ">
-            <Select
-              {...register("permanentDivision", { required: true })}
-              name="permanentDivision"
-              id="countries"
-              defaultValue=""
-              required
-            >
-              <option disabled value="">
-                Permanent Division name
-              </option>
-              <option>Dhaka</option>
-              <option>Chattagram</option>
-              <option>Rangpur</option>
-              <option>Barisal</option>
-              <option>Khulna</option>
-              <option>Mymensingh</option>
-              <option>Sylhet</option>
-            </Select>
-            <Select
-              {...register("presentDivision", { required: true })}
-              name="presentDivision"
-              id="countries"
-              defaultValue=" "
-              required
-            >
-              <option disabled value="">
-                Present Division name
-              </option>
-              <option>Dhaka</option>
-              <option>Chattagram</option>
-              <option>Rangpur</option>
-              <option>Barisal</option>
-              <option>Khulna</option>
-              <option>Mymensingh</option>
-              <option>Sylhet</option>
-            </Select>
-          </section>
+            <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0 ">
+              <Select
+                className="text-pink-500 "
+                {...register("permanentDivision", { required: true })}
+                name="permanentDivision"
+                id="countries"
+                defaultValue=""
+                required
+              >
+                <option disabled value="">
+                  Permanent Division name
+                </option>
+                <option>Dhaka</option>
+                <option>Chattagram</option>
+                <option>Rangpur</option>
+                <option>Barisal</option>
+                <option>Khulna</option>
+                <option>Mymensingh</option>
+                <option>Sylhet</option>
+              </Select>
+              <Select
+                className="text-pink-500 "
+                {...register("presentDivision", { required: true })}
+                name="presentDivision"
+                id="countries"
+                defaultValue=" "
+                required
+              >
+                <option disabled value="">
+                  Present Division name
+                </option>
+                <option>Dhaka</option>
+                <option>Chattagram</option>
+                <option>Rangpur</option>
+                <option>Barisal</option>
+                <option>Khulna</option>
+                <option>Mymensingh</option>
+                <option>Sylhet</option>
+              </Select>
+            </section>
 
-          <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-            <FloatingLabel
-              {...register("mobileNumber", { required: true })}
-              name="mobileNumber"
-              type="number"
-              className="text-white/80"
-              variant="standard"
-              label="Mobile Number"
-            />
-            <FloatingLabel
-              {...register("email", { required: true })}
-              name="email"
-              className="text-white/80"
-              variant="standard"
-              defaultValue={user?.email}
-              readOnly
-              label="Email"
-            />
-          </section>
-          <Button type="submit" className="w-full bg-pink-500 text-white my-5 ">
-            Publish Now
-          </Button>
-        </form>
+            <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
+              <FloatingLabel
+                {...register("mobileNumber", { required: true })}
+                name="mobileNumber"
+                type="number"
+                className="text-pink-500 "
+                variant="filled"
+                label="Mobile Number"
+              />
+              <FloatingLabel
+                {...register("email", { required: true })}
+                name="email"
+                className="text-pink-500 "
+                variant="filled"
+                defaultValue={user?.email}
+                readOnly
+                label="Email"
+              />
+            </section>
+            <Button
+              type="submit"
+              className="w-full bg-pink-500 text-white my-5 "
+            >
+              Publish Now
+            </Button>
+          </form>
+        </div>
       </div>
-    </div>
     </div>
   );
 }

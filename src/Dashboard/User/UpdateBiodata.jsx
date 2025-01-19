@@ -1,4 +1,4 @@
-import { Button, FloatingLabel, Select } from "flowbite-react";
+import { Button, FloatingLabel, Label, Select } from "flowbite-react";
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -15,8 +15,7 @@ function UpdateBiodata() {
   const axiosPublic = useAxiosPublic();
   const [startDate, setStartDate] = useState(new Date());
 
-
-  const { data: bioData = [] , refetch } = useQuery({
+  const { data: bioData = [], refetch } = useQuery({
     queryKey: ["bioData"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/bioDatas/${user.email}`);
@@ -42,9 +41,8 @@ function UpdateBiodata() {
     permanentDivision,
     presentDivision,
     mobileNumber,
-    
   } = bioData;
-  console.log('update biodata',bioData)
+  console.log("update biodata", bioData);
   const {
     register,
     handleSubmit,
@@ -52,7 +50,6 @@ function UpdateBiodata() {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-       
     const name = data.name;
     const imageLink = data.imageLink;
     const date = startDate;
@@ -74,7 +71,7 @@ function UpdateBiodata() {
     const userRole = "normalUser";
     const bioDataRole = "normal";
     const bioDataInfo = {
-        _id,
+      _id,
       name,
       imageLink,
       date,
@@ -100,7 +97,7 @@ function UpdateBiodata() {
     axiosPublic
       .patch(`/biodatas-update/${_id}`, bioDataInfo)
       .then((res) => {
-        console.log('hello')
+        console.log("hello");
         console.log("bio data update form edit bio data", res.data);
         if (res.data.modifiedCount > 0) {
           Swal.fire({
@@ -108,7 +105,7 @@ function UpdateBiodata() {
             icon: "success",
             draggable: true,
           });
-          refetch()
+          refetch();
         }
       })
       .catch((err) => {
@@ -119,8 +116,6 @@ function UpdateBiodata() {
   };
 
   return (
-    // Edit Biodata
-
     <div>
       <BannarAll bannerHeading={`"Update Your Matrimonial Profile"`} />
 
@@ -139,6 +134,7 @@ function UpdateBiodata() {
               variant="filled"
               label="Name"
             />
+
             <FloatingLabel
               {...register("imageLink", { required: true })}
               name="imageLink"
@@ -150,34 +146,46 @@ function UpdateBiodata() {
             />
           </section>
 
-          <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0 ">
-            <DatePicker
-              className="border px-3 text-black/90  py-2 rounded-xl w-full cursor-pointer "
-              defaultValue={date}
-              type="date"
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-            />
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0 ">
+            <div className="w-full">
+              <div className="mb-2">
+                <Label htmlFor="countries" className="text-white/90" value="Select Date" />
+              </div>
+              <DatePicker
+                className=" border-b-2 border-t-0 border-r-0 border-l-0 border-b-white/90  px-3 text-white/90  py-2  w-[100%] cursor-pointer bg-transparent "
+                defaultValue={date}
+                type="date"
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+              />
+            </div>
 
-            <Select
+            <div className="w-full">
+              <div className="mb-2">
+                <Label htmlFor="countries" className="text-white/90" value="Select Gender Type" />
+              </div>
+              <Select
               {...register("genderType", { required: true })}
-
               defaultValue={genderType}
             >
-              
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </Select>
-          </section>
+            </div>
+
+            
+          </div>
 
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-            <Select
+          <div className="w-full">
+              <div className="mb-2">
+                <Label htmlFor="countries" className="text-white/90" value="Select Height" />
+              </div>
+              <Select
               {...register("height", { required: true })}
               name="height"
               defaultValue={height}
-              
             >
-             
               <option value="5">5</option>
               <option value="5.1">5.1</option>
               <option value="5.2 ">5.2 </option>
@@ -192,7 +200,15 @@ function UpdateBiodata() {
               <option value="5.11">5.11</option>
               <option value="6">6</option>
             </Select>
-            <Select
+            </div>
+            
+            
+
+            <div className="w-full">
+              <div className="mb-2">
+                <Label htmlFor="countries" className="text-white/90" value="Select Weight" />
+              </div>
+             <Select
               {...register("weight", { required: true })}
               name="weight"
               defaultValue={weight}
@@ -213,15 +229,20 @@ function UpdateBiodata() {
               <option value="75">75</option>
               <option value="80">80</option>
             </Select>
+            </div>
           </section>
 
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-            <Select
+            
+            <div className="w-full">
+              <div className="mb-2">
+                <Label htmlFor="countries" className="text-white/90" value="Select Your Age" />
+              </div>
+              <Select
               {...register("age", { required: true })}
               name="age"
               defaultValue={age}
             >
-             
               <option value="18">18</option>
               <option value="19">19</option>
               <option value="20">20</option>
@@ -235,13 +256,19 @@ function UpdateBiodata() {
               <option value="38">38</option>
               <option value="40">40</option>
             </Select>
+            </div>
 
-            <Select
+            
+
+            <div className="w-full">
+              <div className="mb-2">
+                <Label htmlFor="countries" className="text-white/90" value="Select Occupation" />
+              </div>
+              <Select
               {...register("occupation", { required: true })}
               name="occupation"
               defaultValue={occupation}
             >
-              
               <option value="Job Holder">Job Holder</option>
               <option value="Studeng">Studeng</option>
               <option value="Engneer">Engneer</option>
@@ -249,20 +276,11 @@ function UpdateBiodata() {
               <option value="Developer">Developer</option>
               <option value="Softwere Engineer">Softwere Engineer</option>
             </Select>
+            </div>
           </section>
 
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-            <Select
-              {...register("skinColor", { required: true })}
-              name="skinColor"
-              defaultValue={skinColor}
-            >
-             
-              <option value="Fair">Fair</option>
-              <option value="Medium">Medium</option>
-              <option value="Olive ">Olive </option>
-              <option value="Dark">Dark</option>
-            </Select>
+           
             <FloatingLabel
               {...register("fathersName", { required: true })}
               name="fathersName"
@@ -272,29 +290,6 @@ function UpdateBiodata() {
               variant="filled"
               label="Fathers Name"
             />
-          </section>
-
-          <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-            <Select
-              {...register("partnerAge", { required: true })}
-              name="partnerAge"
-              defaultValue={partnerAge}
-              
-            >
-              
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="22">22</option>
-              <option value="24">24</option>
-              <option value="26">26</option>
-              <option value="28">28 </option>
-              <option value="30">30</option>
-              <option value="32">32 </option>
-              <option value="34">34 </option>
-              <option value="38">38</option>
-              <option value="40">40</option>
-            </Select>
 
             <FloatingLabel
               {...register("mothersName", { required: true })}
@@ -308,12 +303,59 @@ function UpdateBiodata() {
           </section>
 
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-            <Select
+            
+            <div className="w-full">
+              <div className="mb-2">
+                <Label htmlFor="countries" className="text-white/90" value="Select Partner Age" />
+              </div>
+              <Select
+              {...register("partnerAge", { required: true })}
+              name="partnerAge"
+              defaultValue={partnerAge}
+            >
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="22">22</option>
+              <option value="24">24</option>
+              <option value="26">26</option>
+              <option value="28">28 </option>
+              <option value="30">30</option>
+              <option value="32">32 </option>
+              <option value="34">34 </option>
+              <option value="38">38</option>
+              <option value="40">40</option>
+            </Select>
+            </div>
+            <div className="w-full">
+              <div className="mb-2">
+                <Label htmlFor="countries" className="text-white/90" value="Select your Skin Color" />
+              </div>
+             <Select
+              {...register("skinColor", { required: true })}
+              name="skinColor"
+              defaultValue={skinColor}
+            >
+              <option value="Fair">Fair</option>
+              <option value="Medium">Medium</option>
+              <option value="Olive ">Olive </option>
+              <option value="Dark">Dark</option>
+            </Select>
+            </div>
+
+          </section>
+
+          <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
+            
+            <div className="w-full">
+              <div className="mb-2">
+                <Label htmlFor="countries" className="text-white/90" value="Select Partner Height" />
+              </div>
+              <Select
               {...register("partnerHeight", { required: true })}
               name="partnerHeight"
               defaultValue={partnerHeight}
             >
-              
               <option value="40">40</option>
               <option value="42">42</option>
               <option value="44">44</option>
@@ -327,13 +369,17 @@ function UpdateBiodata() {
               <option value="75">75</option>
               <option value="80">80</option>
             </Select>
+            </div>
 
-            <Select
+            <div className="w-full">
+              <div className="mb-2">
+                <Label htmlFor="countries" className="text-white/90" value="Select Partner Height" />
+              </div>
+              <Select
               {...register("partnerWeight", { required: true })}
               name="partnerWeight"
               defaultValue={partnerWeight}
             >
-             
               <option value="40">40</option>
               <option value="42">42</option>
               <option value="44">44</option>
@@ -347,16 +393,22 @@ function UpdateBiodata() {
               <option value="75">75</option>
               <option value="80">80</option>
             </Select>
+            </div>
+            
           </section>
 
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0 ">
-            <Select
+           
+            <div className="w-full">
+              <div className="mb-2">
+                <Label htmlFor="countries" className="text-white/90" value="Select Your Permanent Division" />
+              </div>
+               <Select
               {...register("permanentDivision", { required: true })}
               name="permanentDivision"
               id="countries"
               defaultValue={permanentDivision}
             >
-              
               <option>Dhaka</option>
               <option>Chattagram</option>
               <option>Rangpur</option>
@@ -365,13 +417,18 @@ function UpdateBiodata() {
               <option>Mymensingh</option>
               <option>Sylhet</option>
             </Select>
-            <Select
+            </div>
+
+            <div className="w-full">
+              <div className="mb-2">
+                <Label htmlFor="countries" className="text-white/90" value="Select Your Present Division " />
+              </div>
+              <Select
               {...register("presentDivision", { required: true })}
               name="presentDivision"
               id="countries"
               defaultValue={presentDivision}
             >
-              
               <option>Dhaka</option>
               <option>Chattagram</option>
               <option>Rangpur</option>
@@ -380,6 +437,8 @@ function UpdateBiodata() {
               <option>Mymensingh</option>
               <option>Sylhet</option>
             </Select>
+            </div>
+            
           </section>
 
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
