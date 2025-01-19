@@ -20,7 +20,7 @@ function BioDataDetails() {
   const { user } = useAuth();
   const { id } = useParams();
   const { data: details = [] , isLoading } = useQuery({
-    queryKey: ["details"],
+    queryKey: ["details" , id],
 
     queryFn: async () => {
       const res = await axiosPublic.get(`/details/${id}`);
@@ -57,7 +57,7 @@ function BioDataDetails() {
 
 // 3 similer data get api 
 const {data : similar = [] } = useQuery({
-  queryKey : ['similarData'] , 
+  queryKey : ['similarData' ] , 
   enabled : !isLoading,
   queryFn : async() => {
     const res = await axiosPublic.post(`/biodatas/for-gender?genderType=${details.genderType}`)

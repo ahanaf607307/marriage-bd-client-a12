@@ -22,6 +22,7 @@ const {data : biodatas = [] } = useQuery({
        <section className='my-'>
        <Title heading={`Browse Profiles`} title={`Get started with marriageBD.com `} titleFont={`md`}/>
        </section>
+       
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-10 px-5'>
        
 
