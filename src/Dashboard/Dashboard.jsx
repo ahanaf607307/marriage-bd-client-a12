@@ -12,6 +12,7 @@ function Dashboard() {
   };
 
   const [isAdmin] = useAdmin();
+  console.log('isAdmin' , isAdmin)
   return (
     <div className="">
       <div className="grid gird-cols-1 md:grid-cols-12 ">
