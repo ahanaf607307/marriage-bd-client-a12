@@ -27,7 +27,7 @@ function CreateBiodata() {
     const genderType = data.genderType;
     const height = data.height;
     const weight = data.weight;
-    const age = data.age;
+    const age = parseInt(data.age);
     const occupation = data.occupation;
     const skinColor = data.skinColor;
     const fathersName = data.fathersName;

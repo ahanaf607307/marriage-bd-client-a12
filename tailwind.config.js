@@ -11,7 +11,9 @@ module.exports = {
     extend: {
       backgroundImage: {
         'banner': "url('/src/assets/banner/bannerCompleate.png')",
-        'footer-texture': "url('/img/footer-texture.png')",
+        'card1': "url('/src/assets/card/1.png')",
+        'card2': "url('/src/assets/card/2.png')",
+        'banner1': "url('/src/assets/banner/1.png')",
       },
       fontFamily: {
         'logoFont': [' "Rubik Vinyl", serif;'],

@@ -50,7 +50,7 @@ console.log('error from login user --->' , error.message)
             {...register("email", { required: true })}
             name="email"
             className="w-full"
-            variant="standard"
+            variant="filled"
             label="Email"
           />
 
@@ -59,7 +59,7 @@ console.log('error from login user --->' , error.message)
             type="password"
             name="password"
             className="w-full"
-            variant="standard"
+            variant="filled"
             label="Password"
           />
 

@@ -3,7 +3,7 @@ import { Button, Table } from "flowbite-react";
 import React from "react";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
-import Title from "../../Shared/Title";
+import TitleDashboard from "../../Shared/TitleDashboard";
 
 function ApprovedPremium() {
   const axiosSecure = useAxiosSecure();
@@ -59,7 +59,10 @@ function ApprovedPremium() {
 
   return (
     <div className="px-2 md:px-10">
-      <Title heading={`Approved Premium`} />
+      
+      <div className='py-10'>
+<TitleDashboard heading={`Approved Premium`}  />
+      </div>
 
       <div className="overflow-x-auto ">
         <Table hoverable >

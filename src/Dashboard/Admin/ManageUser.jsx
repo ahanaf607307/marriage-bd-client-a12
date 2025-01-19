@@ -4,7 +4,7 @@ import React from "react";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
-import Title from "../../Shared/Title";
+import TitleDashboard from "../../Shared/TitleDashboard";
 
 function ManageUser() {
   const axiosSecure = useAxiosSecure();
@@ -51,8 +51,11 @@ function ManageUser() {
   };
 
   return (
-    <div className="mt-10 md:px-10">
-<Title heading={`Manage User `} />
+    <div className=" md:px-10">
+<div className="py-10">
+
+<TitleDashboard heading={`Manage User `} />
+</div>
       <div className="overflow-x-auto">
         <Table hoverable>
           <Table.Head>

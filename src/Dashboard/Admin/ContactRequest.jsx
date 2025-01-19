@@ -5,7 +5,7 @@ import { FaCheckCircle } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAuth from '../../Firebase/UseAuth/useAuth';
 import useAxiosPublic from '../../Hook/useAxiosPublic';
-import Title from '../../Shared/Title';
+import TitleDashboard from '../../Shared/TitleDashboard';
 
 function ContactRequest() {
   const axiosPublic = useAxiosPublic();
@@ -27,7 +27,7 @@ function ContactRequest() {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
+        confirmButtonText: "Yes, Approve"
       }).then((result) => {
         if (result.isConfirmed) {
          axiosPublic
@@ -55,7 +55,9 @@ function ContactRequest() {
   
   return (
     <div className="font-bannerFont  mx-2">
-    <Title heading={`Approved contact request`} />
+    <div className='py-10'>
+    <TitleDashboard heading={`Approved contact request`} />
+    </div>
     <div className="overflow-x-auto">
       <Table>
         <Table.Head>
