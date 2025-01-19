@@ -6,25 +6,23 @@ import BioDataDetail from "../../Pages/Biodata/BioDataDetail";
 import Title from "../../Shared/Title";
 
 function ViewBiodata() {
-   const { user , loading } = useAuth();
+  const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
-  const { data: bioData = [] } = useQuery({
-    queryKey: ["bioData"],
+  const { data: bio = [] } = useQuery({
+    queryKey: ["bio"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/bioDatas/${user.email}`);
       return res.data;
     },
   });
-  
- 
-
+console.log('view biodata' , bio)
   return (
     <div>
       <Title heading={`View Your Bio Data `} />
+
      
-      {
-        bioData.map(bio => <BioDataDetail key={bio?._id} bio={bio} />)
-      }
+        <BioDataDetail  bio={bio} />
+    
     </div>
   );
 }

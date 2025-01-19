@@ -92,14 +92,14 @@ function CreateBiodata() {
         <div className=" max-w-[90%]  xl:max-w-[80%] mx-auto my-10 bg-pink-400 p-5 md:p-10">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="text-pink-500  font-semibold font-bannerFont"
+            className="text-black/90  font-semibold "
           >
             <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
               <FloatingLabel
                 {...register("name", { required: true })}
                 name="name"
                 type="text"
-                className="text-pink-500 "
+                className="text-black/90 "
                 variant="filled"
                 label="Name"
               />
@@ -107,7 +107,7 @@ function CreateBiodata() {
                 {...register("imageLink", { required: true })}
                 name="imageLink"
                 type="url"
-                className="text-pink-500 "
+                className="text-black/90 "
                 variant="filled"
                 label="Profile Image Link"
               />
@@ -115,14 +115,14 @@ function CreateBiodata() {
 
             <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0 ">
               <DatePicker
-                className="border px-3 text-pink-500   py-2 rounded-xl w-full cursor-pointer "
+                className=" border-b-2 border-b-white border-t-0 border-l-0 border-r-0 bg-transparent text-white/90 "
                 type="date"
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
               />
 
-              <Select
-                className="text-pink-500 "
+              <Select     className="block w-full p-2.5 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 "
+                
                 {...register("genderType", { required: true })}
                 defaultValue=""
               >
@@ -135,8 +135,8 @@ function CreateBiodata() {
             </section>
 
             <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-              <Select
-                className="text-pink-500 "
+              <Select     className="block w-full p-2.5 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 "
+               
                 {...register("height", { required: true })}
                 name="height"
                 defaultValue=""
@@ -158,8 +158,8 @@ function CreateBiodata() {
                 <option value="5.11">5.11</option>
                 <option value="6">6</option>
               </Select>
-              <Select
-                className="text-pink-500 "
+              <Select     className="block w-full p-2.5 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 "
+                
                 {...register("weight", { required: true })}
                 name="weight"
                 defaultValue=""
@@ -183,8 +183,8 @@ function CreateBiodata() {
             </section>
 
             <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-              <Select
-                className="text-pink-500 "
+              <Select     className="block w-full p-2.5 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 "
+                
                 {...register("age", { required: true })}
                 name="age"
                 defaultValue=""
@@ -206,8 +206,8 @@ function CreateBiodata() {
                 <option value="40">40</option>
               </Select>
 
-              <Select
-                className="text-pink-500 "
+              <Select     className="block w-full p-2.5 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 "
+                
                 {...register("occupation", { required: true })}
                 name="occupation"
                 defaultValue=""
@@ -229,7 +229,7 @@ function CreateBiodata() {
                 {...register("fathersName", { required: true })}
                 name="fathersName"
                 type="text"
-                className="text-pink-500  "
+                className="text-black/90  "
                 variant="filled"
                 label="Fathers Name"
               />
@@ -237,15 +237,15 @@ function CreateBiodata() {
                 {...register("mothersName", { required: true })}
                 name="mothersName"
                 type="text"
-                className="text-pink-500 "
+                className="text-black/90 "
                 variant="filled"
                 label="Mothers Name"
               />
             </section>
 
             <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-              <Select
-                className="text-pink-500 "
+              <Select     className="block w-full p-2.5 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 "
+                
                 {...register("partnerAge", { required: true })}
                 name="partnerAge"
                 defaultValue=""
@@ -267,8 +267,8 @@ function CreateBiodata() {
                 <option value="40">40</option>
               </Select>
 
-              <Select
-                className="text-pink-500 "
+              <Select     className="block w-full p-2.5 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 "
+                
                 {...register("skinColor", { required: true })}
                 name="skinColor"
                 defaultValue=""
@@ -284,8 +284,8 @@ function CreateBiodata() {
             </section>
 
             <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
-              <Select
-                className="text-pink-500 "
+              <Select     className="block w-full p-2.5 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 "
+                
                 {...register("partnerHeight", { required: true })}
                 name="partnerHeight"
                 defaultValue=""
@@ -307,8 +307,8 @@ function CreateBiodata() {
                 <option value="80">80</option>
               </Select>
 
-              <Select
-                className="text-pink-500 "
+              <Select     className="block w-full p-2.5 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 "
+                
                 {...register("partnerWeight", { required: true })}
                 name="partnerWeight"
                 defaultValue=""
@@ -332,8 +332,8 @@ function CreateBiodata() {
             </section>
 
             <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0 ">
-              <Select
-                className="text-pink-500 "
+              <Select     className="block w-full p-2.5 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 "
+                
                 {...register("permanentDivision", { required: true })}
                 name="permanentDivision"
                 id="countries"
@@ -351,8 +351,8 @@ function CreateBiodata() {
                 <option>Mymensingh</option>
                 <option>Sylhet</option>
               </Select>
-              <Select
-                className="text-pink-500 "
+              <Select     className="block w-full p-2.5 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 "
+                
                 {...register("presentDivision", { required: true })}
                 name="presentDivision"
                 id="countries"
@@ -377,14 +377,14 @@ function CreateBiodata() {
                 {...register("mobileNumber", { required: true })}
                 name="mobileNumber"
                 type="number"
-                className="text-pink-500 "
+                className="text-black/90 "
                 variant="filled"
                 label="Mobile Number"
               />
               <FloatingLabel
                 {...register("email", { required: true })}
                 name="email"
-                className="text-pink-500 "
+                className="text-black/90 "
                 variant="filled"
                 defaultValue={user?.email}
                 readOnly
