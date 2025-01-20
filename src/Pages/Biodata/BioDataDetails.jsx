@@ -11,6 +11,7 @@ import Title from "../../Shared/Title";
 import SimilarBioCard from "./SimilarBioCard";
 import useAdmin from "../../Hook/useAdmin";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import Loading from "../../Loading/Loading";
 
 function BioDataDetails() {
   const axiosSecure = useAxiosSecure();
@@ -112,7 +113,7 @@ const {data : similar = [] } = useQuery({
   };
 
   if(isLoading) {
-    return <h1 className="text-5xl text-center">LOADING -----------</h1>
+    return <Loading/>
   }
   
 

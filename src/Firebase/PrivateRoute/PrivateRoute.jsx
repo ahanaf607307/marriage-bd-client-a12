@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
+import Loading from "../../Loading/Loading";
 import useAuth from "../UseAuth/useAuth";
 
 function PrivateRoute({ children }) {
@@ -7,7 +8,7 @@ function PrivateRoute({ children }) {
   const location = useLocation();
 
   if (loading) {
-    return <h1>Loading ....</h1>;
+    return <Loading/>;
   }
 
   if (user) {

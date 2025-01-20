@@ -26,7 +26,7 @@ function Contact() {
       </h1>
       <p className={`text-white/90 pt-3 px-4 md:px-20 lg:px-56 `}>“Feel free to reach out to us for any questions, support, or feedback. Our team is always ready to assist you.”</p>
     </div>
-    <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 items-center justify-center mt-20'>
+    <div className='grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center py-20 px-4'>
       {/* left */}
       <div className='text-white/90'>
         <div className='flex  items-center gap-x-3 my-8'>

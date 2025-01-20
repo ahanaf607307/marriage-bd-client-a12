@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import Title from "../../Shared/Title";
+import Loading from "../../Loading/Loading";
 
 function SuccessCounterSection() {
   const axiosPublic = useAxiosPublic();
@@ -14,7 +15,7 @@ function SuccessCounterSection() {
   });
 
   if (isLoading) {
-    return <h1 className="text-5xl text-pink-500">Loading.........</h1>;
+    return <Loading/>;
   }
 
   console.log(homeCount);
