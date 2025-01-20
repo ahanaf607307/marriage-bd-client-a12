@@ -4,23 +4,23 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
-import useAxiosPublic from "../../Hook/useAxiosPublic";
+import useAdmin from "../../Hook/useAdmin";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 import useRole from "../../Hook/useRole";
 import BannarAll from "../../Shared/BannarAll";
 import Title from "../../Shared/Title";
 import SimilarBioCard from "./SimilarBioCard";
-import useAdmin from "../../Hook/useAdmin";
-import useAxiosSecure from "../../Hook/useAxiosSecure";
-import Loading from "../../Loading/Loading";
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 function BioDataDetails() {
   const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic()
   const [users] = useRole()
 const [isAdmin] = useAdmin()
 
   console.log('user role -->',users)
 
-  const { user } = useAuth();
+  const { user , loading} = useAuth();
   const { id } = useParams();
   const { data: details = [] , isLoading } = useQuery({
     queryKey: ["details" , id],
@@ -61,7 +61,7 @@ const [isAdmin] = useAdmin()
 // 3 similer data get api 
 const {data : similar = [] } = useQuery({
   queryKey : ['similarData' ] , 
-  enabled : !isLoading,
+  enabled : !loading,
   queryFn : async() => {
     const res = await axiosSecure.post(`/biodatas/for-gender?genderType=${details.genderType}`)
     return res.data
@@ -94,7 +94,7 @@ const {data : similar = [] } = useQuery({
       biodataId,
       favUserEmail,
     };
-    axiosSecure
+    axiosPublic
       .post("/favorite", favoriteInfo)
       .then((res) => {
         console.log("post favorite --->", res.data);
@@ -112,10 +112,7 @@ const {data : similar = [] } = useQuery({
       .catch((err) => console.log("error from favorite ->", err));
   };
 
-  if(isLoading) {
-    return <Loading/>
-  }
-  
+ 
 
   console.log('similar data ---> ',similar)
   return (

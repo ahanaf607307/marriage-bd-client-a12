@@ -1,20 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import { Card } from "flowbite-react";
-import React, { useState } from "react";
-import useAxiosSecure from "../../Hook/useAxiosSecure";
+import React from "react";
 import Title from "../../Shared/Title";
 
 
-import '@smastrom/react-rating/style.css'
 import { Rating } from "@mui/material";
+import '@smastrom/react-rating/style.css';
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 function SuccessStory() {
 
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic()
   const { data: success = [] } = useQuery({
     queryKey: ["success"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/successStory/home");
+      const res = await axiosPublic.get("/successStory/home");
       return res.data;
     },
   });

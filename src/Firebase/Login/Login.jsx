@@ -8,7 +8,7 @@ import TitleDashboard from "../../Shared/TitleDashboard";
 import useAuth from "../UseAuth/useAuth";
 
 function Login() {
-  const { loginOldUser, setUser, setLoading } = useAuth();
+  const { loginOldUser, setUser } = useAuth();
   const [errorFound , setErrorFound] = useState('')
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,7 +24,7 @@ function Login() {
     loginOldUser(email, password)
     .then((res) => {
       setUser(res.user);
-      setLoading(false);
+
       Swal.fire({
           position: "top-end",
           icon: "success",

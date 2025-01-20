@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import useAuth from "../../Firebase/UseAuth/useAuth";
-import useAxiosPublic from "../../Hook/useAxiosPublic";
 import BioDataDetail from "../../Pages/Biodata/BioDataDetail";
 import Title from "../../Shared/Title";
 import useAxiosSecure from "../../Hook/useAxiosSecure";

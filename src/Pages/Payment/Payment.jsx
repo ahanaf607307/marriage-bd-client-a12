@@ -6,7 +6,7 @@ import CheckOutForm from './CheckOutForm'
 import useAuth from '../../Firebase/UseAuth/useAuth'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-import useAxiosPublic from '../../Hook/useAxiosPublic'
+
 import { FloatingLabel } from 'flowbite-react'
 import useAxiosSecure from '../../Hook/useAxiosSecure'
 

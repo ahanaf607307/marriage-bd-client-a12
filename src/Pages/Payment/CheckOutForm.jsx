@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
-import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 
 
@@ -19,7 +18,7 @@ function CheckOutForm({details}) {
  
   const stripe = useStripe();
   const elements = useElements();
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic()
   const { user } = useAuth();
 const navigate = useNavigate();
 
@@ -30,12 +29,12 @@ const navigate = useNavigate();
   
   const totalPrice = 5
   useEffect(() => {
-    axiosSecure
+    axiosPublic
       .post("/create-payment-intent", { price: totalPrice })
       .then((res) => {
         setClientSecret(res.data.clientSecret);
       });
-  }, [axiosSecure , totalPrice]);
+  }, [axiosPublic , totalPrice]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -99,7 +98,7 @@ if (!stripe || !elements) {
                 status: 'pending'
             }
             // post contact req data with payment 
-            axiosSecure.post('/contact-request' , contactRequest)
+            axiosPublic.post('/contact-request' , contactRequest)
             .then(res=> {
               console.log('contactRequest and payment save',res.data)
               if(res.data?.insertedId){
