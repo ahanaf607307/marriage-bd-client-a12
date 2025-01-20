@@ -8,6 +8,12 @@
 
 ---
 
+# Admin Email :- marriagebd@gmail.com
+
+# Admin Passwprd :- @marriagebd
+
+---
+
 ## Purpose
 
 The purpose of the matrimonial website "Marriage BD" can be :
@@ -33,13 +39,36 @@ The purpose of the matrimonial website "Marriage BD" can be :
 
    - Options to control profile visibility and personal information.
 
-4. **Interactive Dashboard:**
-   - **Profile Management**
-   - View and edit personal profile details.
-   - Upload and manage profile photos..
-   - **Admin Dashboard Features**
-5. **Responsive Design:**
-   - Fully responsive UI for seamless use on all devices.
+4. **. User Engagement:**
+
+   - Success stories section to inspire users.
+
+5. **. Premium Membership Plans :**
+
+   - Access to exclusive features like advanced filters, direct contact, and priority matchmaking.
+
+6. **. Mobile-Friendly Design :**
+
+   - Responsive website for smooth navigation on smartphones and tablets.
+
+7. **. Add to Favorite :**
+
+   - User can add those data he/she want to see letter or he/she likes.
+
+8. **. About us :**
+
+   - This Section Help users to know about us .
+
+9. **. Contact us :**
+
+   - This Section Help users to contact with us for any help .
+
+10. **. Dashboard :**
+    - **Profile Management**
+    - View and edit personal profile details.
+    - Admin Dashboard Features
+11. **Responsive Design:**
+    - Fully responsive UI for seamless use on all devices.
 
 ---
 
