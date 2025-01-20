@@ -35,7 +35,7 @@ function Dashboard() {
         {/* dashboard link */}
         <div className="col-span-2 md:col-span-1 bg-pink-400 flex flex-col  md:min-h-screen  md:px-2 ">
           <div className="flex py-3 px-1 flex-col min-h-screen items-start justify-start">
-            <button className="bg-pink-600 p-2 w-full rounded-xl hover:scale-105 duration-150" onClick={() => setIsOpen(true)}>
+            <button className="bg-pink-600 p-2 w-full rounded-tr-full rounded-br-full hover:scale-105 duration-150" onClick={() => setIsOpen(true)}>
               <FiAlignLeft className="text-xl text-white/90 md:text-2xl lg:text-3xl" />
             </button>
           </div>
@@ -195,7 +195,7 @@ function Dashboard() {
 
         </div>
       </div>
-      <AppFooter/>
+     
     </div>
   );
 }

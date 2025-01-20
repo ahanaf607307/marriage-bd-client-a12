@@ -10,7 +10,7 @@ import Title from "../../Shared/Title";
 
 function Biodatas() {
   const axiosPublic = useAxiosPublic();
-  const [match , setMatch] = useState(true)
+  // const [match , setMatch] = useState(true)
   const [filters, setFilters] = useState({});
 
   const { data: biodatas = [], refetch } = useQuery({
@@ -21,13 +21,12 @@ function Biodatas() {
       console.log(params)
       const res = await axiosPublic.get(`/biodatas/filter?${params}`);
       console.log(res.data)
-      if(res.data?.length > 0){
-        setMatch(false)
-      }
       return res.data;
     },
     enabled: true,
   });
+
+  
 
   const {
     register,
@@ -127,7 +126,7 @@ function Biodatas() {
       
        <div className="lg:col-span-8 px-2">
 {
-        match ? <h1 className="text-4xl font-semibold font-bannerFont text-center my-20">No Data Match . Filter Again</h1>:
+        biodatas.length === 0 ? <h1 className="text-2xl font-semibold font-bannerFont text-center my-20 text-pink-500 md:px-44">No Data Match . Give Correct data in filter </h1>:
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-7xl mx-auto">
           {biodatas.map((biodata) => (
