@@ -20,9 +20,10 @@ import BioDataDetails from "../Pages/Biodata/BioDataDetails";
 import Biodatas from "../Pages/BioDataPage/BioDatas";
 import Contact from "../Pages/Contact/Contact";
 import Payment from "../Pages/Payment/Payment";
+import ErrorPage from "../Error/ErrorPage";
 
 const routes = createBrowserRouter([
-  {
+  {errorElement:<ErrorPage/>,
     path: "/",
     element: <Mainlayout />,
     children: [
