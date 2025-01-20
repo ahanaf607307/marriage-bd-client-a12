@@ -109,7 +109,7 @@ function Dashboard() {
                         </Sidebar.Item>
                         <Sidebar.Item  icon={HiLogin}>
                           <button
-                            className="text-white/90  font-semibold hover:scale-90 bg-pink-500 rounded-xl px-3 py-2 duration-100"
+                            className="text-white/90  font-semibold hover:scale-90 bg-purple-500 rounded-xl px-3 py-2 duration-100"
                             onClick={handleLogout}
                           >
                             Logout
@@ -172,9 +172,21 @@ function Dashboard() {
                             Favourites Biodata
                           </NavLink>
                         </Sidebar.Item>
+                        <Sidebar.Item icon={HiShoppingBag}>
+                          <NavLink
+                            to="/dashboard/createSuccessStory"
+                            className={({ isActive }) =>
+                              isActive
+                                ? "text-white/90 font-semibold hover:scale-90 bg-pink-500 rounded-xl px-3 py-2 duration-100"
+                                : "text-black/90 font-bold hover:scale-105 duration-150"
+                            }
+                          >
+                           Create Success Story
+                          </NavLink>
+                        </Sidebar.Item>
                         <Sidebar.Item icon={HiLogin}>
                           <button
-                            className="text-white/90 font-semibold hover:scale-90 bg-pink-500 rounded-xl px-3 py-2 duration-100"
+                            className="text-white/90 font-semibold hover:scale-90 bg-purple-500 rounded-xl px-3 py-2 duration-100"
                             onClick={handleLogout}
                           >
                             Logout

@@ -4,6 +4,7 @@ import ApprovedPremium from "../Dashboard/Admin/ApprovedPremium";
 import ContactRequest from "../Dashboard/Admin/ContactRequest";
 import ManageUser from "../Dashboard/Admin/ManageUser";
 import Dashboard from "../Dashboard/Dashboard";
+import CreateSuccessStory from "../Dashboard/User/CreateSuccessStory";
 import EditBiodata from "../Dashboard/User/EditBiodata";
 import FavouritesBiodata from "../Dashboard/User/FavouritesBiodata";
 import MyContactRequest from "../Dashboard/User/MyContactRequest";
@@ -136,6 +137,10 @@ const routes = createBrowserRouter([
       {
         path: "/dashboard/favouritesBiodata",
         element: <PrivateRoute><FavouritesBiodata /></PrivateRoute>,
+      },
+      {
+        path: "/dashboard/createSuccessStory",
+        element: <PrivateRoute><CreateSuccessStory /></PrivateRoute>,
       },
     ],
   },
