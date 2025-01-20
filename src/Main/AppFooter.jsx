@@ -2,16 +2,23 @@
 
 import { Footer } from "flowbite-react";
 import React from 'react';
+import { Link } from "react-router-dom";
 
 function AppFooter() {
   return (
     <Footer container>
     <Footer.Copyright href="#" by="marriageBD | Ahanaf Mubasshir" year={2025}/>
     <Footer.LinkGroup>
-      <Footer.Link href="#">About</Footer.Link>
-      <Footer.Link href="#">Privacy Policy</Footer.Link>
-      <Footer.Link href="#">Licensing</Footer.Link>
-      <Footer.Link href="#">Contact</Footer.Link>
+      <Footer.Link >
+<Link to='/aboutUs'>About</Link>
+      </Footer.Link>
+     
+
+      <Footer.Link>
+        <Link to='/contactUs'>
+        Contact
+        </Link>
+      </Footer.Link>
     </Footer.LinkGroup>
   </Footer>
   )
