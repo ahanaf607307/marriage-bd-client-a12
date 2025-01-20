@@ -72,7 +72,7 @@ function AuthProvider({ children }) {
           localStorage.removeItem("access-token");
           setLoading(false);
         }
-        setLoading(false);
+      
         console.log("currenUser is --->", currenUser);
       });
     };
