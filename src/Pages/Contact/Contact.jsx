@@ -55,7 +55,7 @@ function Contact() {
         </div>
          </div>
       </div>
-      {/* right */}
+      {/* right side */}
       <div className=''>
         <form onSubmit={handleContact}   className='flex flex-col justify-center gap-y-3'>
         <FloatingLabel variant="filled" label="Full Name" required/>
