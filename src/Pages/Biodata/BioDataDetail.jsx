@@ -158,7 +158,7 @@ const axiosSecure = useAxiosSecure()
                   </Table.Row>
                   <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
                     <Table.Cell className=" ">Date of birth</Table.Cell>
-                    <Table.Cell> {bio?.date} </Table.Cell>
+                    <Table.Cell> {bio?.date?.slice(0,10)} </Table.Cell>
                   </Table.Row>
                   <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
                     <Table.Cell className=" ">Height</Table.Cell>

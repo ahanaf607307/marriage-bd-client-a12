@@ -144,7 +144,7 @@ console.log('isLoading in similar data' , isLoading)
                   </Table.Row>
                   <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
                     <Table.Cell className=" ">Date of birth</Table.Cell>
-                    <Table.Cell> {date.slice(0,10)} </Table.Cell>
+                    <Table.Cell> {date?.slice(0,10)} </Table.Cell>
                   </Table.Row>
                   <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
                     <Table.Cell className=" ">Height</Table.Cell>
