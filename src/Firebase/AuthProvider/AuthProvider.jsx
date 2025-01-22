@@ -47,7 +47,7 @@ function AuthProvider({ children }) {
     return signInWithPopup(auth, provider);
   };
 
-  // logOut User
+  // logOut User --->
 
   const logOutUser = () => {
     return signOut(auth);
