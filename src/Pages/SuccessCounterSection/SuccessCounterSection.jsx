@@ -73,7 +73,7 @@ function SuccessCounterSection() {
             <div class="absolute top-1/2 left-1/2 w-36 h-36 bg-red-500 opacity-100 rounded-full blur-[12px] animate-blob"></div>
             <div class="z-20 text-center">
               <p class="text-6xl font-semibold text-pink-500">
-                {homeCount?.totalFemale}
+                {homeCount?.totalMarrige}
               </p>
               <h2 class="text-lg font-bold text-gray-700">completed Marriage</h2>
             </div>
