@@ -1,5 +1,8 @@
+
+
+
 import { Button, FloatingLabel, Label, Select } from "flowbite-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
@@ -45,12 +48,19 @@ function UpdateBiodata() {
     mobileNumber,
   } = bioData;
   console.log("update biodata", bioData);
+
+
+ 
+
+  // update form 
   const {
     register,
     handleSubmit,
-   
+   setValue,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues : bioData,
+  });
   const onSubmit = (data) => {
     const name = data.name;
     const imageLink = data.imageLink;
@@ -117,6 +127,28 @@ function UpdateBiodata() {
     console.log(bioDataInfo);
   };
 
+  useEffect(() => {
+    if (bioData) {
+      setValue("name", bioData.name || "");
+      setValue("imageLink", bioData.imageLink || "");
+      setValue("genderType", bioData.genderType || "Male");
+      setValue("height", bioData.height || "");
+      setValue("weight", bioData.weight || "");
+      setValue("age", bioData.age || "");
+      setValue("occupation", bioData.occupation || "");
+      setValue("skinColor", bioData.skinColor || "");
+      setValue("fathersName", bioData.fathersName || "");
+      setValue("mothersName", bioData.mothersName || "");
+      setValue("partnerAge", bioData.partnerAge || "");
+      setValue("partnerHeight", bioData.partnerHeight || "");
+      setValue("partnerWeight", bioData.partnerWeight || "");
+      setValue("permanentDivision", bioData.permanentDivision || "Dhaka");
+      setValue("presentDivision", bioData.presentDivision || "Dhaka");
+      setValue("mobileNumber", bioData.mobileNumber || "");
+      setValue("email", user?.email || "");
+    }
+  }, [bioData, setValue, user?.email]);
+
   return (
     <div>
       <Helmet>
@@ -133,7 +165,7 @@ function UpdateBiodata() {
             <FloatingLabel
               {...register("name" )}
               name="name"
-              defaultValue={bioData?.name}
+              // defaultValue={bioData?.name}
               type="text"
               className="text-black/80"
               variant="filled"
@@ -143,7 +175,7 @@ function UpdateBiodata() {
             <FloatingLabel
               {...register("imageLink" )}
               name="imageLink"
-              defaultValue={bioData?.imageLink}
+              // defaultValue={bioData?.imageLink}
               type="url"
               className="text-black/80"
               variant="filled"
@@ -158,7 +190,7 @@ function UpdateBiodata() {
               </div>
               <DatePicker
                 className=" border-b-2 border-t-0 border-r-0 border-l-0 border-b-white/90  px-3 text-white/90  py-2  w-[100%] cursor-pointer bg-transparent "
-                defaultValue={bioData?.date}
+                // defaultValue={bioData?.date}
                 type="date"
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
@@ -171,7 +203,7 @@ function UpdateBiodata() {
               </div>
               <Select
               {...register("genderType" )}
-              defaultValue={bioData?.genderType}
+              // defaultValue={bioData?.genderType}
             >
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -189,7 +221,7 @@ function UpdateBiodata() {
               <Select
               {...register("height" )}
               name="height"
-              defaultValue={bioData?.height}
+              // defaultValue={bioData?.height}
             >
               <option value="5">5</option>
               <option value="5.1">5.1</option>
@@ -216,7 +248,7 @@ function UpdateBiodata() {
              <Select
               {...register("weight" )}
               name="weight"
-              defaultValue={bioData?.weight}
+              // defaultValue={bioData?.weight}
             >
               <option value="" disabled>
                 Select your weight
@@ -246,7 +278,7 @@ function UpdateBiodata() {
               <Select
               {...register("age" )}
               name="age"
-              defaultValue={bioData?.age}
+              // defaultValue={bioData?.age}
             >
               <option value="18">18</option>
               <option value="19">19</option>
@@ -272,7 +304,7 @@ function UpdateBiodata() {
               <Select
               {...register("occupation" )}
               name="occupation"
-              defaultValue={bioData?.occupation}
+              // defaultValue={bioData?.occupation}
             >
               <option value="Job Holder">Job Holder</option>
               <option value="Studeng">Studeng</option>
@@ -289,7 +321,7 @@ function UpdateBiodata() {
             <FloatingLabel
               {...register("fathersName" )}
               name="fathersName"
-              defaultValue={bioData?.fathersName}
+              // defaultValue={bioData?.fathersName}
               type="text"
               className="text-black/80"
               variant="filled"
@@ -299,7 +331,7 @@ function UpdateBiodata() {
             <FloatingLabel
               {...register("mothersName" )}
               name="mothersName"
-              defaultValue={bioData?.mothersName}
+              // defaultValue={bioData?.mothersName}
               type="text"
               className="text-black/80"
               variant="filled"
@@ -316,7 +348,7 @@ function UpdateBiodata() {
               <Select
               {...register("partnerAge" )}
               name="partnerAge"
-              defaultValue={bioData?.partnerAge}
+              // defaultValue={bioData?.partnerAge}
             >
               <option value="18">18</option>
               <option value="19">19</option>
@@ -339,7 +371,7 @@ function UpdateBiodata() {
              <Select
               {...register("skinColor" )}
               name="skinColor"
-              defaultValue={bioData?.skinColor}
+              // defaultValue={bioData?.skinColor}
             >
               <option value="Fair">Fair</option>
               <option value="Medium">Medium</option>
@@ -359,7 +391,7 @@ function UpdateBiodata() {
               <Select
               {...register("partnerHeight" )}
               name="partnerHeight"
-              defaultValue={bioData?.partnerHeight}
+              // defaultValue={bioData?.partnerHeight}
             >
                <option value="5">5</option>
               <option value="5.1">5.1</option>
@@ -384,7 +416,7 @@ function UpdateBiodata() {
               <Select
               {...register("partnerWeight" )}
               name="partnerWeight"
-              defaultValue={bioData?.partnerWeight}
+              // defaultValue={bioData?.partnerWeight}
             >
               <option value="40">40</option>
               <option value="42">42</option>
@@ -413,7 +445,7 @@ function UpdateBiodata() {
               {...register("permanentDivision" )}
               name="permanentDivision"
               id="countries"
-              defaultValue={bioData?.permanentDivision}
+              // defaultValue={bioData?.permanentDivision}
             >
               <option>Dhaka</option>
               <option>Chattagram</option>
@@ -433,7 +465,7 @@ function UpdateBiodata() {
               {...register("presentDivision" )}
               name="presentDivision"
               id="countries"
-              defaultValue={bioData?.presentDivision}
+              // defaultValue={bioData?.presentDivision}
             >
               <option>Dhaka</option>
               <option>Chattagram</option>
@@ -451,7 +483,7 @@ function UpdateBiodata() {
             <FloatingLabel
               {...register("mobileNumber" )}
               name="mobileNumber"
-              defaultValue={bioData?.mobileNumber}
+              // defaultValue={bioData?.mobileNumber}
               type="number"
               className="text-black/80"
               variant="filled"
@@ -462,7 +494,7 @@ function UpdateBiodata() {
               name="email"
               className="text-black/80"
               variant="filled"
-              defaultValue={user?.email}
+              // defaultValue={user?.email}
               readOnly
               label="Email"
             />
