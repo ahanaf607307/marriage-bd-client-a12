@@ -2,14 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import { Button, Table } from "flowbite-react";
 import React from "react";
 import Swal from "sweetalert2";
+import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import TitleDashboard from "../../Shared/TitleDashboard";
 
 function ApprovedPremium() {
   const axiosSecure = useAxiosSecure();
-
+  const {user} = useAuth()
   const { data: premiums = [] } = useQuery({
     queryKey: ["premiums"],
+    enabled: !!user?.email&& !!localStorage.getItem(`access-token`),
     queryFn: async () => {
       const res = await axiosSecure.get("/premiums");
       return res.data;
@@ -17,6 +19,7 @@ function ApprovedPremium() {
   });
   const { data: users = [] ,refetch} = useQuery({
     queryKey: ["users"],
+    enabled: !!user?.email && !!localStorage.getItem(`access-token`),
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
       return res.data;

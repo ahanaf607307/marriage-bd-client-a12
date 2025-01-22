@@ -21,6 +21,9 @@ import BioDataDetails from "../Pages/Biodata/BioDataDetails";
 import Biodatas from "../Pages/BioDataPage/BioDatas";
 import Contact from "../Pages/Contact/Contact";
 import Payment from "../Pages/Payment/Payment";
+import SuccessStory from "../Pages/SuccessStory/SuccessStory";
+import ShowAllSuccessStory from "../Pages/SuccessStory/ShowAllSuccessStory";
+import SuccessStoryDetails from "../Pages/SuccessStory/SuccessStoryDetails";
 
 const routes = createBrowserRouter([
   {
@@ -48,6 +51,14 @@ const routes = createBrowserRouter([
       {
         path: "/contactUs",
         element: <Contact />,
+      },
+      {
+        path: "/showAllSuccessStory",
+        element: <ShowAllSuccessStory />,
+      },
+      {
+        path: "/successStoryDetails/:id",
+        element: <SuccessStoryDetails />,
       },
       {
         path: "/payment/:id",

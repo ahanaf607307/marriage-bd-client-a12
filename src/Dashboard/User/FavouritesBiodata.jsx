@@ -14,6 +14,7 @@ function FavouritesBiodata() {
   const { user } = useAuth();
   const { data: favorite = [], refetch } = useQuery({
     queryKey: ["favorites"],
+    enabled: !!user?.email && !!localStorage.getItem(`access-token`),
     queryFn: async () => {
       const res = await axiosSecure.get(`/favorite/${user.email}`);
       return res.data;

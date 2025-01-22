@@ -18,6 +18,7 @@ function UpdateBiodata() {
 
   const { data: bioData = [], refetch } = useQuery({
     queryKey: ["bioData"],
+    enabled: !!user?.email && !!localStorage.getItem(`access-token`),
     queryFn: async () => {
       const res = await axiosSecure.get(`/bioDatas/${user.email}`);
       return res.data;

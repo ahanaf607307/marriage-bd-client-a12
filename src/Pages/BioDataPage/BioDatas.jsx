@@ -7,13 +7,14 @@ import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import AllBioDataCard from "../../Shared/AllBioDataCard";
 import Title from "../../Shared/Title";
+import Loading from "../../Loading/Loading";
 
 function Biodatas() {
   const axiosPublic = useAxiosPublic();
   // const [match , setMatch] = useState(true)
   const [filters, setFilters] = useState({});
 
-  const { data: biodatas = [], refetch } = useQuery({
+  const { data: biodatas = [], refetch ,isLoading } = useQuery({
     queryKey: ["biodatas", filters],
     queryFn: async () => {
       // const params = new URLSearchParams(filters).toString();
@@ -48,6 +49,10 @@ function Biodatas() {
 
     refetch();
   };
+
+  if (isLoading) {
+    return <Loading/>;
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-5">

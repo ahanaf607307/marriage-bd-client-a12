@@ -14,7 +14,7 @@ import auth from "../firebase.init";
 export const AuthContext = createContext(null);
 
 function AuthProvider({ children }) {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const axiosPublic = useAxiosPublic();
 
@@ -53,34 +53,39 @@ function AuthProvider({ children }) {
     return signOut(auth);
   };
 
-  // onAuthState Change ->
+  
+
   useEffect(() => {
-    const unSubscribe = () => {
-      onAuthStateChanged(auth, (currenUser) => {
-        setUser(currenUser);
-        if (currenUser) {
-          const userInfo = {
-            email: currenUser.email,
-          };
-          axiosPublic.post("/jwt", userInfo).then((res) => {
-            if (res.data.token) {
-              localStorage.setItem("access-token", res.data.token);
-              setLoading(false);
-            }
-          });
-        } else {
-          localStorage.removeItem("access-token");
-          setLoading(false);
-        }
-      
-        console.log("currenUser is --->", currenUser);
-      });
-    };
+    const unSubscribe = onAuthStateChanged(auth, (currenUser) => {
+      if (currenUser) {
+        const userInfo = {
+          email: currenUser.email,
+        };
+        axiosPublic.post("/jwt", userInfo).then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("access-token", res.data.token);
+            console.log("live", res.data.token);
+            setLoading(false);
+            setUser(currenUser);
+          }
+        });
+      } else {
+        localStorage.removeItem("access-token");
+        setLoading(false);
+      }
+
+      console.log("currenUser is --->", currenUser);
+    });
+
     return () => {
       unSubscribe();
     };
-  }, [axiosPublic]);
-
+  }, []);
+  useEffect(() => {
+    if (user) {
+      setLoading(false);
+    }
+  }, [user]);
   const userInfo = {
     signUpNewUser,
     loginOldUser,

@@ -1,12 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
 import { Progress } from 'flowbite-react'
 import React from 'react'
+import useAuth from '../../Firebase/UseAuth/useAuth'
 import useAxiosSecure from '../../Hook/useAxiosSecure'
 
 function AdminDashboard() {
   const axiosSecure = useAxiosSecure()
+  const {user} = useAuth()
   const {data : adminDashboard = [] , isLoading} = useQuery({
     queryKey : ['adminDashboard'],
+    enabled: !!user?.email && !!localStorage.getItem(`access-token`),
     queryFn : async() => {
       const res = await axiosSecure.get("/biodatas/admin")
       return res.data

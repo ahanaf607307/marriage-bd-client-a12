@@ -12,6 +12,7 @@ function MyContactRequest() {
   const { user } = useAuth();
   const { data: contacts = [], refetch } = useQuery({
     queryKey: ["contacts"],
+    enabled: !!user?.email && !!localStorage.getItem(`access-token`),
     queryFn: async () => {
       const res = await axiosSecure.get(`/contact-request/${user.email}`);
       return res.data;

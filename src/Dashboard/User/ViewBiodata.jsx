@@ -10,6 +10,7 @@ function ViewBiodata() {
   const axiosSecure = useAxiosSecure();
   const { data: bio = [] } = useQuery({
     queryKey: ["bio"],
+    enabled: !!user?.email && !!localStorage.getItem(`access-token`),
     queryFn: async () => {
       const res = await axiosSecure.get(`/bioDatas/${user.email}`);
       return res.data;

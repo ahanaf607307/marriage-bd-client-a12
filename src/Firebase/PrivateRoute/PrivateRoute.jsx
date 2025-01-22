@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import useAuth from "../UseAuth/useAuth";
+import Loading from "../../Loading/Loading";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 function PrivateRoute({ children }) {
-  const { loading, user } = useAuth();
+  const { loading, user } = useContext(AuthContext);
   const location = useLocation();
-  console.log(loading)
+console.log('user private route' , user )
+  console.log('private route ----> ',loading)
 
   
   if (loading) {
-    return <h1> Loading ..  </h1>
-    // return <Loading/>;
+    return <Loading/>;
   }
   
 

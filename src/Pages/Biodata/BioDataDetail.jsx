@@ -10,6 +10,7 @@ function BioDataDetail({ bio }) {
 const axiosSecure = useAxiosSecure()
   const { data: users = [] } = useQuery({
     queryKey: [user?.email, "users"],
+    enabled: !!user?.email && !!localStorage.getItem(`access-token`),
     queryFn: async () => {
       const res = await axiosSecure.get(`/users/premium/${user?.email}`);
       return res.data;
@@ -20,6 +21,7 @@ const axiosSecure = useAxiosSecure()
 
   const { data: premiums = [], refetch } = useQuery({
     queryKey: ["premiums"],
+    enabled: !!user?.email && !!localStorage.getItem(`access-token`),
     queryFn: async () => {
       const res = await axiosSecure.get("/premiums");
       return res.data;

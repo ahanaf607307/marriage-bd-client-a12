@@ -8,12 +8,12 @@ import TitleDashboard from "../../Shared/TitleDashboard";
 
 function ManageUser() {
   const axiosSecure = useAxiosSecure();
-  const { loading } = useAuth();
+  const { user, loading } = useAuth();
   const [search, setSearch] = useState("");
 
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users", search],
-    enabled: !loading,
+    enabled: !!user?.email && !!localStorage.getItem(`access-token`),
     queryFn: async () => {
       const res = await axiosSecure.get(`/users?search=${search}`);
       return res.data;

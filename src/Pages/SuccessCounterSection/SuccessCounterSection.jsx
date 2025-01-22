@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
-import Title from "../../Shared/Title";
 import Loading from "../../Loading/Loading";
+import Title from "../../Shared/Title";
 
 function SuccessCounterSection() {
   const axiosPublic = useAxiosPublic();
+  const {user} = useAuth()
   const { data: homeCount = [], isLoading } = useQuery({
     queryKey: ["homeCount"],
     queryFn: async () => {
@@ -22,11 +24,13 @@ function SuccessCounterSection() {
 
   return (
     <div className="font-bannerFont flex flex-col justify-center items-center max-w-7xl mx-auto">
-      <Title
+     <div className="px-5">
+     <Title
         heading={`Our Success at a Glance`}
         title={`MarriageBD – Building relationships, one success story at a time!`}
       />
 
+     </div>
         {/* total biodata */}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-12 lg:gap-8 items-center justify-center ">

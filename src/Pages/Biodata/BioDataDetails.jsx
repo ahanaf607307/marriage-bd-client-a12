@@ -5,12 +5,12 @@ import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAdmin from "../../Hook/useAdmin";
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import useRole from "../../Hook/useRole";
 import BannarAll from "../../Shared/BannarAll";
 import Title from "../../Shared/Title";
 import SimilarBioCard from "./SimilarBioCard";
-import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 function BioDataDetails() {
   const axiosSecure = useAxiosSecure();
@@ -22,9 +22,9 @@ const [isAdmin] = useAdmin()
 
   const { user , loading} = useAuth();
   const { id } = useParams();
-  const { data: details = [] , isLoading } = useQuery({
+  const { data: details = []  } = useQuery({
     queryKey: ["details" , id],
-
+    enabled: !!user?.email && !!localStorage.getItem(`access-token`),
     queryFn: async () => {
       const res = await axiosSecure.get(`/details/${id}`);
       return res.data;
@@ -61,7 +61,7 @@ const [isAdmin] = useAdmin()
 // 3 similer data get api 
 const {data : similar = [] } = useQuery({
   queryKey : ['similarData' ] , 
-  enabled : !loading,
+  enabled: !!user?.email && !!localStorage.getItem(`access-token`),
   queryFn : async() => {
     const res = await axiosSecure.post(`/biodatas/for-gender?genderType=${details.genderType}`)
     return res.data

@@ -8,20 +8,20 @@ import '@smastrom/react-rating/style.css';
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import { Link } from "react-router-dom";
 
-function SuccessStory() {
+function ShowAllSuccessStory() {
 
   const axiosPublic = useAxiosPublic()
-  const { data: success = [] } = useQuery({
-    queryKey: ["success"],
+  const { data: successAll = [] } = useQuery({
+    queryKey: ["successAll"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/successStory/home`);
+      const res = await axiosPublic.get("/successStory");
       return res.data;
     },
   });
 
-  console.log("successStory------", success);
+  console.log("successStory------", successAll);
   return (
-    <div className="max-w-7xl mx-auto ">
+    <div  className="max-w-7xl mx-auto min-h-svh">
      <div className=" py-16 font-bannerFont px-2">
      <div>
         <Title
@@ -33,7 +33,7 @@ function SuccessStory() {
       </div>
       <div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-7 items-center justify-center md:gap-x-10 lg:gap-x-5 max-h-[510px] ">
         {/* cards */}
-        {success?.map((suc) => (
+        {successAll?.map((suc) => (
           <Link
           to={`/successStoryDetails/${suc?._id}`}
             key={suc?._id}
@@ -59,4 +59,4 @@ function SuccessStory() {
   );
 }
 
-export default SuccessStory;
+export default ShowAllSuccessStory;

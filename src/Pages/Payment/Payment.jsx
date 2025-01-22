@@ -1,11 +1,11 @@
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
+import { useQuery } from '@tanstack/react-query'
 import React from 'react'
+import { useParams } from 'react-router-dom'
+import useAuth from '../../Firebase/UseAuth/useAuth'
 import Title from '../../Shared/Title'
 import CheckOutForm from './CheckOutForm'
-import useAuth from '../../Firebase/UseAuth/useAuth'
-import { useParams } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
 
 import { FloatingLabel } from 'flowbite-react'
 import useAxiosSecure from '../../Hook/useAxiosSecure'
@@ -18,7 +18,7 @@ const {user} = useAuth()
   const { id } = useParams();
   const { data: details = []  } = useQuery({
     queryKey: ["details"],
-
+    enabled: !!user?.email && !!localStorage.getItem(`access-token`),
     queryFn: async () => {
       const res = await axiosSecure.get(`/details/${id}`);
       return res.data;
