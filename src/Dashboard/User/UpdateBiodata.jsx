@@ -5,11 +5,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
-import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 import { useQuery } from "@tanstack/react-query";
-import BannarAll from "../../Shared/BannarAll";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import BannarAll from "../../Shared/BannarAll";
 
 function UpdateBiodata() {
   const { user, loading } = useAuth();
@@ -151,7 +150,7 @@ function UpdateBiodata() {
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0 ">
             <div className="w-full">
               <div className="mb-2">
-                <Label htmlFor="countries" className="text-white/90" value="Select Date" />
+                <Label htmlFor="countries" className="text-white/90" value="Select Date Of Birth" />
               </div>
               <DatePicker
                 className=" border-b-2 border-t-0 border-r-0 border-l-0 border-b-white/90  px-3 text-white/90  py-2  w-[100%] cursor-pointer bg-transparent "
@@ -164,7 +163,7 @@ function UpdateBiodata() {
 
             <div className="w-full">
               <div className="mb-2">
-                <Label htmlFor="countries" className="text-white/90" value="Select Gender Type" />
+                <Label htmlFor="countries" className="text-white/90" value="Select Your Gender Type" />
               </div>
               <Select
               {...register("genderType", { required: true })}
@@ -181,7 +180,7 @@ function UpdateBiodata() {
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
           <div className="w-full">
               <div className="mb-2">
-                <Label htmlFor="countries" className="text-white/90" value="Select Height" />
+                <Label htmlFor="countries" className="text-white/90" value="Select Your Height" />
               </div>
               <Select
               {...register("height", { required: true })}
@@ -208,7 +207,7 @@ function UpdateBiodata() {
 
             <div className="w-full">
               <div className="mb-2">
-                <Label htmlFor="countries" className="text-white/90" value="Select Weight" />
+                <Label htmlFor="countries" className="text-white/90" value="Select Your Weight" />
               </div>
              <Select
               {...register("weight", { required: true })}
@@ -264,7 +263,7 @@ function UpdateBiodata() {
 
             <div className="w-full">
               <div className="mb-2">
-                <Label htmlFor="countries" className="text-white/90" value="Select Occupation" />
+                <Label htmlFor="countries" className="text-white/90" value="Select Your Occupation" />
               </div>
               <Select
               {...register("occupation", { required: true })}
@@ -308,7 +307,7 @@ function UpdateBiodata() {
             
             <div className="w-full">
               <div className="mb-2">
-                <Label htmlFor="countries" className="text-white/90" value="Select Partner Age" />
+                <Label htmlFor="countries" className="text-white/90" value="Select Partner Age You Expect" />
               </div>
               <Select
               {...register("partnerAge", { required: true })}
@@ -331,7 +330,7 @@ function UpdateBiodata() {
             </div>
             <div className="w-full">
               <div className="mb-2">
-                <Label htmlFor="countries" className="text-white/90" value="Select your Skin Color" />
+                <Label htmlFor="countries" className="text-white/90" value="Select Your Skin Color" />
               </div>
              <Select
               {...register("skinColor", { required: true })}
@@ -351,31 +350,32 @@ function UpdateBiodata() {
             
             <div className="w-full">
               <div className="mb-2">
-                <Label htmlFor="countries" className="text-white/90" value="Select Partner Height" />
+                <Label htmlFor="countries" className="text-white/90" value="Select Partner Height You Expect" />
               </div>
               <Select
               {...register("partnerHeight", { required: true })}
               name="partnerHeight"
               defaultValue={partnerHeight}
             >
-              <option value="40">40</option>
-              <option value="42">42</option>
-              <option value="44">44</option>
-              <option value="46">46</option>
-              <option value="48">48</option>
-              <option value="50 ">50 </option>
-              <option value="52 ">52</option>
-              <option value="54 ">54 </option>
-              <option value="58 ">58 </option>
-              <option value="60">60</option>
-              <option value="75">75</option>
-              <option value="80">80</option>
+               <option value="5">5</option>
+              <option value="5.1">5.1</option>
+              <option value="5.2 ">5.2 </option>
+              <option value="5.3">5.3</option>
+              <option value="5.4">5.4</option>
+              <option value="5.5">5.5</option>
+              <option value="5.6">5.6</option>
+              <option value="5.7">5.7</option>
+              <option value="5.8">5.8</option>
+              <option value="5.9">5.9</option>
+              <option value="5.10">5.10</option>
+              <option value="5.11">5.11</option>
+              <option value="6">6</option>
             </Select>
             </div>
 
             <div className="w-full">
               <div className="mb-2">
-                <Label htmlFor="countries" className="text-white/90" value="Select Partner Height" />
+                <Label htmlFor="countries" className="text-white/90" value="Select Partner Weight You Expect" />
               </div>
               <Select
               {...register("partnerWeight", { required: true })}
