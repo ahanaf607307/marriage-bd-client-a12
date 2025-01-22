@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import TitleDashboard from "../../Shared/TitleDashboard";
+import { Helmet } from "react-helmet-async";
 
 function ApprovedPremium() {
   const axiosSecure = useAxiosSecure();
@@ -62,7 +63,9 @@ function ApprovedPremium() {
 
   return (
     <div className="px-2 bg-banner1 bg-cover bg-center min-h-screen md:px-10">
-      
+      <Helmet>
+                          <title>Approve Premium | Admin | marriageBd</title>
+                        </Helmet>
       <div className='py-10'>
 <TitleDashboard heading={`Approved Premium`}  />
       </div>

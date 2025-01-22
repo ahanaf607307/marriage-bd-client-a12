@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { Progress } from 'flowbite-react'
 import React from 'react'
+import { Helmet } from 'react-helmet-async'
 import useAuth from '../../Firebase/UseAuth/useAuth'
 import useAxiosSecure from '../../Hook/useAxiosSecure'
 
@@ -23,6 +24,9 @@ function AdminDashboard() {
   console.log(adminDashboard)
   return (
     <div className='h-screen bg-banner1 bg-center bg-cover'>
+      <Helmet>
+                          <title>Admin Dashboard | Admin | marriageBd</title>
+                        </Helmet>
      <div className='flex flex-col justify-center items-center  pt-10'>
      <h1 className='text-white/90 text-3xl font-bannerFont md:text-4xl lg:text-5xl mb-2'>Admin Dashboard</h1>
      <p className={`text-white/90 `}>Here Admin Can See Total Anatics</p>

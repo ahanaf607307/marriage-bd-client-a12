@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Title from "../../Shared/Title";
+import { Helmet } from "react-helmet-async";
 
 function MyContactRequest() {
   const axiosSecure = useAxiosSecure();
@@ -58,6 +59,9 @@ function MyContactRequest() {
   console.log(contacts);
   return (
     <div className="font-bannerFont  mx-2">
+       <Helmet>
+                    <title>My Contact  | marriageBd</title>
+                  </Helmet>
       <Title heading={`My Contact Request`} />
       <div className="overflow-x-auto">
         <Table>

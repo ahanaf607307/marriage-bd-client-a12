@@ -7,6 +7,7 @@ import useAuth from "../../Firebase/UseAuth/useAuth";
 
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import BannarAll from "../../Shared/BannarAll";
+import { Helmet } from "react-helmet-async";
 
 function FavouritesBiodata() {
   const axiosSecure = useAxiosSecure();
@@ -59,6 +60,9 @@ function FavouritesBiodata() {
 
   return (
     <div>
+       <Helmet>
+                    <title>Favorite Biodata | marriageBd</title>
+                  </Helmet>
       <BannarAll bannerHeading={`See your favorite !`} />
       <div className="overflow-x-auto my-10 px-5 md:px-10">
         <Table>

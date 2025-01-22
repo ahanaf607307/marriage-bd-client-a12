@@ -7,6 +7,7 @@ import useAxiosPublic from "../../Hook/UseAxiosPublic";
 import GoogleLogin from "../../Shared/GoogleLogin";
 import TitleDashboard from "../../Shared/TitleDashboard";
 import useAuth from "../UseAuth/useAuth";
+import { Helmet } from "react-helmet-async";
 
 function SignUp() {
   const axiosPublic = useAxiosPublic();
@@ -64,6 +65,9 @@ function SignUp() {
 
   return (
     <div className="bg-login bg-cover bg-center object-cover min-h-screen flex flex-col justify-center items-center ">
+      <Helmet>
+              <title>Sign up | marriageBd</title>
+            </Helmet>
       <section className="pt-10 ">
         <TitleDashboard heading={`Signup Now`} />
       </section>

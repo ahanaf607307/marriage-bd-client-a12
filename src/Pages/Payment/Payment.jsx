@@ -9,6 +9,7 @@ import CheckOutForm from './CheckOutForm'
 
 import { FloatingLabel } from 'flowbite-react'
 import useAxiosSecure from '../../Hook/useAxiosSecure'
+import { Helmet } from 'react-helmet-async'
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_KEY)
 
@@ -28,6 +29,9 @@ const {user} = useAuth()
 
   return (
     <div className="px-4 md:max-w-sm lg:max-w-md xl:max-w-lg mx-auto">
+       <Helmet>
+                    <title>Payment Contact Request | marriageBd</title>
+                  </Helmet>
     <Title heading={`Pay Now`} title={`Pay 5 $ For See Contact Information . After Pay wait sometime . `} />
     <h1 className='text-center text-sm text-pink-500 my-2'>Copy to use for test</h1>
     <h1 className='text-center text-sm text-pink-500 my-5'>Test Card : 4242 4242 4242 4242  Date : 5/26 CVC : 123 ZIP : 42424</h1>

@@ -5,6 +5,7 @@ import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import BioDataDetail from "../../Pages/Biodata/BioDataDetail";
 import Title from "../../Shared/Title";
+import { Helmet } from "react-helmet-async";
 
 function ViewBiodata() {
   const { user } = useAuth();
@@ -20,6 +21,9 @@ function ViewBiodata() {
 console.log('view biodata' , bio)
   return (
     <div>
+       <Helmet>
+                    <title>View Biodata | marriageBd</title>
+                  </Helmet>
       <Title heading={`View Your Bio Data `} />
 
      

@@ -7,6 +7,7 @@ import useAuth from '../../Firebase/UseAuth/useAuth';
 import useAxiosPublic from '../../Hook/useAxiosPublic';
 import TitleDashboard from '../../Shared/TitleDashboard';
 import useAxiosSecure from '../../Hook/useAxiosSecure';
+import { Helmet } from 'react-helmet-async';
 
 function ContactRequest() {
   const axiosSecure = useAxiosSecure();
@@ -57,6 +58,9 @@ function ContactRequest() {
   
   return (
     <div className="font-bannerFont bg-banner1 bg-cover bg-center min-h-screen  mx-2">
+      <Helmet>
+                          <title>Accept Contact Request | Admin | marriageBd</title>
+                        </Helmet>
     <div className='py-10'>
     <TitleDashboard heading={`Approved contact request`} />
     </div>

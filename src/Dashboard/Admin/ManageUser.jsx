@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import TitleDashboard from "../../Shared/TitleDashboard";
+import { Helmet } from "react-helmet-async";
 
 function ManageUser() {
   const axiosSecure = useAxiosSecure();
@@ -54,6 +55,9 @@ function ManageUser() {
 
   return (
     <div className=" md:px-10 bg-banner1 bg-cover bg-center min-h-screen">
+       <Helmet>
+                    <title>Manage User | Admin | marriageBd</title>
+                  </Helmet>
       <div className="py-10">
         <TitleDashboard heading={`Manage User `} />
       </div>

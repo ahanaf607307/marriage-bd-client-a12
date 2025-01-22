@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import BannarAll from "../../Shared/BannarAll";
 
@@ -47,7 +48,7 @@ function UpdateBiodata() {
   const {
     register,
     handleSubmit,
-    reset,
+   
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
@@ -118,6 +119,9 @@ function UpdateBiodata() {
 
   return (
     <div>
+      <Helmet>
+        <title>Update Biodata</title>
+      </Helmet>
       <BannarAll bannerHeading={`"Update Your Matrimonial Profile"`} />
 
       <div className=" max-w-[90%]  xl:max-w-[80%] mx-auto my-10 bg-pink-400 p-5 md:p-10">
@@ -127,9 +131,9 @@ function UpdateBiodata() {
         >
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
             <FloatingLabel
-              {...register("name", { required: true })}
+              {...register("name" )}
               name="name"
-              defaultValue={name}
+              defaultValue={bioData?.name}
               type="text"
               className="text-black/80"
               variant="filled"
@@ -137,9 +141,9 @@ function UpdateBiodata() {
             />
 
             <FloatingLabel
-              {...register("imageLink", { required: true })}
+              {...register("imageLink" )}
               name="imageLink"
-              defaultValue={imageLink}
+              defaultValue={bioData?.imageLink}
               type="url"
               className="text-black/80"
               variant="filled"
@@ -154,7 +158,7 @@ function UpdateBiodata() {
               </div>
               <DatePicker
                 className=" border-b-2 border-t-0 border-r-0 border-l-0 border-b-white/90  px-3 text-white/90  py-2  w-[100%] cursor-pointer bg-transparent "
-                defaultValue={date}
+                defaultValue={bioData?.date}
                 type="date"
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
@@ -166,8 +170,8 @@ function UpdateBiodata() {
                 <Label htmlFor="countries" className="text-white/90" value="Select Your Gender Type" />
               </div>
               <Select
-              {...register("genderType", { required: true })}
-              defaultValue={genderType}
+              {...register("genderType" )}
+              defaultValue={bioData?.genderType}
             >
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -183,9 +187,9 @@ function UpdateBiodata() {
                 <Label htmlFor="countries" className="text-white/90" value="Select Your Height" />
               </div>
               <Select
-              {...register("height", { required: true })}
+              {...register("height" )}
               name="height"
-              defaultValue={height}
+              defaultValue={bioData?.height}
             >
               <option value="5">5</option>
               <option value="5.1">5.1</option>
@@ -210,9 +214,9 @@ function UpdateBiodata() {
                 <Label htmlFor="countries" className="text-white/90" value="Select Your Weight" />
               </div>
              <Select
-              {...register("weight", { required: true })}
+              {...register("weight" )}
               name="weight"
-              defaultValue={weight}
+              defaultValue={bioData?.weight}
             >
               <option value="" disabled>
                 Select your weight
@@ -240,9 +244,9 @@ function UpdateBiodata() {
                 <Label htmlFor="countries" className="text-white/90" value="Select Your Age" />
               </div>
               <Select
-              {...register("age", { required: true })}
+              {...register("age" )}
               name="age"
-              defaultValue={age}
+              defaultValue={bioData?.age}
             >
               <option value="18">18</option>
               <option value="19">19</option>
@@ -266,9 +270,9 @@ function UpdateBiodata() {
                 <Label htmlFor="countries" className="text-white/90" value="Select Your Occupation" />
               </div>
               <Select
-              {...register("occupation", { required: true })}
+              {...register("occupation" )}
               name="occupation"
-              defaultValue={occupation}
+              defaultValue={bioData?.occupation}
             >
               <option value="Job Holder">Job Holder</option>
               <option value="Studeng">Studeng</option>
@@ -283,9 +287,9 @@ function UpdateBiodata() {
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
            
             <FloatingLabel
-              {...register("fathersName", { required: true })}
+              {...register("fathersName" )}
               name="fathersName"
-              defaultValue={fathersName}
+              defaultValue={bioData?.fathersName}
               type="text"
               className="text-black/80"
               variant="filled"
@@ -293,9 +297,9 @@ function UpdateBiodata() {
             />
 
             <FloatingLabel
-              {...register("mothersName", { required: true })}
+              {...register("mothersName" )}
               name="mothersName"
-              defaultValue={mothersName}
+              defaultValue={bioData?.mothersName}
               type="text"
               className="text-black/80"
               variant="filled"
@@ -310,9 +314,9 @@ function UpdateBiodata() {
                 <Label htmlFor="countries" className="text-white/90" value="Select Partner Age You Expect" />
               </div>
               <Select
-              {...register("partnerAge", { required: true })}
+              {...register("partnerAge" )}
               name="partnerAge"
-              defaultValue={partnerAge}
+              defaultValue={bioData?.partnerAge}
             >
               <option value="18">18</option>
               <option value="19">19</option>
@@ -333,9 +337,9 @@ function UpdateBiodata() {
                 <Label htmlFor="countries" className="text-white/90" value="Select Your Skin Color" />
               </div>
              <Select
-              {...register("skinColor", { required: true })}
+              {...register("skinColor" )}
               name="skinColor"
-              defaultValue={skinColor}
+              defaultValue={bioData?.skinColor}
             >
               <option value="Fair">Fair</option>
               <option value="Medium">Medium</option>
@@ -353,9 +357,9 @@ function UpdateBiodata() {
                 <Label htmlFor="countries" className="text-white/90" value="Select Partner Height You Expect" />
               </div>
               <Select
-              {...register("partnerHeight", { required: true })}
+              {...register("partnerHeight" )}
               name="partnerHeight"
-              defaultValue={partnerHeight}
+              defaultValue={bioData?.partnerHeight}
             >
                <option value="5">5</option>
               <option value="5.1">5.1</option>
@@ -378,9 +382,9 @@ function UpdateBiodata() {
                 <Label htmlFor="countries" className="text-white/90" value="Select Partner Weight You Expect" />
               </div>
               <Select
-              {...register("partnerWeight", { required: true })}
+              {...register("partnerWeight" )}
               name="partnerWeight"
-              defaultValue={partnerWeight}
+              defaultValue={bioData?.partnerWeight}
             >
               <option value="40">40</option>
               <option value="42">42</option>
@@ -406,10 +410,10 @@ function UpdateBiodata() {
                 <Label htmlFor="countries" className="text-white/90" value="Select Your Permanent Division" />
               </div>
                <Select
-              {...register("permanentDivision", { required: true })}
+              {...register("permanentDivision" )}
               name="permanentDivision"
               id="countries"
-              defaultValue={permanentDivision}
+              defaultValue={bioData?.permanentDivision}
             >
               <option>Dhaka</option>
               <option>Chattagram</option>
@@ -426,10 +430,10 @@ function UpdateBiodata() {
                 <Label htmlFor="countries" className="text-white/90" value="Select Your Present Division " />
               </div>
               <Select
-              {...register("presentDivision", { required: true })}
+              {...register("presentDivision" )}
               name="presentDivision"
               id="countries"
-              defaultValue={presentDivision}
+              defaultValue={bioData?.presentDivision}
             >
               <option>Dhaka</option>
               <option>Chattagram</option>
@@ -445,16 +449,16 @@ function UpdateBiodata() {
 
           <section className="grid grid-cols-1 lg:grid-cols-2 items-center lg:gap-x-5 my-7 gap-y-7 lg:gap-y-0">
             <FloatingLabel
-              {...register("mobileNumber", { required: true })}
+              {...register("mobileNumber" )}
               name="mobileNumber"
-              defaultValue={mobileNumber}
+              defaultValue={bioData?.mobileNumber}
               type="number"
               className="text-black/80"
               variant="filled"
               label="Mobile Number"
             />
             <FloatingLabel
-              {...register("email", { required: true })}
+              {...register("email" )}
               name="email"
               className="text-black/80"
               variant="filled"

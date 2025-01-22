@@ -4,6 +4,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import Title from "../../Shared/Title";
+import { Helmet } from "react-helmet-async";
 
 function SuccessStoryDetails() {
   const axiosPublic = useAxiosPublic();
@@ -19,6 +20,9 @@ function SuccessStoryDetails() {
 
   return (
     <div className="max-w-7xl mx-auto my-10">
+       <Helmet>
+                    <title>Success Story Details | marriageBd</title>
+                  </Helmet>
       <div className="my-10 px-2 md:px-24 lg:px-36">
         <Title heading={`A Beautiful Beginning ! Biodata Id -  ${successDetails?.partnerBiodataId} & ${successDetails?.
 selfBiodataId

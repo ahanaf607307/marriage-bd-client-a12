@@ -8,6 +8,7 @@ import useAuth from "../../Firebase/UseAuth/useAuth";
 
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import BannarAll from "../../Shared/BannarAll";
+import { Helmet } from "react-helmet-async";
 
 function CreateBiodata() {
   const { user, loading } = useAuth();
@@ -86,6 +87,9 @@ function CreateBiodata() {
 
   return (
     <div>
+       <Helmet>
+                    <title>Create Biodata | marriageBd</title>
+                  </Helmet>
       <div>
         <BannarAll bannerHeading={`"Build Your Matrimonial Profile"`} />
 

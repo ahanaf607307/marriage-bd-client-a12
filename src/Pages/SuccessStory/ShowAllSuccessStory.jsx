@@ -9,6 +9,7 @@ import { Select } from "flowbite-react";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import Loading from "../../Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 function ShowAllSuccessStory() {
 
@@ -41,6 +42,9 @@ function ShowAllSuccessStory() {
   console.log("successStory------", successAll);
   return (
     <div  className="max-w-7xl mx-auto ">
+       <Helmet>
+                    <title>All Success Story | marriageBd</title>
+                  </Helmet>
      <div className=" my-16 font-bannerFont px-2">
      <div>
         <Title

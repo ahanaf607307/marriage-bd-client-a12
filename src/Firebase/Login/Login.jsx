@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import GoogleLogin from "../../Shared/GoogleLogin";
 import TitleDashboard from "../../Shared/TitleDashboard";
 import useAuth from "../UseAuth/useAuth";
+import { Helmet } from "react-helmet-async";
 
 function Login() {
   const { loginOldUser, setUser } = useAuth();
@@ -41,6 +42,9 @@ function Login() {
   };
   return (
     <div className="bg-login bg-cover bg-center object-cover min-h-screen flex flex-col justify-center items-center ">
+       <Helmet>
+                    <title>Login | marriageBd</title>
+                  </Helmet>
       <section className="pt-10 ">
         <TitleDashboard heading={`Login Now`} />
       </section>

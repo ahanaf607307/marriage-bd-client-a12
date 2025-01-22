@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Title from "../../Shared/Title";
+import { Helmet } from "react-helmet-async";
 
 function CreateSuccessStory() {
   const [startDate, setStartDate] = useState(new Date());
@@ -53,6 +54,9 @@ function CreateSuccessStory() {
   };
   return (
     <div>
+       <Helmet>
+                    <title>Create Success Story | marriageBd</title>
+                  </Helmet>
       <Title heading={`Create Success Story`} title={``} />
       <div>
         <div className="flex flex-col justify-center items-center w-full md:min-w-[500px] max-w-xl mx-auto backdrop-blur-xl bg-pink-600/20 p-4 md:p-10 rounded-xl mt-8 ">
