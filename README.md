@@ -4,13 +4,13 @@
 
 ## Live Link
 
-## 🔗 Links https://marriagebd-fd2af.web.app/
+## 🔗 Links https://marriage-bd.web.app
 
 ---
 
 # Admin Email :- marriagebd@gmail.com
 
-# Admin Passwprd :- @marriagebd
+# Admin Password :- @marriagebd
 
 ---
 
@@ -89,15 +89,3 @@ The purpose of the matrimonial website "Marriage BD" can be :
 - `cors`
 - `dotenv`
 - `jwt`
-
-## Live Site Link :
-
-- 🔗 https://marriagebd-fd2af.web.app/
-
-## GitHub Repository ( server ) :
-
-- 🔗 https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-ahanaf607307
-
-## GitHub Repository ( client ) :
-
-- 🔗 https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-ahanaf607307
