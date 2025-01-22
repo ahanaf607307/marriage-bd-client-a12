@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { Link } from "react-router-dom";
 import useAuth from "../../Firebase/UseAuth/useAuth";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 import BioDataDetail from "../../Pages/Biodata/BioDataDetail";
 import Title from "../../Shared/Title";
-import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 function ViewBiodata() {
   const { user } = useAuth();
@@ -22,7 +23,9 @@ console.log('view biodata' , bio)
       <Title heading={`View Your Bio Data `} />
 
      
-        <BioDataDetail  bio={bio} />
+       {
+        bio?  <BioDataDetail  bio={bio} /> : <h1 className="text-2xl font-semibold font-bannerFont text-center my-20 text-pink-500 md:px-44">No Data Added . Please Create Your Biodata . go to <Link className="text-purple-500 underline" to='/dashboard/editBiodata'>Create Biodata</Link> </h1>
+       }
     
     </div>
   );

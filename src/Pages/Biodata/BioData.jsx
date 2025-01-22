@@ -28,7 +28,7 @@ function BioData() {
     <div className="max-w-7xl mx-auto ">
       <section className="my-">
         <Title
-          heading={`Browse Profiles`}
+          heading={`Browse Premium Profiles`}
           title={`Get started with marriageBD.com `}
           titleFont={`md`}
         />

@@ -11,7 +11,7 @@ import React, { createContext, useEffect, useState } from "react";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import auth from "../firebase.init";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -65,13 +65,14 @@ function AuthProvider({ children }) {
           if (res.data.token) {
             localStorage.setItem("access-token", res.data.token);
             console.log("live", res.data.token);
-            setLoading(false);
             setUser(currenUser);
+            setLoading(false);
           }
         });
       } else {
         localStorage.removeItem("access-token");
         setLoading(false);
+        setUser(currenUser);
       }
 
       console.log("currenUser is --->", currenUser);
@@ -81,11 +82,7 @@ function AuthProvider({ children }) {
       unSubscribe();
     };
   }, []);
-  useEffect(() => {
-    if (user) {
-      setLoading(false);
-    }
-  }, [user]);
+
   const userInfo = {
     signUpNewUser,
     loginOldUser,

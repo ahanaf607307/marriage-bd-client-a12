@@ -8,6 +8,7 @@ import useAdmin from "../../Hook/useAdmin";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import useRole from "../../Hook/useRole";
+import Loading from "../../Loading/Loading";
 import BannarAll from "../../Shared/BannarAll";
 import Title from "../../Shared/Title";
 import SimilarBioCard from "./SimilarBioCard";
@@ -59,8 +60,8 @@ const [isAdmin] = useAdmin()
  
 
 // 3 similer data get api 
-const {data : similar = [] } = useQuery({
-  queryKey : ['similarData' ] , 
+const {data : similar = [] , isLoading } = useQuery({
+  queryKey : [user?.email,'similarData',details?.genderType ] , 
   enabled: !!user?.email && !!localStorage.getItem(`access-token`),
   queryFn : async() => {
     const res = await axiosSecure.post(`/biodatas/for-gender?genderType=${details.genderType}`)
@@ -113,7 +114,7 @@ const {data : similar = [] } = useQuery({
   };
 
  
-
+console.log('isLoading in similar data' , isLoading)
   console.log('similar data ---> ',similar)
   return (
     <div className="font-bannerFont ">
@@ -275,9 +276,13 @@ const {data : similar = [] } = useQuery({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           
           
-          {
+         {
+          isLoading ? <Loading/> : <>
+           {
            similar && similar?.map(similarCard => <SimilarBioCard key={similarCard?._id} similarCard={similarCard}  />)
           }
+          </>
+         }
 
         </div>
       </div>

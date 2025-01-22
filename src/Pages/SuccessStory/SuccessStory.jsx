@@ -1,15 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import Title from "../../Shared/Title";
 
 
 import { Rating } from "@mui/material";
 import '@smastrom/react-rating/style.css';
-import useAxiosPublic from "../../Hook/useAxiosPublic";
+import { Select } from "flowbite-react";
 import { Link } from "react-router-dom";
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 function SuccessStory() {
-
+ const [sortOrder, setSortOrder] = useState("Ascending");
   const axiosPublic = useAxiosPublic()
   const { data: success = [] } = useQuery({
     queryKey: ["success"],
@@ -18,6 +19,20 @@ function SuccessStory() {
       return res.data;
     },
   });
+  const storiesWithDate = success.map((story) => ({
+    ...story,
+    dateOnly: new Date(story?.marriageDate).toISOString().split("T")[0],
+  }));
+
+  const sortedStory = storiesWithDate.sort((a, b) => {
+    const dateA = new Date(a.dateOnly);
+    const dateB = new Date(b.dateOnly);
+
+    return sortOrder === "Ascending"
+      ? dateA - dateB
+      : dateB - dateA;
+  });
+ 
 
   console.log("successStory------", success);
   return (
@@ -31,9 +46,19 @@ function SuccessStory() {
           paddingTitle={`56`}
         />
       </div>
-      <div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-7 items-center justify-center md:gap-x-10 lg:gap-x-5 max-h-[510px] ">
+ <div className="flex justify-between items-center my-5 px-6 ">
+        <h1 className=" font-bannerFont">Sort by <span className="text-pink-500 font-semibold text-lg">"Marriage Date"</span> </h1>
+        <Select
+          defaultValue="Ascending"
+          onChange={(e) => setSortOrder(e.target.value)} 
+        >
+          <option value="Ascending">Ascending</option>
+          <option value="Descending">Descending</option>
+        </Select>
+      </div>
+      <div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-7 items-center justify-center md:gap-x-10 lg:gap-x-5 ">
         {/* cards */}
-        {success?.map((suc) => (
+        {sortedStory?.map((suc) => (
           <Link
           to={`/successStoryDetails/${suc?._id}`}
             key={suc?._id}

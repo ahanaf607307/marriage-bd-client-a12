@@ -55,7 +55,7 @@ function CreateSuccessStory() {
     <div>
       <Title heading={`Create Success Story`} title={``} />
       <div>
-        <div className="flex flex-col justify-center items-center w-screen md:min-w-[500px] max-w-xl mx-auto backdrop-blur-xl bg-pink-600/20 p-4 md:p-10 rounded-xl mt-8 ">
+        <div className="flex flex-col justify-center items-center w-full md:min-w-[500px] max-w-xl mx-auto backdrop-blur-xl bg-pink-600/20 p-4 md:p-10 rounded-xl mt-8 ">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex w-full flex-col gap-4 "

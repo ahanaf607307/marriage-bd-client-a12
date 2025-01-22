@@ -9,7 +9,7 @@ import useAuth from "../UseAuth/useAuth";
 
 function Login() {
   const { loginOldUser, setUser } = useAuth();
-  const [errorFound , setErrorFound] = useState('')
+  const [errorFound, setErrorFound] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const {
@@ -22,28 +22,28 @@ function Login() {
     const password = data.password;
 
     loginOldUser(email, password)
-    .then((res) => {
-      setUser(res.user);
+      .then((res) => {
+        setUser(res.user);
 
-      Swal.fire({
+        Swal.fire({
           position: "top-end",
           icon: "success",
           title: "Login Successfull",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
-      navigate(location?.state ? location.state : "/");
-    })
-    .catch(error => {
-console.log('error from login user --->' , error.message)
-setErrorFound(error.message)
-    })
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log("error from login user --->", error.message);
+        setErrorFound(error.message);
+      });
   };
   return (
     <div className="bg-login bg-cover bg-center object-cover min-h-screen flex flex-col justify-center items-center ">
-   <section className="pt-10 ">
-   <TitleDashboard heading={`Login Now`}/>
-   </section>
+      <section className="pt-10 ">
+        <TitleDashboard heading={`Login Now`} />
+      </section>
 
       {/* Login form */}
       <div className="flex flex-col justify-center items-center w-screen md:min-w-[500px] max-w-xl mx-auto backdrop-blur-xl bg-white/10 p-4 md:p-10 rounded-xl mt-8 ">
@@ -68,16 +68,28 @@ setErrorFound(error.message)
             label="Password"
           />
 
-          <button className="text-white/90 font-semibold hover:scale-105 bg-pink-500 rounded-xl px-3 py-2 duration-100" type="submit">Login</button>
+          <button
+            className="text-white/90 font-semibold hover:scale-105 bg-pink-500 rounded-xl px-3 py-2 duration-100"
+            type="submit"
+          >
+            Login
+          </button>
         </form>
-        <GoogleLogin/>
-        <p className="text-md block text-start mt-5 text-white">New user ?<Link className="underline text-red-500 font-bannerFont px-2" to='/signUp'>Signup </Link>Now </p>
+        <GoogleLogin />
+        <p className="text-md block text-start mt-5 text-white">
+          New user ?
+          <Link
+            className="underline text-red-500 font-bannerFont px-2"
+            to="/signUp"
+          >
+            Signup{" "}
+          </Link>
+          Now{" "}
+        </p>
         <p className="text-lg  font-bannerFont text-center text-pink-600 bg-white/70 px-3 py-2 rounded-xl  mt-6">
           {errorFound}
         </p>
       </div>
-      
-     
     </div>
   );
 }

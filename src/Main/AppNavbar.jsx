@@ -1,18 +1,19 @@
 import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo/logo.png";
 import useAuth from "../Firebase/UseAuth/useAuth";
 import useAdmin from "../Hook/useAdmin";
 
 function AppNavbar() {
   const [isAdmin] = useAdmin();
+  const navigate = useNavigate();
 
   const { user, logOutUser } = useAuth();
 
   const handleLogout = () => {
     logOutUser().then((res) => {
-      console.log("user Logged Out --> ", res.user);
+      navigate("/login");
     });
   };
   return (
@@ -23,7 +24,7 @@ function AppNavbar() {
     >
       <NavLink to="/" className="flex items-center gap-x-2">
         <img src={logo} className=" h-6 sm:h-9" alt="Flowbite React Logo" />
-        <span className="self-center whitespace-nowrap text-xl font-semibold text-white/90 font-logoFont">
+        <span className="self-center whitespace-nowrap md:text-xl font-semibold text-white/90 font-logoFont">
           marriageBD
         </span>
       </NavLink>
@@ -33,10 +34,11 @@ function AppNavbar() {
           arrowIcon={false}
           inline
           label={
-            <Avatar
-              alt="User settings"
-              className="border-2 rounded-full mr-2"
-              img={user?.photoURL}
+            <img
+              alt="User img"
+              refferrerPolicy="no-reffer"
+              className="border-2 h-10 md:h-12 w-10 md:w-12 rounded-full mr-2"
+              src={user?.photoURL}
               rounded
             />
           }
@@ -50,7 +52,7 @@ function AppNavbar() {
           </Dropdown.Header>
           <Dropdown.Divider />
           {user ? (
-            <Button onClick={handleLogout}>Logout</Button>
+            <Button onClick={() => handleLogout()}>Logout</Button>
           ) : (
             <div className="flex justify-around items-center gap-2">
               <Link to="/login">
@@ -72,7 +74,11 @@ function AppNavbar() {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `block   ${isActive ? "text-white/90 border-2 border-pink-600 border-b-0 px-2 rounded-xl" : "text-white/90"}`
+            `block   ${
+              isActive
+                ? "text-white/90 border-2 border-pink-600 border-b-0 px-2 rounded-xl"
+                : "text-white/90"
+            }`
           }
         >
           Home
@@ -80,7 +86,11 @@ function AppNavbar() {
         <NavLink
           to="/bioDatas"
           className={({ isActive }) =>
-            `block   ${isActive ? "text-white/90 border-2 border-pink-600 border-b-0 px-2 rounded-xl" : "text-white/90"}`
+            `block   ${
+              isActive
+                ? "text-white/90 border-2 border-pink-600 border-b-0 px-2 rounded-xl"
+                : "text-white/90"
+            }`
           }
         >
           {" "}
@@ -89,7 +99,11 @@ function AppNavbar() {
         <NavLink
           to="/aboutUs"
           className={({ isActive }) =>
-            `block   ${isActive ? "text-white/90 border-2 border-pink-600 border-b-0 px-2 rounded-xl" : "text-white/90"}`
+            `block   ${
+              isActive
+                ? "text-white/90 border-2 border-pink-600 border-b-0 px-2 rounded-xl"
+                : "text-white/90"
+            }`
           }
         >
           {" "}
@@ -98,7 +112,11 @@ function AppNavbar() {
         <NavLink
           to="/contactUs"
           className={({ isActive }) =>
-            `block   ${isActive ? "text-white/90 border-2 border-pink-600 border-b-0 px-2 rounded-xl" : "text-white/90"}`
+            `block   ${
+              isActive
+                ? "text-white/90 border-2 border-pink-600 border-b-0 px-2 rounded-xl"
+                : "text-white/90"
+            }`
           }
         >
           Contact Us
@@ -106,7 +124,11 @@ function AppNavbar() {
         <NavLink
           to="/showAllSuccessStory"
           className={({ isActive }) =>
-            `block   ${isActive ? "text-white/90 border-2 border-pink-600 border-b-0 px-2 rounded-xl" : "text-white/90"}`
+            `block   ${
+              isActive
+                ? "text-white/90 border-2 border-pink-600 border-b-0 px-2 rounded-xl"
+                : "text-white/90"
+            }`
           }
         >
           All Success Story
@@ -116,7 +138,11 @@ function AppNavbar() {
             <NavLink
               to="/dashboard/adminDashboard"
               className={({ isActive }) =>
-                `block ${isActive ? "text-white/90 border-2 border-pink-600 border-b-0 px-2 rounded-xl" : "text-white/90"}`
+                `block ${
+                  isActive
+                    ? "text-white/90 border-2 border-pink-600 border-b-0 px-2 rounded-xl"
+                    : "text-white/90"
+                }`
               }
             >
               Dashboard
@@ -125,7 +151,11 @@ function AppNavbar() {
             <NavLink
               to="/dashboard/editBiodata"
               className={({ isActive }) =>
-                `block ${isActive ? "text-white/90 border-2 border-pink-600 border-b-0 px-2 rounded-xl" : "text-white/90"}`
+                `block ${
+                  isActive
+                    ? "text-white/90 border-2 border-pink-600 border-b-0 px-2 rounded-xl"
+                    : "text-white/90"
+                }`
               }
             >
               Dashboard
