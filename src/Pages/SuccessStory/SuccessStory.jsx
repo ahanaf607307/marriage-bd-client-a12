@@ -64,7 +64,7 @@ function SuccessStory() {
             key={suc?._id}
             className=" relative flex flex-col  rounded-md bg-white"
           >
-            <img className="w-full h-2/5 object-cover rounded-t-md" src={suc?.coupleImageLink} alt="" />
+            <img className="h-64 w-full object-cover rounded-t-md" src={suc?.coupleImageLink} alt="" />
             <div className="px-3 py-5 flex-1 flex flex-col justify-between ">
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white ">
             <Rating name="half-rating-read" defaultValue={suc?.rating} precision={0.5} readOnly />

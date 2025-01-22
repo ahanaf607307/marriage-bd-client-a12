@@ -8,12 +8,13 @@ import '@smastrom/react-rating/style.css';
 import { Select } from "flowbite-react";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
+import Loading from "../../Loading/Loading";
 
 function ShowAllSuccessStory() {
 
   const axiosPublic = useAxiosPublic()
   const [sortOrder, setSortOrder] = useState("Ascending");
-  const { data: successAll = [] } = useQuery({
+  const { data: successAll = [] , isLoading } = useQuery({
     queryKey: ["successAll"],
     queryFn: async () => {
       const res = await axiosPublic.get("/successStory");
@@ -59,7 +60,10 @@ function ShowAllSuccessStory() {
                 <option value="Descending">Descending</option>
               </Select>
             </div>
-      <div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-7 items-center justify-center md:gap-x-10 lg:gap-x-5  ">
+      {
+        isLoading ? <Loading/> : <>
+        
+        <div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-7 items-center justify-center md:gap-x-10 lg:gap-x-5  ">
         {/* cards */}
         {sortedStory?.map((suc) => (
           <Link
@@ -82,6 +86,8 @@ function ShowAllSuccessStory() {
                     </Link>
         ))}
       </div>
+        </>
+      }
      </div>
     </div>
   );
