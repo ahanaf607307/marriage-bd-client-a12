@@ -10,7 +10,7 @@
 
 # Admin Email :- marriagebd@gmail.com
 
-# Admin Password :- @marriagebd
+# Admin Password :- 
 
 ---
 
