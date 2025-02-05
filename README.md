@@ -98,6 +98,12 @@ The purpose of the matrimonial website "Marriage BD" can be :
 
 - npm install
 - npm install firebase
+- npm install axios
+- npm i @tanstack/react-query
+- npm install react-icons --save
+- npm install react-router-dom
+- npm i flowbite-react
+- npm install tailwindcss @tailwindcss/vite
 
 ### Firebase
 
