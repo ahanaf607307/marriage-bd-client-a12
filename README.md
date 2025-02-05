@@ -10,7 +10,7 @@
 
 # Admin Email :- marriagebd@gmail.com
 
-# Admin Password :- 
+# Admin Password :-
 
 ---
 
@@ -90,6 +90,24 @@ The purpose of the matrimonial website "Marriage BD" can be :
 - `dotenv`
 - `jwt`
 
+---
 
+## Dependencies used
 
+### Run Locally
 
+- npm install
+- npm install firebase
+
+### Firebase
+
+VITE_apiKey='your key'
+VITE_authDomain='your key'
+VITE_projectId='your key'
+VITE_storageBucket='your key'
+VITE_messagingSenderId='your key'
+VITE_appId='your key'
+
+### Your Server Url
+
+- VITE_API='your localhost / server side link'
