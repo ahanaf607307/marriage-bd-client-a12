@@ -1,13 +1,14 @@
 import { FloatingLabel } from "flowbite-react";
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { imageUpload } from "../../api/imagebb";
 import useAxiosPublic from "../../Hook/UseAxiosPublic";
 import GoogleLogin from "../../Shared/GoogleLogin";
 import TitleDashboard from "../../Shared/TitleDashboard";
 import useAuth from "../UseAuth/useAuth";
-import { Helmet } from "react-helmet-async";
 
 function SignUp() {
   const axiosPublic = useAxiosPublic();
@@ -22,15 +23,21 @@ function SignUp() {
     reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const email = data.email;
     const password = data.password;
     const name = data.name;
-    const photoUrl = data.photoUrl;
+const imageFile = data.imageFile[0]
+
+   
     const signUpInfo = {
       email,
       password,
     };
+    
+// upload image url by imageBB
+
+const photoUrl = await imageUpload(imageFile)
 
     signUpNewUser(email, password)
       .then((res) => {
@@ -88,12 +95,13 @@ function SignUp() {
           />
 
           <FloatingLabel
-            {...register("photoUrl", { required: true })}
-            type="url"
-            name="photoUrl"
+            {...register("imageFile", { required: true })}
+            type="file"
+            name="imageFile"
             className="w-full"
             variant="filled"
             label="Photo url"
+            accept="image/*"
           />
 
           <FloatingLabel

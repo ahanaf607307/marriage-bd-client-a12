@@ -1,4 +1,4 @@
-import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
+import { Button, Dropdown, Navbar } from "flowbite-react";
 import React from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo/logo.png";
@@ -10,7 +10,7 @@ function AppNavbar() {
   const navigate = useNavigate();
 
   const { user, logOutUser } = useAuth();
-
+console.log(user?.photoURL)
   const handleLogout = () => {
     logOutUser().then((res) => {
       navigate("/login");
