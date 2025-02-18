@@ -5,9 +5,9 @@ import AppNavbar from './AppNavbar'
 
 function Mainlayout() {
   return (
-    <div className='bg-pink-50 flex flex-col min-h-screen'>
+    <div className=' '>
      <div><AppNavbar/></div>
-     <div className='my-20 flex-1'><Outlet/></div>
+     <div className='pt-20 min-h-[calc(100vh-68px)]'><Outlet/></div>
      <div><AppFooter/></div>
     </div>
   )

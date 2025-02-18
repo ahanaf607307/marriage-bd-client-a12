@@ -1,4 +1,4 @@
-import { Button, Dropdown, Navbar } from "flowbite-react";
+import { Button, DarkThemeToggle, Dropdown, Navbar } from "flowbite-react";
 import React from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo/logo.png";
@@ -17,12 +17,14 @@ console.log(user?.photoURL)
     });
   };
   return (
-    <Navbar
+  <div className="fixed top-0 w-full  z-50  bg-pink-400 ">
+      <Navbar
       fluid
       rounded
-      className="fixed top-0 w-full py-5  z-50 bg-pink-400 px-5"
+      className="bg-pink-400 py-5 px-5 max-w-7xl mx-auto"
     >
-      <NavLink to="/" className="flex items-center gap-x-2">
+  
+     <NavLink to="/" className="flex items-center gap-x-2">
         <img src={logo} className=" h-6 sm:h-9" alt="Flowbite React Logo" />
         <span className="self-center whitespace-nowrap md:text-xl font-semibold text-white/90 font-logoFont">
           marriageBD
@@ -30,6 +32,7 @@ console.log(user?.photoURL)
       </NavLink>
 
       <div className="flex md:order-2 ">
+      <DarkThemeToggle />
         <Dropdown
           arrowIcon={false}
           inline
@@ -43,6 +46,7 @@ console.log(user?.photoURL)
             />
           }
         >
+
           <Dropdown.Header>
             <span className="block text-sm">{user?.displayName}</span>
             <Dropdown.Divider />
@@ -68,6 +72,7 @@ console.log(user?.photoURL)
             </div>
           )}
         </Dropdown>
+       
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse className="md:flex items-center lg:gap-x-4 gap-y-4">
@@ -163,7 +168,9 @@ console.log(user?.photoURL)
           )
         ) : null}
       </Navbar.Collapse>
+     
     </Navbar>
+  </div>
   );
 }
 

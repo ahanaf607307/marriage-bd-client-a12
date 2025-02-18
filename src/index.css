@@ -5,6 +5,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* news letter */
+
+#newsLetter {
+  box-shadow: 0px 0px 5px rgb(255, 159, 226);
+}
+
 /* From Uiverse.io by dylanharriscameron */
 .card {
   position: relative;

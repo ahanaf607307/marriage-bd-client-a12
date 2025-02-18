@@ -1,4 +1,4 @@
-import { Button, FloatingLabel, Label, Textarea } from 'flowbite-react'
+import { FloatingLabel, Textarea } from 'flowbite-react'
 import React from 'react'
 import { FaPhone } from 'react-icons/fa'
 import { FaLocationDot } from 'react-icons/fa6'
@@ -18,7 +18,7 @@ function Contact() {
             });
   }
   return (
-    <div className='min-h-screen bg-banner1 bg-cover bg-center  object-fill'>
+    <div className='min-h-[calc(100vh-148px)] bg-banner1 bg-cover bg-center  object-fill'>
      <div className='max-w-4xl mx-auto '>
      <div className='text-center font-bannerFont'>
       <h1 className=' text-white/90 text-3xl pt-14 md:text-4xl lg:text-5xl mb-2'>

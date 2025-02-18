@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 
 function AppFooter() {
   return (
-    <Footer className="bg-pink-400  font-bannerFont rounded-b-0" container>
+    <div className="bg-pink-400">
+      <Footer className="bg-pink-400 max-w-7xl mx-auto font-bannerFont " container>
     <Footer.Copyright className="text-white/90" href="#" by="marriageBD | Ahanaf Mubasshir" year={2025}/>
     <Footer.LinkGroup>
       <Footer.Link >
@@ -21,6 +22,7 @@ function AppFooter() {
       </Footer.Link>
     </Footer.LinkGroup>
   </Footer>
+    </div>
   )
 }
 
