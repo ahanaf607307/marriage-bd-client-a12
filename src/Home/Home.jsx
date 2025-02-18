@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import BioData from "../Pages/Biodata/BioData";
+import FindSpecial from "../Pages/FindSpecial/FindSpecial";
 import HowItworks from "../Pages/HowItWork/HowItworks";
 import NewsLatter from "../Pages/NewsLatter/NewsLatter";
 import OfferBanner from "../Pages/OfferBanner/OfferBanner";
@@ -19,6 +20,7 @@ function Home() {
       <OfferBanner/>
       <HowItworks />
       <SuccessCounterSection />
+      <FindSpecial/>
       <SuccessStory />
       <NewsLatter />
     </div>

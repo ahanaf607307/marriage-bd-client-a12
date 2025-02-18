@@ -1,5 +1,5 @@
-import { Button } from 'flowbite-react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const OfferBanner = () => {
     return (
@@ -8,10 +8,10 @@ const OfferBanner = () => {
         <h2 class="text-4xl font-bold mt-2">
             Up to <span class="text-purple-800">70% off</span> - All Premium Contact Information
         </h2>
-       <div>
-       <Button to='/bioDatas' class="mt-5 bg-white text-blue-700 font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-pink-600 hover:text-white transition duration-200">
+       <div className='pt-8'>
+       <Link to='/bioDatas' class="mt-5 bg-white text-blue-700 font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-pink-600 hover:text-white transition duration-200">
         Explore More
-    </Button>
+    </Link>
        </div>
     </section>
     

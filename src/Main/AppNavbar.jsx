@@ -13,7 +13,7 @@ function AppNavbar() {
 console.log(user?.photoURL)
   const handleLogout = () => {
     logOutUser().then((res) => {
-      navigate("/login");
+      navigate("/");
     });
   };
   return (
