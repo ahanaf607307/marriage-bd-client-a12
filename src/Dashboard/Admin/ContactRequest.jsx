@@ -1,13 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import { Table } from 'flowbite-react';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { FaCheckCircle } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAuth from '../../Firebase/UseAuth/useAuth';
-import useAxiosPublic from '../../Hook/useAxiosPublic';
-import TitleDashboard from '../../Shared/TitleDashboard';
 import useAxiosSecure from '../../Hook/useAxiosSecure';
-import { Helmet } from 'react-helmet-async';
+import TitleDashboard from '../../Shared/TitleDashboard';
 
 function ContactRequest() {
   const axiosSecure = useAxiosSecure();
@@ -57,14 +56,14 @@ function ContactRequest() {
     };
   
   return (
-    <div className="font-bannerFont bg-banner1 bg-cover bg-center min-h-screen  mx-2">
+    <div className="font-bannerFont bg-banner1 bg-cover bg-center min-h-screen  ">
       <Helmet>
                           <title>Accept Contact Request | Admin | marriageBd</title>
                         </Helmet>
-    <div className='py-10'>
+    <div className='py-10 '>
     <TitleDashboard heading={`Approved contact request`} />
     </div>
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto md:px-10">
       <Table>
         <Table.Head>
           <Table.HeadCell></Table.HeadCell>

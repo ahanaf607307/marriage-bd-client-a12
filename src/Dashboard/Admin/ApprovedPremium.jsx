@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { Button, Table } from "flowbite-react";
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import TitleDashboard from "../../Shared/TitleDashboard";
-import { Helmet } from "react-helmet-async";
 
 function ApprovedPremium() {
   const axiosSecure = useAxiosSecure();
@@ -70,7 +70,7 @@ function ApprovedPremium() {
 <TitleDashboard heading={`Approved Premium`}  />
       </div>
 
-      <div className="overflow-x-auto ">
+      <div className="overflow-x-auto md:px-10">
         <Table hoverable >
           <Table.Head>
             <Table.HeadCell></Table.HeadCell>

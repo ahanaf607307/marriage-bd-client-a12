@@ -23,7 +23,7 @@ function AdminDashboard() {
 
   console.log(adminDashboard)
   return (
-    <div className='h-screen bg-banner1 bg-center bg-cover'>
+    <div className='min-h-screen bg-banner1 bg-center bg-cover'>
       <Helmet>
                           <title>Admin Dashboard | Admin | marriageBd</title>
                         </Helmet>

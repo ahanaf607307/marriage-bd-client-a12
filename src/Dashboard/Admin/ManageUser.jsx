@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { Button, FloatingLabel, Table } from "flowbite-react";
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import TitleDashboard from "../../Shared/TitleDashboard";
-import { Helmet } from "react-helmet-async";
 
 function ManageUser() {
   const axiosSecure = useAxiosSecure();
@@ -58,10 +58,10 @@ function ManageUser() {
        <Helmet>
                     <title>Manage User | Admin | marriageBd</title>
                   </Helmet>
-      <div className="py-10">
+      <div className="py-10 ">
         <TitleDashboard heading={`Manage User `} />
       </div>
-      <section>
+      <section className="md:px-10">
         <FloatingLabel
           onKeyUp={(e) => setSearch(e.target.value)}
           className="w-full"
@@ -69,7 +69,7 @@ function ManageUser() {
           label="Search"
         />
       </section>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto md:px-10">
         <Table hoverable>
           <Table.Head>
             <Table.HeadCell></Table.HeadCell>
