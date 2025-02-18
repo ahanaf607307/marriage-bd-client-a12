@@ -17,11 +17,11 @@ console.log(user?.photoURL)
     });
   };
   return (
-  <div className="fixed top-0 w-full  z-50  bg-pink-400 ">
+
       <Navbar
       fluid
       rounded
-      className="bg-pink-400 py-5 px-5 max-w-7xl mx-auto"
+      className="bg-pink-400 py-5  fixed top-0 w-full  z-50 "
     >
   
      <NavLink to="/" className="flex items-center gap-x-2">
@@ -32,7 +32,7 @@ console.log(user?.photoURL)
       </NavLink>
 
       <div className="flex md:order-2 ">
-      <DarkThemeToggle />
+      <DarkThemeToggle className="mr-2" />
         <Dropdown
           arrowIcon={false}
           inline
@@ -170,7 +170,7 @@ console.log(user?.photoURL)
       </Navbar.Collapse>
      
     </Navbar>
-  </div>
+
   );
 }
 

@@ -41,7 +41,7 @@ reset()
           </p>
         </div>
         <form  onSubmit={handleSubmit(onSubmit)} className=" flex h-14 w-full">
-        <input {...register("email")} name="email" type="email" className="w-8/12 text-pink-600 font-semibold rounded-l-xl border-none  " placeholder="Enter Your email" required />
+        <input {...register("email")} name="email" type="email" className="w-8/12 text-pink-600 font-semibold rounded-l-xl  border border-gray-500 " placeholder="Enter Your email" required />
         <button   type='submit' className="w-4/12 font-semibold  bg-pink-500 rounded-r-xl px-3 py-2 duration-100 text-white">Submit</button>
         </form>
       </section>
