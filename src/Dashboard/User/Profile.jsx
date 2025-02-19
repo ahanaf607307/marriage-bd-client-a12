@@ -38,7 +38,6 @@ const Profile = () => {
         <div>
           <h3 className="text-lg font-semibold text-gray-700">Personal Details</h3>
           <ul className="mt-2 space-y-2 text-gray-600">
-            <li><span className="font-medium">Age:</span> 28</li>
             <li><span className="font-medium">Gender:</span> Male</li>
            
             <li><span className="font-medium">Religion:</span> Bangladesh</li>
