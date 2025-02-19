@@ -150,13 +150,13 @@ function UpdateBiodata() {
   }, [bioData, setValue, user?.email]);
 
   return (
-    <div>
+    <div className="dark:bg-gray-800">
       <Helmet>
         <title>Update Biodata</title>
       </Helmet>
       <BannarAll bannerHeading={`"Update Your Matrimonial Profile"`} />
 
-      <div className=" max-w-[90%]  xl:max-w-[80%] mx-auto my-10 bg-pink-400 p-5 md:p-10">
+      <div className=" max-w-[90%]  xl:max-w-[80%] mx-auto py-10 bg-pink-400 dark:bg-pink-400  p-5 md:p-10">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="text-black/80 font-semibold font-bannerFont"
@@ -499,7 +499,7 @@ function UpdateBiodata() {
               label="Email"
             />
           </section>
-          <Button type="submit" className="w-full bg-pink-500 text-white my-5 ">
+          <Button type="submit" className="w-full bg-pink-500 dark:bg-pink-500  text-white my-5 ">
             Update Now
           </Button>
         </form>

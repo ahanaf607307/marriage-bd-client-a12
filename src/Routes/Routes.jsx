@@ -8,10 +8,13 @@ import CreateSuccessStory from "../Dashboard/User/CreateSuccessStory";
 import EditBiodata from "../Dashboard/User/EditBiodata";
 import FavouritesBiodata from "../Dashboard/User/FavouritesBiodata";
 import MyContactRequest from "../Dashboard/User/MyContactRequest";
+import Profile from "../Dashboard/User/Profile";
 import ViewBiodata from "../Dashboard/User/ViewBiodata";
 import ErrorPage from "../Error/ErrorPage";
+import AdminLogin from "../Firebase/AdminLogin/AdminLogin";
 import AdminRoute from "../Firebase/AdminRoute/AdminRoute";
 import Login from "../Firebase/Login/Login";
+import NormalUser from "../Firebase/NormalUser/NormalUser";
 import PrivateRoute from "../Firebase/PrivateRoute/PrivateRoute";
 import SignUp from "../Firebase/Signup/SignUp";
 import Home from "../Home/Home";
@@ -21,7 +24,6 @@ import BioDataDetails from "../Pages/Biodata/BioDataDetails";
 import Biodatas from "../Pages/BioDataPage/BioDatas";
 import Contact from "../Pages/Contact/Contact";
 import Payment from "../Pages/Payment/Payment";
-import SuccessStory from "../Pages/SuccessStory/SuccessStory";
 import ShowAllSuccessStory from "../Pages/SuccessStory/ShowAllSuccessStory";
 import SuccessStoryDetails from "../Pages/SuccessStory/SuccessStoryDetails";
 
@@ -37,7 +39,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "/bioDataDetails/:id",
-        element: <PrivateRoute><BioDataDetails /></PrivateRoute>,
+        element: <BioDataDetails />,
       },
 
       {
@@ -73,6 +75,14 @@ const routes = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/adminLogin",
+    element: <AdminLogin />,
+  },
+  {
+    path: "/normalUser",
+    element: <NormalUser />,
   },
   {
     path: "/signUp",
@@ -136,6 +146,15 @@ const routes = createBrowserRouter([
           <PrivateRoute>
             {" "}
             <EditBiodata />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/profile",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Profile />
           </PrivateRoute>
         ),
       },

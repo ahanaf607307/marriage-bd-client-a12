@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import BioDataDetail from "../../Pages/Biodata/BioDataDetail";
 import Title from "../../Shared/Title";
-import { Helmet } from "react-helmet-async";
 
 function ViewBiodata() {
   const { user } = useAuth();
@@ -20,7 +20,7 @@ function ViewBiodata() {
   });
 console.log('view biodata' , bio)
   return (
-    <div>
+    <div className="dark:bg-gray-800 min-h-screen">
        <Helmet>
                     <title>View Biodata | marriageBd</title>
                   </Helmet>

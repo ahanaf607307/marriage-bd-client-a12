@@ -6,10 +6,10 @@ import Title from "../../Shared/Title";
 import { Rating } from "@mui/material";
 import '@smastrom/react-rating/style.css';
 import { Select } from "flowbite-react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import Loading from "../../Loading/Loading";
-import { Helmet } from "react-helmet-async";
 
 function ShowAllSuccessStory() {
 
@@ -41,11 +41,12 @@ function ShowAllSuccessStory() {
  
   console.log("successStory------", successAll);
   return (
-    <div  className="max-w-7xl mx-auto ">
+  <div className="dark:bg-gray-800">
+      <div  className="max-w-7xl mx-auto ">
        <Helmet>
                     <title>All Success Story | marriageBd</title>
                   </Helmet>
-     <div className=" my-16 font-bannerFont px-2">
+     <div className=" py-16 font-bannerFont px-2">
      <div>
         <Title
           heading={`Success Stories That Inspire`}
@@ -55,7 +56,7 @@ function ShowAllSuccessStory() {
         />
       </div>
       <div className="my-5 flex justify-between items-center">
-       <h1 className=" font-bannerFont">Sort by <span className="text-pink-500 font-semibold text-lg">"Marriage Date"</span> </h1>
+       <h1 className=" font-bannerFont dark:text-white">Sort by <span className="text-pink-500 font-semibold text-lg">"Marriage Date"</span> </h1>
               <Select
                 defaultValue="Ascending"
                 onChange={(e) => setSortOrder(e.target.value)} 
@@ -94,6 +95,7 @@ function ShowAllSuccessStory() {
       }
      </div>
     </div>
+  </div>
   );
 }
 

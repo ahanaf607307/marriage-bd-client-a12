@@ -25,7 +25,8 @@ function BioData() {
       }
     });
   return (
-    <div className="max-w-7xl mx-auto ">
+    <div className="dark:bg-gray-800">
+      <div className="max-w-7xl mx-auto  ">
       <section className="my-">
         <Title
           heading={`Browse Premium Profiles`}
@@ -34,7 +35,7 @@ function BioData() {
         />
       </section>
       <div className="flex justify-between items-center my-5 px-6 ">
-        <h1 className=" font-bannerFont">Sort by <span className="text-pink-500 font-semibold text-lg">"Age"</span> </h1>
+        <h1 className=" font-bannerFont dark:text-white">Sort by <span className="text-pink-500 font-semibold text-lg">"Age"</span> </h1>
         <Select
           defaultValue="Ascending"
           onChange={(e) => setSortOrder(e.target.value)} 
@@ -48,6 +49,7 @@ function BioData() {
           <AllBioDataCard key={biodata?._id} biodata={biodata} />
         ))}
       </div>
+    </div>
     </div>
   );
 }

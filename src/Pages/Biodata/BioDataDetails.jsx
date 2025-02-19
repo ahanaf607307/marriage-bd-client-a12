@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAdmin from "../../Hook/useAdmin";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
-import useAxiosSecure from "../../Hook/useAxiosSecure";
 import useRole from "../../Hook/useRole";
 import Loading from "../../Loading/Loading";
 import BannarAll from "../../Shared/BannarAll";
@@ -14,7 +13,7 @@ import Title from "../../Shared/Title";
 import SimilarBioCard from "./SimilarBioCard";
 
 function BioDataDetails() {
-  const axiosSecure = useAxiosSecure();
+  
   const axiosPublic = useAxiosPublic()
   const [users] = useRole()
 const [isAdmin] = useAdmin()
@@ -25,9 +24,8 @@ const [isAdmin] = useAdmin()
   const { id } = useParams();
   const { data: details = []  } = useQuery({
     queryKey: ["details" , id],
-    enabled: !!user?.email && !!localStorage.getItem(`access-token`),
     queryFn: async () => {
-      const res = await axiosSecure.get(`/details/${id}`);
+      const res = await axiosPublic.get(`/details/${id}`);
       return res.data;
     },
   });
@@ -62,9 +60,8 @@ const [isAdmin] = useAdmin()
 // 3 similer data get api 
 const {data : similar = [] , isLoading } = useQuery({
   queryKey : [user?.email,'similarData',details?.genderType ] , 
-  enabled: !!user?.email && !!localStorage.getItem(`access-token`),
   queryFn : async() => {
-    const res = await axiosSecure.post(`/biodatas/for-gender?genderType=${details.genderType}`)
+    const res = await axiosPublic.post(`/biodatas/for-gender?genderType=${details.genderType}`)
     return res.data
   }
 })
@@ -117,60 +114,60 @@ const {data : similar = [] , isLoading } = useQuery({
 console.log('isLoading in similar data' , isLoading)
   console.log('similar data ---> ',similar)
   return (
-    <div className="font-bannerFont ">
+    <div className="font-bannerFont dark:bg-gray-800">
       <BannarAll bannerHeading={`BioData Details`} />
-      <div className="my-10 border-2 py-10 max-w-7xl mx-auto bg-pink-200 rounded-xl">
-        <section className="flex flex-col justify-center items-center my-2  max-w-sm py-5 mx-auto bg-pink-400 rounded-tr-full  rounded-bl-full rounded-br-full shadow-2xl shadow-pink-600">
+      <div className="py-10 border-2 dark:border-none max-w-7xl mx-auto bg-pink-200 dark:bg-gray-800 rounded-xl">
+        <section className="flex flex-col justify-center items-center my-2  max-w-sm py-5 mx-auto bg-pink-400 dark:bg-gray-800 rounded-tr-full  rounded-bl-full rounded-br-full shadow-2xl shadow-pink-600">
           <img className="w-56 h-56 rounded-xl " src={imageLink} alt="" />
         </section>
         {/* image section ends */}
         <div className="grid grid-cols-1 lg:grid-cols-2 justify-center  gap-5 p-2 md:p-5">
           {/* left */}
-          <div className="bg-pink-400 rounded-lg py-5 p-2 md:px-5 ">
-            <h1 className="text-2xl my-3 text-center text-pink-950">
+          <div className="bg-pink-400 dark:bg-gray-800 rounded-lg py-5 p-2 md:px-5 ">
+            <h1 className="text-2xl my-3 text-center text-pink-950 dark:text-white">
               Bio data id : {biodataId}
             </h1>
             <HR />
             <div className="overflow-x-auto">
               <Table hoverable>
                 <Table.Body className="divide-y">
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Biodata Type</Table.Cell>
                     <Table.Cell>{genderType} </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Name</Table.Cell>
                     <Table.Cell> {name} </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Date of birth</Table.Cell>
                     <Table.Cell> {date?.slice(0,10)} </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Height</Table.Cell>
                     <Table.Cell> {height} " </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Weight</Table.Cell>
                     <Table.Cell> {weight} KG </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Age</Table.Cell>
                     <Table.Cell> {age} </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Occupation</Table.Cell>
                     <Table.Cell> {occupation} </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Skin color</Table.Cell>
                     <Table.Cell> {skinColor} </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Father's Name</Table.Cell>
                     <Table.Cell> {fathersName} </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Mother's Name</Table.Cell>
                     <Table.Cell> {mothersName} Name</Table.Cell>
                   </Table.Row>
@@ -180,46 +177,46 @@ console.log('isLoading in similar data' , isLoading)
           </div>
 
           {/* right */}
-          <div className="bg-pink-300 rounded-lg py-5 p-2 md:px-5 ">
+          <div className="bg-pink-300 dark:bg-gray-800 rounded-lg py-5 p-2 md:px-5 ">
             <div className="overflow-x-auto">
               <Table hoverable>
                 <Table.Body className="divide-y">
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Expected Partner Age</Table.Cell>
                     <Table.Cell>{partnerAge}</Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">
                       Expected Partner Height
                     </Table.Cell>
                     <Table.Cell> {partnerHeight} "</Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">
                       Expected Partner Weight
                     </Table.Cell>
                     <Table.Cell> {partnerWeight} KG </Table.Cell>
                   </Table.Row>
 
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Permanent Division</Table.Cell>
                     <Table.Cell> {permanentDivision} </Table.Cell>
                   </Table.Row>
 
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Present Division</Table.Cell>
                     <Table.Cell> {presentDivision} </Table.Cell>
                   </Table.Row>
 
                   {/* contact info */}
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Contact Email</Table.Cell>
                  {
                   users?.role === "premium" || isAdmin ? <Table.Cell> {email} </Table.Cell> :   <p className="text-sm text-red-500  mt-5">"Request Contact Information"</p> 
                  }
                   </Table.Row>
 
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Mobile Number</Table.Cell>
                     {
                       users?.role === "premium" || isAdmin ?<Table.Cell>+88 {mobileNumber} </Table.Cell> :<p className="text-sm text-red-500  mt-5">"Request Contact Information"</p>  

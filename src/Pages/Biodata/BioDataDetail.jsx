@@ -3,16 +3,17 @@ import { Button, HR, Table } from "flowbite-react";
 import React from "react";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 function BioDataDetail({ bio }) {
   const { user } = useAuth();
 const axiosSecure = useAxiosSecure()
+const axiosPublic = useAxiosPublic()
   const { data: users = [] } = useQuery({
     queryKey: [user?.email, "users"],
-    enabled: !!user?.email && !!localStorage.getItem(`access-token`),
     queryFn: async () => {
-      const res = await axiosSecure.get(`/users/premium/${user?.email}`);
+      const res = await axiosPublic.get(`/users/premium/${user?.email}`);
       return res.data;
     },
   });
@@ -21,12 +22,12 @@ const axiosSecure = useAxiosSecure()
 
   const { data: premiums = [], refetch } = useQuery({
     queryKey: ["premiums"],
-    enabled: !!user?.email && !!localStorage.getItem(`access-token`),
     queryFn: async () => {
-      const res = await axiosSecure.get("/premiums");
+      const res = await axiosPublic.get("/premiums");
       return res.data;
     },
   });
+  console.log('premium ' , premiums)
 
   const {
     _id,
@@ -128,9 +129,9 @@ const axiosSecure = useAxiosSecure()
 
 
   return (
-    <div className="font-bannerFont  px-2">
-      <div className="my-10 border-2 py-10  bg-pink-200 rounded-xl">
-        <section className="flex flex-col justify-center items-center my-2     md:max-w-sm py-5 mx-auto bg-pink-400 rounded-tr-full  rounded-bl-full rounded-br-full shadow-2xl shadow-pink-600 mb-10">
+    <div className="font-bannerFont dark:bg-gray-800  px-2">
+      <div className="py-10 border-2   bg-pink-200 dark:bg-gray-800 rounded-xl">
+        <section className="flex flex-col justify-center items-center my-2     md:max-w-sm py-5 mx-auto bg-pink-400 dark:bg-gray-500 rounded-tr-full  rounded-bl-full rounded-br-full shadow-2xl shadow-pink-600 mb-10">
           <img
             className="w-44 md:w-56 h-44 md:h-56 rounded-xl "
             src={bio?.imageLink}
@@ -140,51 +141,51 @@ const axiosSecure = useAxiosSecure()
         {/* image section ends */}
         <div className="grid grid-cols-1 lg:grid-cols-2 justify-center  gap-5 ">
           {/* left */}
-          <div className="bg-pink-400 rounded-lg py-5 px-5 ">
-            <h1 className="text-2xl my-3 text-center text-pink-950">
+          <div className="bg-pink-400 dark:bg-gray-800 rounded-lg py-5 px-5 ">
+            <h1 className="text-2xl my-3 text-center text-pink-950 dark:text-white">
               Bio data id : {bio?.biodataId}
             </h1>
             <HR />
             <div className="overflow-x-auto">
               <Table hoverable>
                 <Table.Body className="divide-y">
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Biodata Type</Table.Cell>
                     <Table.Cell>{bio?.genderType} </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Name</Table.Cell>
                     <Table.Cell> {bio?.name} </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Date of birth</Table.Cell>
                     <Table.Cell> {bio?.date?.slice(0,10)} </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Height</Table.Cell>
                     <Table.Cell> {bio?.height} " </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Weight</Table.Cell>
                     <Table.Cell> {bio?.weight} KG </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Age</Table.Cell>
                     <Table.Cell> {bio?.age} </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Occupation</Table.Cell>
                     <Table.Cell> {bio?.occupation} </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Skin color</Table.Cell>
                     <Table.Cell> {bio?.skinColor} </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Father's Name</Table.Cell>
                     <Table.Cell> {bio?.fathersName} </Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Mother's Name</Table.Cell>
                     <Table.Cell> {bio?.mothersName} Name</Table.Cell>
                   </Table.Row>
@@ -194,44 +195,44 @@ const axiosSecure = useAxiosSecure()
           </div>
 
           {/* right */}
-          <div className="bg-pink-300 rounded-lg py-5 px-2">
+          <div className="bg-pink-300 dark:bg-gray-800 rounded-lg py-5 px-2">
             <div className="overflow-x-auto">
               <Table hoverable>
                 <Table.Body className="divide-y">
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Expected Partner Age</Table.Cell>
                     <Table.Cell>{bio?.partnerAge}</Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">
                       Expected Partner Height
                     </Table.Cell>
                     <Table.Cell> {bio?.partnerHeight} "</Table.Cell>
                   </Table.Row>
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">
                       Expected Partner Weight
                     </Table.Cell>
                     <Table.Cell> {bio?.partnerWeight} KG </Table.Cell>
                   </Table.Row>
 
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Permanent Division</Table.Cell>
                     <Table.Cell> {bio?.permanentDivision} </Table.Cell>
                   </Table.Row>
 
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Present Division</Table.Cell>
                     <Table.Cell> {bio?.presentDivision} </Table.Cell>
                   </Table.Row>
 
                   {/* contact info */}
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Contact Email</Table.Cell>
                     <Table.Cell> {bio?.email} </Table.Cell>
                   </Table.Row>
 
-                  <Table.Row className=" hover:bg-transparent text-pink-900 font-medium text-lg">
+                  <Table.Row className=" hover:bg-transparent text-pink-900 dark:text-white font-medium text-lg">
                     <Table.Cell className=" ">Mobile Number</Table.Cell>
                     <Table.Cell>+88 {bio?.mobileNumber} </Table.Cell>
                   </Table.Row>
@@ -239,13 +240,13 @@ const axiosSecure = useAxiosSecure()
               </Table>
             </div>
             {premiums.some((premium) => premium?.premiumId === bio?._id) ? (
-              <Button className="my-4 mx-auto bg-pink-500" disabled>
+              <Button className="my-4 mx-auto bg-pink-500 dark:bg-purple-600" disabled>
                 Thank You ! 🥰
               </Button>
             ) : (
               <Button
                 onClick={() => handleMakePremium(bio?._id)}
-                className="my-4 mx-auto bg-pink-500"
+                className="my-4 mx-auto bg-pink-500 dark:bg-purple-600"
               >
                 Make Bio Data Premium
               </Button>

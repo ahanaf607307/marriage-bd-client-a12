@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { Button, Table } from "flowbite-react";
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { FaCheckCircle, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Title from "../../Shared/Title";
-import { Helmet } from "react-helmet-async";
 
 function MyContactRequest() {
   const axiosSecure = useAxiosSecure();
@@ -58,12 +58,12 @@ function MyContactRequest() {
 
   console.log(contacts);
   return (
-    <div className="font-bannerFont  mx-2">
+    <div className="font-bannerFont dark:bg-gray-800  min-h-screen">
        <Helmet>
                     <title>My Contact  | marriageBd</title>
                   </Helmet>
       <Title heading={`My Contact Request`} />
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto md:px-10">
         <Table>
           <Table.Head>
             <Table.HeadCell></Table.HeadCell>
@@ -78,7 +78,7 @@ function MyContactRequest() {
             {contacts.map((contact, index) => (
               <Table.Row
                 key={contact?._id}
-                className="bg-white dark:border-gray-700 dark:bg-gray-800"
+                className="bg-white dark:border-gray-700 dark:bg-gray-700"
               >
                 <Table.Cell>{index + 1}</Table.Cell>
                 <Table.Cell>{contact?.bioDataOwnerName}</Table.Cell>

@@ -30,12 +30,12 @@ const NewsLatter = () => {
 reset()
   }
   return (
-    <div className=" mb-20  p-2 md:p-0">
+    <div className=" py-44  p-2 md:p-0">
      <div >
      <section id="newsLetter" className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 justify-between items-center rounded-xl p-4 md:p-10 lg:p-20 ">
         <div>
-          <h4 className=" text-2xl lg:text-4xl font-serif">Sign Up For Newsletter</h4>
-          <p className="font-semibold pt-4 text-sm lg:text-md">
+          <h4 className=" text-2xl lg:text-4xl font-serif dark:text-white">Sign Up For Newsletter</h4>
+          <p className="font-semibold pt-4 text-sm lg:text-md dark:text-white">
             Get E-mail updates about our latest shop and{" "}
             <span className="text-pink-500 font-serif">special offers</span>
           </p>

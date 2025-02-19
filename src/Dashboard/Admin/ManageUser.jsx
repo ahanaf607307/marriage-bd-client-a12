@@ -54,14 +54,14 @@ function ManageUser() {
   };
 
   return (
-    <div className=" md:px-10 bg-banner1 bg-cover bg-center min-h-screen">
+    <div className=" md:px-10 bg-white/70 dark:bg-gray-800 min-h-screen">
        <Helmet>
                     <title>Manage User | Admin | marriageBd</title>
                   </Helmet>
       <div className="py-10 ">
         <TitleDashboard heading={`Manage User `} />
       </div>
-      <section className="md:px-10">
+      <section className="md:px-10 sticky top-0 mb-10 z-30">
         <FloatingLabel
           onKeyUp={(e) => setSearch(e.target.value)}
           className="w-full"
@@ -81,7 +81,7 @@ function ManageUser() {
             {users?.map((user, index) => (
               <Table.Row
                 key={user?._id}
-                className="bg-white dark:border-gray-700 dark:bg-gray-800"
+                className="bg-white/90 dark:border-gray-700 dark:bg-gray-800"
               >
                 <Table.Cell>{index + 1}</Table.Cell>
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
@@ -92,7 +92,7 @@ function ManageUser() {
                   {user?.role === "admin" ? (
                     "Admin"
                   ) : (
-                    <Button onClick={() => handleMakeAdmin(user?._id)}>
+                    <Button className="bg-pink-500 dark:bg-pink-500" onClick={() => handleMakeAdmin(user?._id)}>
                       Make Admin
                     </Button>
                   )}

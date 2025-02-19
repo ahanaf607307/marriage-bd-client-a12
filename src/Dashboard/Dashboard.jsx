@@ -32,20 +32,20 @@ function Dashboard() {
     <div className="">
       <div className=" ">
         {/* dashboard link */}
-        <div className=" fixed z-50 flex flex-col    ">
-          <div className="flex py-3 pl-5 flex-col items-start justify-start">
+        <div className=" fixed top-0 z-50 flex flex-col    ">
+          <div className="flex py-3 md:pl-5 flex-col items-start justify-end">
             <button
-              className=" w-full rounded-tr-full rounded-br-full hover:scale-105 duration-150"
+              className="p-1 w-full rounded-tr-full rounded-br-full hover:scale-105 duration-150 "
               onClick={() => setIsOpen(true)}
             >
-              <FiAlignLeft className="text-xl text-white/90 md:text-2xl lg:text-3xl" />
+              <FiAlignLeft className="text-xl text-black/90 dark:text-white/90 md:text-2xl lg:text-3xl" />
             </button>
           </div>
           <Drawer open={isOpen} onClose={handleClose}>
             <Drawer.Header title="Dashboard" titleIcon={() => <></>} />
             <Link
               to="/"
-              className="flex gap-x-2 items-center font-bold text-black/90"
+              className="flex gap-x-2 items-center font-bold text-black/90 dark:text-white"
             >
               <FaHome /> Home
             </Link>
@@ -65,7 +65,7 @@ function Dashboard() {
                               className={({ isActive }) =>
                                 isActive
                                   ? "text-white/90 font-semibold hover:scale-90 bg-pink-500 rounded-xl px-3 py-2 duration-100"
-                                  : "text-black/90 font-bold hover:scale-105 duration-150"
+                                  : "text-black/90 dark:text-white font-bold hover:scale-105 duration-150"
                               }
                             >
                               Admin Dashboard
@@ -77,7 +77,7 @@ function Dashboard() {
                               className={({ isActive }) =>
                                 isActive
                                   ? "text-white/90 font-semibold hover:scale-90 bg-pink-500 rounded-xl px-3 py-2 duration-100"
-                                  : "text-black/90 font-bold hover:scale-105 duration-150 "
+                                  : "text-black/90 dark:text-white font-bold hover:scale-105 duration-150 "
                               }
                             >
                               Manage Users
@@ -89,7 +89,7 @@ function Dashboard() {
                               className={({ isActive }) =>
                                 isActive
                                   ? "text-white/90 font-semibold hover:scale-90 bg-pink-500 rounded-xl px-3 py-2 duration-100"
-                                  : "text-black/90 font-bold hover:scale-105 duration-150"
+                                  : "text-black/90 dark:text-white font-bold hover:scale-105 duration-150"
                               }
                             >
                               Approved Premium
@@ -101,7 +101,7 @@ function Dashboard() {
                               className={({ isActive }) =>
                                 isActive
                                   ? "text-white/90 font-semibold hover:scale-90 bg-pink-500 rounded-xl px-3 py-2 duration-100"
-                                  : "text-black/90 font-bold hover:scale-105 duration-150"
+                                  : "text-black/90 dark:text-white font-bold hover:scale-105 duration-150"
                               }
                             >
                               Approved Contact Request
@@ -109,7 +109,7 @@ function Dashboard() {
                           </Sidebar.Item>
                           <Sidebar.Item icon={HiLogin}>
                             <button
-                              className="text-white/90  font-semibold hover:scale-90 bg-purple-500 rounded-xl px-3 py-2 duration-100"
+                              className="text-white/90  font-semibold hover:scale-90 bg-purple-500 dark:bg-purple-500 rounded-xl px-3 py-2 duration-100"
                               onClick={handleLogout}
                             >
                               Logout
@@ -120,11 +120,23 @@ function Dashboard() {
                         <Sidebar.ItemGroup>
                           <Sidebar.Item icon={HiPencil}>
                             <NavLink
+                              to="/dashboard/profile"
+                              className={({ isActive }) =>
+                                isActive
+                                  ? "text-white/90 font-semibold hover:scale-90 bg-pink-500 rounded-xl px-3 py-2 duration-100"
+                                  : "text-black/90 dark:text-white font-bold hover:scale-105 duration-150"
+                              }
+                            >
+                              Profile 
+                            </NavLink>
+                          </Sidebar.Item>
+                          <Sidebar.Item icon={HiPencil}>
+                            <NavLink
                               to="/dashboard/editBiodata"
                               className={({ isActive }) =>
                                 isActive
                                   ? "text-white/90 font-semibold hover:scale-90 bg-pink-500 rounded-xl px-3 py-2 duration-100"
-                                  : "text-black/90 font-bold hover:scale-105 duration-150"
+                                  : "text-black/90 dark:text-white font-bold hover:scale-105 duration-150"
                               }
                             >
                               Edit Biodata
@@ -136,7 +148,7 @@ function Dashboard() {
                               className={({ isActive }) =>
                                 isActive
                                   ? "text-white/90 font-semibold hover:scale-90 bg-pink-500 rounded-xl px-3 py-2 duration-100"
-                                  : "text-black/90 font-bold hover:scale-105 duration-150"
+                                  : "text-black/90 dark:text-white font-bold hover:scale-105 duration-150"
                               }
                             >
                               My Contact Request
@@ -148,7 +160,7 @@ function Dashboard() {
                               className={({ isActive }) =>
                                 isActive
                                   ? "text-white/90 font-semibold hover:scale-90 bg-pink-500 rounded-xl px-3 py-2 duration-100"
-                                  : "text-black/90 font-bold hover:scale-105 duration-150"
+                                  : "text-black/90 dark:text-white font-bold hover:scale-105 duration-150"
                               }
                             >
                               View Biodata
@@ -160,7 +172,7 @@ function Dashboard() {
                               className={({ isActive }) =>
                                 isActive
                                   ? "text-white/90 font-semibold hover:scale-90 bg-pink-500 rounded-xl px-3 py-2 duration-100"
-                                  : "text-black/90 font-bold hover:scale-105 duration-150"
+                                  : "text-black/90 dark:text-white font-bold hover:scale-105 duration-150"
                               }
                             >
                               Favourites Biodata
@@ -172,7 +184,7 @@ function Dashboard() {
                               className={({ isActive }) =>
                                 isActive
                                   ? "text-white/90 font-semibold hover:scale-90 bg-pink-500 rounded-xl px-3 py-2 duration-100"
-                                  : "text-black/90 font-bold hover:scale-105 duration-150"
+                                  : "text-black/90 dark:text-white font-bold hover:scale-105 duration-150"
                               }
                             >
                               Create Success Story
@@ -180,7 +192,7 @@ function Dashboard() {
                           </Sidebar.Item>
                           <Sidebar.Item icon={HiLogin}>
                             <button
-                              className="text-white/90 font-semibold hover:scale-90 bg-purple-500 rounded-xl px-3 py-2 duration-100"
+                              className="text-white/90 font-semibold hover:scale-90 bg-purple-500 dark:bg-purple-500 rounded-xl px-3 py-2 duration-100"
                               onClick={handleLogout}
                             >
                               Logout
@@ -196,7 +208,7 @@ function Dashboard() {
           </Drawer>
         </div>
         {/* dashboard page dynamic */}
-        <div className="col-span-10  w-full  bg-pink-300 ">
+        <div className="col-span-10  w-full min-h-screen bg-pink-300 ">
           <Outlet />
         </div>
       </div>

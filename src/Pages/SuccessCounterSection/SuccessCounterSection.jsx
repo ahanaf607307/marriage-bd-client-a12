@@ -35,7 +35,7 @@ function SuccessCounterSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-12 lg:gap-8 items-center justify-center ">
           {/* cards starts */}
-          <div class="relative w-52 h-64 rounded-lg flex flex-col items-center justify-center shadow-[20px_20px_60px_#bebebe,-20px_-20px_60px_#ffffff] overflow-hidden">
+          <div class="relative w-52 h-64 rounded-lg flex flex-col items-center justify-center  overflow-hidden">
             <div class="absolute top-1 left-1 w-[190px] h-[240px] bg-white/95 backdrop-blur-[24px] rounded-lg border-2 border-white z-10"></div>
             <div class="absolute top-1/2 left-1/2 w-36 h-36 bg-red-500 opacity-100 rounded-full blur-[12px] animate-blob"></div>
             <div class="z-20 text-center">
@@ -46,7 +46,7 @@ function SuccessCounterSection() {
             </div>
           </div>
 
-          <div class="relative w-52 h-64 rounded-lg flex flex-col items-center justify-center shadow-[20px_20px_60px_#bebebe,-20px_-20px_60px_#ffffff] overflow-hidden">
+          <div class="relative w-52 h-64 rounded-lg flex flex-col items-center justify-center  overflow-hidden">
             <div class="absolute top-1 left-1 w-[190px] h-[240px] bg-white/95 backdrop-blur-[24px] rounded-lg border-2 border-white z-10"></div>
             <div class="absolute top-1/2 left-1/2 w-36 h-36 bg-red-500 opacity-100 rounded-full blur-[12px] animate-blob"></div>
             <div class="z-20 text-center">
@@ -57,7 +57,7 @@ function SuccessCounterSection() {
             </div>
           </div>
 
-          <div class="relative w-52 h-64 rounded-lg flex flex-col items-center justify-center shadow-[20px_20px_60px_#bebebe,-20px_-20px_60px_#ffffff] overflow-hidden">
+          <div class="relative w-52 h-64 rounded-lg flex flex-col items-center justify-center  overflow-hidden">
             <div class="absolute top-1 left-1 w-[190px] h-[240px] bg-white/95 backdrop-blur-[24px] rounded-lg border-2 border-white z-10"></div>
             <div class="absolute top-1/2 left-1/2 w-36 h-36 bg-red-500 opacity-100 rounded-full blur-[12px] animate-blob"></div>
             <div class="z-20 text-center">
@@ -68,7 +68,7 @@ function SuccessCounterSection() {
             </div>
           </div>
 
-          <div class="relative w-52 h-64 rounded-lg flex flex-col items-center justify-center shadow-[20px_20px_60px_#bebebe,-20px_-20px_60px_#ffffff] overflow-hidden">
+          <div class="relative w-52 h-64 rounded-lg flex flex-col items-center justify-center  overflow-hidden">
             <div class="absolute top-1 left-1 w-[190px] h-[240px] bg-white/95 backdrop-blur-[24px] rounded-lg border-2 border-white z-10"></div>
             <div class="absolute top-1/2 left-1/2 w-36 h-36 bg-red-500 opacity-100 rounded-full blur-[12px] animate-blob"></div>
             <div class="z-20 text-center">

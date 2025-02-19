@@ -56,7 +56,7 @@ function ContactRequest() {
     };
   
   return (
-    <div className="font-bannerFont bg-banner1 bg-cover bg-center min-h-screen  ">
+    <div className="font-bannerFont bg-white/70 dark:bg-gray-800 min-h-screen  ">
       <Helmet>
                           <title>Accept Contact Request | Admin | marriageBd</title>
                         </Helmet>
@@ -78,7 +78,7 @@ function ContactRequest() {
           {contacts.map((contact, index) => (
             <Table.Row
               key={contact?._id}
-              className="bg-white dark:border-gray-700 dark:bg-gray-800"
+              className="bg-white dark:border-gray-700 dark:bg-gray-700"
             >
               <Table.Cell>{index + 1}</Table.Cell>
               <Table.Cell>{contact?.requesterName}</Table.Cell>

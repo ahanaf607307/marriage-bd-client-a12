@@ -11,7 +11,7 @@ import Banner from "./Banner";
 
 function Home() {
   return (
-    <div>
+    <div className="dark:bg-gray-800 pb-16">
       <Helmet>
         <title>Home | marriageBd</title>
       </Helmet>

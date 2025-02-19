@@ -19,7 +19,8 @@ function Contact() {
   }
   return (
     <div className='min-h-[calc(100vh-148px)] bg-banner1 bg-cover bg-center  object-fill'>
-     <div className='max-w-4xl mx-auto '>
+   <div className='w-full bg-pink-500/30 dark:bg-gray-800 backdrop-blur-sm min-h-[calc(100vh-148px)]'>
+   <div className=' mx-auto   max-w-4xl'>
      <div className='text-center font-bannerFont'>
       <h1 className=' text-white/90 text-3xl pt-14 md:text-4xl lg:text-5xl mb-2'>
         “We’re Here to Help”
@@ -66,6 +67,7 @@ function Contact() {
       </div>
     </div>
      </div>
+   </div>
     </div>
   )
 }

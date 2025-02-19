@@ -47,7 +47,7 @@ function SuccessStory() {
         />
       </div>
  <div className="flex justify-between items-center my-5 px-6 ">
-        <h1 className=" font-bannerFont">Sort by <span className="text-pink-500 font-semibold text-lg">"Marriage Date"</span> </h1>
+        <h1 className=" font-bannerFont dark:text-white">Sort by <span className="text-pink-500 dark:text-pink-500 font-semibold text-lg">"Marriage Date"</span> </h1>
         <Select
           defaultValue="Ascending"
           onChange={(e) => setSortOrder(e.target.value)} 

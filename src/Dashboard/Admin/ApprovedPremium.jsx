@@ -62,7 +62,7 @@ function ApprovedPremium() {
   };
 
   return (
-    <div className="px-2 bg-banner1 bg-cover bg-center min-h-screen md:px-10">
+    <div className="px-2 bg-white/70 dark:bg-gray-800 min-h-screen md:px-10">
       <Helmet>
                           <title>Approve Premium | Admin | marriageBd</title>
                         </Helmet>
@@ -70,7 +70,7 @@ function ApprovedPremium() {
 <TitleDashboard heading={`Approved Premium`}  />
       </div>
 
-      <div className="overflow-x-auto md:px-10">
+      <div className="overflow-x-auto md:px-10 dark:bg-white/20">
         <Table hoverable >
           <Table.Head>
             <Table.HeadCell></Table.HeadCell>
@@ -83,7 +83,7 @@ function ApprovedPremium() {
             {premiums.map((premium, index) => (
               <Table.Row
                 key={premium?._id}
-                className="bg-white dark:border-gray-700 dark:bg-gray-800"
+                className="bg-white dark:border-gray-700 dark:bg-gray-600"
               >
                 <Table.Cell>{index + 1}</Table.Cell>
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
@@ -99,7 +99,7 @@ function ApprovedPremium() {
                   ) ? (
                     "Premium"
                   ) : (
-                    <Button
+                    <Button className="dark:bg-pink-500"
                       onClick={() =>
                         handleMakePremium(premium?.requestedUserId)
                       }

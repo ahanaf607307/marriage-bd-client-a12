@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function AppFooter() {
   return (
     
-      <Footer className="bg-pink-400  font-bannerFont rounded-none" container>
+      <Footer className="bg-pink-400   font-bannerFont rounded-none" container>
     <Footer.Copyright className="text-white/90" href="#" by="marriageBD | Ahanaf Mubasshir" year={2025}/>
     <Footer.LinkGroup>
       <Footer.Link >

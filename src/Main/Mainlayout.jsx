@@ -10,7 +10,7 @@ function Mainlayout() {
          <Flowbite>
             <div><AppNavbar/></div>
      <div className='pt-20 min-h-[calc(100vh-68px)]'><Outlet/></div>
-     <div><AppFooter/></div>
+     <div className=''><AppFooter/></div>
          </Flowbite>
    
     </div>

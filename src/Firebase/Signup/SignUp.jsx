@@ -27,17 +27,16 @@ function SignUp() {
     const email = data.email;
     const password = data.password;
     const name = data.name;
-const imageFile = data.imageFile[0]
+    const imageFile = data.imageFile[0];
 
-   
     const signUpInfo = {
       email,
       password,
     };
-    
-// upload image url by imageBB
 
-const photoUrl = await imageUpload(imageFile)
+    // upload image url by imageBB
+
+    const photoUrl = await imageUpload(imageFile);
 
     signUpNewUser(email, password)
       .then((res) => {
@@ -73,14 +72,19 @@ const photoUrl = await imageUpload(imageFile)
   return (
     <div className="bg-login bg-cover bg-center object-cover min-h-screen flex flex-col justify-center items-center ">
       <Helmet>
-              <title>Sign up | marriageBd</title>
-            </Helmet>
+        <title>Sign up | marriageBd</title>
+      </Helmet>
       <section className="pt-10 ">
         <TitleDashboard heading={`Signup Now`} />
       </section>
 
       {/* signup form */}
       <div className="flex flex-col justify-center items-center w-screen md:min-w-[500px] max-w-xl mx-auto backdrop-blur-xl bg-white/10 p-4 md:p-10 rounded-xl mt-8 ">
+         <div className="mb-5 flex justify-around items-center gap-x-10 border-2 border-white px-4 py-2 rounded-md">
+                <p className="text-md text-white dark:text-white">Demo : Login As </p>
+              <Link to='/adminLogin'  className="text-white/90 font-semibold hover:scale-105 bg-purple-500 dark:bg-purple-500 rounded-md px-3 py-1 duration-100" > Admin</Link>
+              <Link to='/normalUser'  className="text-white/90 font-semibold hover:scale-105 bg-purple-500 dark:bg-purple-500 rounded-md px-3 py-1 duration-100" > Normal User</Link>
+              </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex w-full flex-col gap-4 "

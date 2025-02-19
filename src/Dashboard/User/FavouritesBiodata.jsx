@@ -5,9 +5,9 @@ import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 
+import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import BannarAll from "../../Shared/BannarAll";
-import { Helmet } from "react-helmet-async";
 
 function FavouritesBiodata() {
   const axiosSecure = useAxiosSecure();
@@ -59,7 +59,7 @@ function FavouritesBiodata() {
   };
 
   return (
-    <div>
+    <div className="dark:bg-gray-800 min-h-screen">
        <Helmet>
                     <title>Favorite Biodata | marriageBd</title>
                   </Helmet>
@@ -88,7 +88,7 @@ function FavouritesBiodata() {
                 <Table.Cell>
                   <Button
                     onClick={() => handleDeleteFavorite(fav?._id)}
-                    className="bg-pink-700 "
+                    className="bg-pink-700 dark:bg-purple-600"
                     size="md"
                   >
                     {" "}

@@ -6,9 +6,9 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAuth from "../../Firebase/UseAuth/useAuth";
 
+import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import BannarAll from "../../Shared/BannarAll";
-import { Helmet } from "react-helmet-async";
 
 function CreateBiodata() {
   const { user, loading } = useAuth();
@@ -86,14 +86,14 @@ function CreateBiodata() {
   };
 
   return (
-    <div>
+    <div className="dark:bg-gray-800">
        <Helmet>
                     <title>Create Biodata | marriageBd</title>
                   </Helmet>
       <div>
         <BannarAll bannerHeading={`"Build Your Matrimonial Profile"`} />
 
-        <div className=" max-w-[90%]  xl:max-w-[80%] mx-auto my-10 bg-pink-400 p-5 md:p-10">
+        <div className=" max-w-[90%]  xl:max-w-[80%] mx-auto my-10 bg-pink-400 dark:bg-pink-400  p-5 md:p-10">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="text-black/90  font-semibold "
@@ -541,7 +541,7 @@ function CreateBiodata() {
             </section>
             <Button
               type="submit"
-              className="w-full bg-pink-500 text-white my-5 "
+              className="w-full bg-pink-500 dark:bg-pink-500 text-white my-5 "
             >
               Publish Now
             </Button>

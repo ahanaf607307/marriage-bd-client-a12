@@ -21,7 +21,7 @@ console.log(user?.photoURL)
       <Navbar
       fluid
       rounded
-      className="bg-pink-400 py-5  fixed top-0 w-full  z-50 "
+      className="bg-pink-400 py-5 rounded-none fixed top-0 w-full  z-50 "
     >
   
      <NavLink to="/" className="flex items-center gap-x-2">
@@ -32,7 +32,7 @@ console.log(user?.photoURL)
       </NavLink>
 
       <div className="flex md:order-2 ">
-      <DarkThemeToggle className="mr-2" />
+      <DarkThemeToggle className=" border-2 mr-2 w-12 hidden lg:block rounded-full" />
         <Dropdown
           arrowIcon={false}
           inline
@@ -69,13 +69,14 @@ console.log(user?.photoURL)
                   Signup
                 </Button>
               </Link>
+             
             </div>
           )}
         </Dropdown>
        
         <Navbar.Toggle />
       </div>
-      <Navbar.Collapse className="md:flex items-center lg:gap-x-4 gap-y-4">
+      <Navbar.Collapse className="md:flex items-center justify-center lg:gap-x-4 gap-y-4">
         <NavLink
           to="/"
           className={({ isActive }) =>
@@ -165,8 +166,10 @@ console.log(user?.photoURL)
             >
               Dashboard
             </NavLink>
+            
           )
         ) : null}
+         <DarkThemeToggle className="flex md:hidden border-2 mt-3 w-12 rounded-full" />
       </Navbar.Collapse>
      
     </Navbar>
