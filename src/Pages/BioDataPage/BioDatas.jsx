@@ -56,15 +56,15 @@ function Biodatas() {
 
   return (
     <div className="dark:bg-gray-900">
-    <div className="max-w-7xl mx-auto px-5 py-10">
+    <div className="max-w-7xl mx-auto md:px-5 py-10">
       <Title
         heading={"Find Your Perfect Match"}
         title={"Your journey to a beautiful relationship begins here"}
       />
   
-      <div className="flex flex-col lg:flex-row gap-5">
+      <div className="flex flex-col md:flex-row gap-5">
         {/* Left Sidebar - Fixed */}
-        <div className="lg:w-1/3 bg-pink-400 dark:bg-gray-800 py-10 px-3 rounded-xl sticky top-24 h-screen">
+        <div className="lg:w-1/3 bg-pink-400 dark:bg-gray-800 py-5 md:py-10 px-3 rounded-xl sticky top-20 md:top-28 lg:top-24 md:h-screen z-30">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-flow-col justify-stretch space-x-4">
               <FloatingLabel
@@ -132,13 +132,13 @@ function Biodatas() {
         </div>
   
      
-        <div className="lg:w-2/3">
+        <div className="lg:w-2/3 px-2">
           {biodatas.length === 0 ? (
             <h1 className="text-2xl font-semibold font-bannerFont text-center my-20 text-pink-500 md:px-44">
               No Data Match. Give Correct Data in Filter.
             </h1>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-5 max-w-7xl mx-auto">
               {biodatas.map((biodata) => (
                 <AllBioDataCard key={biodata?._id} biodata={biodata} />
               ))}
