@@ -4,6 +4,7 @@ import useAuth from "../../Firebase/UseAuth/useAuth";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import Loading from "../../Loading/Loading";
 import Title from "../../Shared/Title";
+import { Slide } from "react-awesome-reveal";
 
 function SuccessCounterSection() {
   const axiosPublic = useAxiosPublic();
@@ -23,7 +24,9 @@ function SuccessCounterSection() {
   console.log(homeCount);
 
   return (
-    <div className="font-bannerFont flex flex-col justify-center items-center max-w-7xl mx-auto">
+
+      
+   <div className="font-bannerFont flex flex-col justify-center items-center max-w-7xl mx-auto">
      <div className="px-5">
      <Title
         heading={`Our Success at a Glance`}
@@ -31,58 +34,56 @@ function SuccessCounterSection() {
       />
 
      </div>
-        {/* total biodata */}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-12 lg:gap-8 items-center justify-center ">
-          {/* cards starts */}
-          <div class="relative w-52 h-64 rounded-lg flex flex-col items-center justify-center  overflow-hidden">
-            <div class="absolute top-1 left-1 w-[190px] h-[240px] bg-white/95 backdrop-blur-[24px] rounded-lg border-2 border-white z-10"></div>
-            <div class="absolute top-1/2 left-1/2 w-36 h-36 bg-red-500 opacity-100 rounded-full blur-[12px] animate-blob"></div>
-            <div class="z-20 text-center">
-              <p class="text-6xl font-semibold text-pink-500">
-                {homeCount?.totalBiodata}
-              </p>
-              <h2 class="text-lg font-bold text-gray-700">Total Biodata</h2>
-            </div>
-          </div>
 
-          <div class="relative w-52 h-64 rounded-lg flex flex-col items-center justify-center  overflow-hidden">
-            <div class="absolute top-1 left-1 w-[190px] h-[240px] bg-white/95 backdrop-blur-[24px] rounded-lg border-2 border-white z-10"></div>
-            <div class="absolute top-1/2 left-1/2 w-36 h-36 bg-red-500 opacity-100 rounded-full blur-[12px] animate-blob"></div>
-            <div class="z-20 text-center">
-              <p class="text-6xl font-semibold text-pink-500">
-                {homeCount?.totalMale}
-              </p>
-              <h2 class="text-lg font-bold text-gray-700">Total Male</h2>
-            </div>
-          </div>
-
-          <div class="relative w-52 h-64 rounded-lg flex flex-col items-center justify-center  overflow-hidden">
-            <div class="absolute top-1 left-1 w-[190px] h-[240px] bg-white/95 backdrop-blur-[24px] rounded-lg border-2 border-white z-10"></div>
-            <div class="absolute top-1/2 left-1/2 w-36 h-36 bg-red-500 opacity-100 rounded-full blur-[12px] animate-blob"></div>
-            <div class="z-20 text-center">
-              <p class="text-6xl font-semibold text-pink-500">
-                {homeCount?.totalFemale}
-              </p>
-              <h2 class="text-lg font-bold text-gray-700">Total Female</h2>
-            </div>
-          </div>
-
-          <div class="relative w-52 h-64 rounded-lg flex flex-col items-center justify-center  overflow-hidden">
-            <div class="absolute top-1 left-1 w-[190px] h-[240px] bg-white/95 backdrop-blur-[24px] rounded-lg border-2 border-white z-10"></div>
-            <div class="absolute top-1/2 left-1/2 w-36 h-36 bg-red-500 opacity-100 rounded-full blur-[12px] animate-blob"></div>
-            <div class="z-20 text-center">
-              <p class="text-6xl font-semibold text-pink-500">
-                {homeCount?.totalMarrige}
-              </p>
-              <h2 class="text-lg font-bold text-gray-700">completed Marriage</h2>
-            </div>
-          </div>
-
-          {/* cards ends */}
-        </div>
+     <Slide direction="up"  >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-12 lg:gap-8 items-center justify-center">
+  {[
+    {
+      title: "Total Biodata",
+      value: homeCount?.totalBiodata,
+      color: "from-pink-500 to-rose-400",
+    },
+    {
+      title: "Total Male",
+      value: homeCount?.totalMale,
+      color: "from-blue-500 to-indigo-400",
+    },
+    {
+      title: "Total Female",
+      value: homeCount?.totalFemale,
+      color: "from-pink-400 to-fuchsia-500",
+    },
+    {
+      title: "Completed Marriage",
+      value: homeCount?.totalMarrige,
+      color: "from-emerald-400 to-green-500",
+    },
+  ].map((item, index) => (
+    <div
+      key={index}
+      className="relative w-56 h-72 rounded-xl flex flex-col items-center justify-center overflow-hidden shadow-xl"
+    >
+      <div className="absolute top-1 left-1 w-[215px] h-[265px] bg-white/90 backdrop-blur-[24px] rounded-xl border border-gray-200 z-10"></div>
+      <div
+        className={`absolute top-1/2 left-1/2 w-40 h-40 bg-gradient-to-br ${item.color} opacity-90 rounded-full blur-[14px] animate-blob`}
+      ></div>
+      <div className="z-20 text-center">
+        <p className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-rose-500 drop-shadow-sm">
+          {item.value}
+        </p>
+        <h2 className="uppercase mt-2 text-base font-semibold tracking-wide text-gray-700">
+          {item.title}
+        </h2>
+      </div>
+    </div>
+  ))}
+</div>
+</Slide>
      
     </div>
+          
+    
   );
 }
 

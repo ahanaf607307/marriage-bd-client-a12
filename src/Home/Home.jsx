@@ -8,6 +8,8 @@ import OfferBanner from "../Pages/OfferBanner/OfferBanner";
 import SuccessCounterSection from "../Pages/SuccessCounterSection/SuccessCounterSection";
 import SuccessStory from "../Pages/SuccessStory/SuccessStory";
 import Banner from "./Banner";
+import WhyChooseUs from "../Pages/WhyChooseUs/whyChooseUs";
+import { Slide } from "react-awesome-reveal";
 
 function Home() {
   return (
@@ -19,8 +21,15 @@ function Home() {
       <BioData />
       <OfferBanner/>
       <HowItworks />
+<WhyChooseUs/>
       <SuccessCounterSection />
+   
+ 
+
       <FindSpecial/>
+
+
+  
       <SuccessStory />
       <NewsLatter />
     </div>

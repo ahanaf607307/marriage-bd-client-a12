@@ -41,61 +41,95 @@ function ShowAllSuccessStory() {
  
   console.log("successStory------", successAll);
   return (
-  <div className="dark:bg-gray-800">
-      <div  className="max-w-7xl mx-auto ">
-       <Helmet>
-                    <title>All Success Story | marriageBd</title>
-                  </Helmet>
-     <div className=" py-16 font-bannerFont px-2">
-     <div>
-        <Title
-          heading={`Success Stories That Inspire`}
-          title={`Every match is a new story of love, trust, and companionship. Here are some of the wonderful journeys made possible by MarriageBD.
-`}
-          paddingTitle={`56`}
-        />
-      </div>
-      <div className="my-5 flex justify-between items-center">
-       <h1 className=" font-bannerFont dark:text-white">Sort by <span className="text-pink-500 font-semibold text-lg">"Marriage Date"</span> </h1>
-              <Select
-                defaultValue="Ascending"
-                onChange={(e) => setSortOrder(e.target.value)} 
-              >
-                <option value="Ascending">Ascending</option>
-                <option value="Descending">Descending</option>
-              </Select>
-            </div>
-      {
-        isLoading ? <Loading/> : <>
-        
-        <div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-7 items-center justify-center md:gap-x-10 lg:gap-x-5  ">
-        {/* cards */}
+  <>
+ <div className="dark:bg-gray-900 bg-white transition-all duration-300">
+  <Helmet>
+    <title>All Success Story | MarriageBD</title>
+  </Helmet>
+
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 font-bannerFont">
+    
+    {/* Header Section */}
+    <div className="text-center mb-12">
+      <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white">
+        💖 Success Stories That Inspire
+      </h2>
+      <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-lg">
+        Every match is a new journey of <span className="text-pink-500 font-semibold">love, trust</span>, and togetherness. Here are a few beautiful stories made possible by <span className="text-blue-500 font-semibold">MarriageBD</span>.
+      </p>
+    </div>
+
+    {/* Sort Section */}
+    <div className="flex flex-col sm:flex-row justify-between items-center gap-3 mb-8">
+      <h3 className="text-lg font-medium dark:text-white">
+        Sort by <span className="text-pink-500 font-semibold">"Marriage Date"</span>
+      </h3>
+      <Select
+        defaultValue="Ascending"
+        onChange={(e) => setSortOrder(e.target.value)}
+        className="w-48"
+      >
+        <option value="Ascending">Ascending</option>
+        <option value="Descending">Descending</option>
+      </Select>
+    </div>
+
+    {/* Grid Cards */}
+    {isLoading ? (
+      <Loading />
+    ) : (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {sortedStory?.map((suc) => (
           <Link
-                    to={`/successStoryDetails/${suc?._id}`}
-                      key={suc?._id}
-                      className=" relative flex flex-col  rounded-md bg-white"
-                    >
-                      <img className=" h-64 w-full object-cover rounded-t-md" src={suc?.coupleImageLink} alt="" />
-                      <div className="px-3 py-5 flex-1 flex flex-col justify-between ">
-                      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white ">
-                      <Rating name="half-rating-read" defaultValue={suc?.rating} precision={0.5} readOnly />
-                      </h5>
-                      <p className="bg-pink-600 absolute top-0 right-0 text-white/90 px-2 py-1 rounded-md font-bannerFont">
-                        {suc?.marriageDate.slice(0,10)}
-                      </p>
-                      <p className="font-normal text-gray-900 dark:text-gray-400">
-                       {suc?.storyDetails.slice(0,100)} ....
-                      </p>
-                      </div>
-                    </Link>
+            to={`/successStoryDetails/${suc?._id}`}
+            key={suc?._id}
+            className="group relative overflow-hidden rounded-3xl shadow-lg bg-white dark:bg-gray-800 hover:shadow-xl transition-all duration-300"
+          >
+            {/* Image */}
+            <img
+              className="h-60 w-full object-cover group-hover:scale-105 transition-transform duration-300"
+              src={suc?.coupleImageLink}
+              alt="couple"
+            />
+            
+            {/* Date Badge */}
+            <span className="absolute top-3 right-3 bg-pink-600 text-white text-sm px-3 py-1 rounded-full shadow-md font-semibold z-10">
+              {suc?.marriageDate.slice(0, 10)}
+            </span>
+
+            {/* Content */}
+            <div className="p-5 space-y-3">
+              {/* Rating */}
+              <div className="flex items-center">
+                <Rating
+                  name="half-rating-read"
+                  defaultValue={suc?.rating}
+                  precision={0.5}
+                  readOnly
+                />
+              </div>
+
+              {/* Story Snippet */}
+              <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                {suc?.storyDetails.slice(0, 100)}...
+              </p>
+            </div>
+          </Link>
         ))}
       </div>
-        </>
-      }
-     </div>
-    </div>
+    )}
   </div>
+</div>
+
+<section className="bg-gradient-to-r from-pink-500 to-purple-600 py-20 text-white text-center mb-20">
+  <h2 className="text-4xl font-bold mb-4">Ready to Begin Your Journey?</h2>
+  <p className="text-lg mb-6">Join thousands of happy members who’ve found their soulmate.</p>
+<Link to='/dashboard/editBiodata'> <button className="bg-white text-pink-600 px-6 py-3 rounded-full font-semibold hover:scale-105 transition-all">
+    Create Your Profile
+  </button></Link>
+</section>
+
+  </>
   );
 }
 

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import Title from "../../Shared/Title";
-
+import { Bounce } from "react-awesome-reveal";
 
 import { Rating } from "@mui/material";
 import '@smastrom/react-rating/style.css';
@@ -56,7 +56,8 @@ function SuccessStory() {
           <option value="Descending">Descending</option>
         </Select>
       </div>
-      <div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-7 items-center justify-center md:gap-x-10 lg:gap-x-5 ">
+      <Bounce duration={1000} >
+        <div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-7 items-center justify-center md:gap-x-10 lg:gap-x-5 ">
         {/* cards */}
         {sortedStory?.map((suc) => (
           <Link
@@ -79,6 +80,8 @@ function SuccessStory() {
           </Link>
         ))}
       </div>
+      </Bounce>
+      
      </div>
     </div>
   );

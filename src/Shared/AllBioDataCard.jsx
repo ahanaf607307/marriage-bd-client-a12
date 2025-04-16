@@ -2,12 +2,14 @@
 import { Button } from 'flowbite-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { Bounce } from "react-awesome-reveal";
 function AllBioDataCard({biodata}) {
   
  
   return (
-    <div className='border  font-bannerFont rounded-md bg-white dark:bg-purple-300'>
+
+      <Bounce duration={1000} >
+   <div className='border  font-bannerFont rounded-md bg-white dark:bg-purple-300'>
         <div className='bg-pink-400 dark:bg-gray-500 flex flex-col justify-center items-center py-10  rounded-tl-full   relative '>
         <img src={biodata?.imageLink} className='min-w-32 max-w-32 max-h-32 min-h-32 my-2 rounded-full' alt="bio data image" />
         <h1 className='text-lg text-white/90 bg-pink-600 dark:bg-gray-400 pl-5 pr-1  pt-1 rounded-tl-3xl absolute bottom-0 right-0 '>BioData No : {biodata?.biodataId}</h1>
@@ -24,6 +26,8 @@ function AllBioDataCard({biodata}) {
         View Profile 
       </Button></Link>
     </div>
+          </Bounce>
+ 
   )
 }
 
